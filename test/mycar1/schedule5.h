@@ -9,9 +9,9 @@
 	#include "WProgram.h"
 #endif
 
-#include "encoder.h"
+//#include "encoder.h"
 #include "motor.h"
-#include "ult_wall.h"
+//#include "ult_wall.h"
 #include "compass.h"
 #include "xbee.h"
 #include "led_matrix.h"
