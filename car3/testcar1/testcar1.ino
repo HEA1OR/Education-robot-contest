@@ -26,7 +26,7 @@ int nowlen = 0;
 void loop(){
 //    delay(3000);
     Serial.println("ok");
-    alongLine(900, 0);
+    alongLine(0, 0, 5000);
     getEncoder();
 //    alongCurve(400, 2);
 //    delay(3000);
