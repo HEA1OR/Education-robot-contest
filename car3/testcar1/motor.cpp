@@ -36,9 +36,10 @@ void walk(float left_speed, float right_speed)
   //骅哥采取的代码是,左轮在1500的基础上减，右轮在1500的基础上加，这样就是后驱
   //左右定义错误？
   //后驱前进时，右轮在1500基础上减（逆时针）,左轮在1500基础上加(顺时针)
+  //改为前驱设计,walk为右加左减少
 ////////////////////////  adjust  //////////////////////////////////
-  left_speed *= 1.39;
-  right_speed *= 1.38;//基本可以走直线
+  left_speed *= 1.46;
+  right_speed *= 1.38;//基本可以走直线 右轮比左轮转速快较多
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);//最大到400
   right_speed = min(right_speed, 400);
@@ -144,9 +145,10 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
     // 1：直入缓出
     // 2：缓入直出
     // 3：直入直出
-    // setAngle 用来设置小车的初始角度，默认值为-1
-    // setBias 是陀螺仪调整直线的偏差量，为0则走直线，否则走弧线，建议范围+-0.2
+    // setAngle 用来设置小车的初始角度，默认值为-1（函数初始定义好）
+    // setBias 是陀螺仪调整直线的偏差量，为0则走直线，否则走弧线，建议范围+-0.2 alongline中走直线
     // setBias 在alongLine中只保留接口，为防止歧义不应该直接修改，而是在alongCurve中修改
+    // first的作用?
 
     volatile float errorA;
     bool stopSequence = false;
@@ -161,6 +163,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
     float K_p = 300, K_i = 1, K_d = 1;   // PID中三项的系数
 
     float init_angle;
+    //记录第一次的角度值(小车一定要放好)
     if(setAngle < 0){
         getEncoder();
         init_angle = angle;
@@ -168,55 +171,59 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
     }       
     else
         init_angle = setAngle;
-    initLength = sideLength;
+    //initLength = sideLength; //sideLength用不上 
     getEncoder();
-    last_angle = angle;
+    last_angle = angle; //记录上一次的angle 只有角度变化时，getEncoder会更新角度数据
     
 //    delay(100);
     int first = 0;
     int index = 0;
     Serial.println("start: ");
+    //后续过程重复进行
     while(1){
+
         getEncoder();    
-        
+        //countAngle和angleToTurn初始值都为0
         if(abs(countAngle) > angleToTurn){
-            setBias = 0;
+            setBias = 0; //调整偏差，直线
         }
         else{
-            init_angle += setBias;
-            countAngle += setBias;
-            if(init_angle > 360) 
+            init_angle += setBias; //第一次读取的角度+0
+            countAngle += setBias; //count+1
+            if(init_angle > 360)  //init_angle记录了最初始一次的角度数据
                 init_angle -= 360;
             else if(init_angle < 0)
                 init_angle += 360;
         }
-        Serial.print("initangle: ");
+        Serial.print("init_angle: ");
         Serial.println(init_angle);
-//        Serial.print("length: ");
-//        Serial.println(sideLength);
-        Serial.print("angle: ");
+   //     Serial.print("length: ");
+   //     Serial.println(sideLength);
+        Serial.print("angle_now");
         Serial.println(angle);
         Serial.print("last_angle: ");
         Serial.println(last_angle);
         if(abs(last_angle - angle) > 10 && abs(last_angle - init_angle) < 10)
-            temp_angle = last_angle;
+            temp_angle = last_angle; //角度差小时，当前角度等于上次记录的角度数据
         else if(abs(last_angle - angle) > 10 && abs(angle - init_angle) < 10)
             temp_angle = angle;
         else
             temp_angle = angle;
-        last_angle = angle;
+        Serial.print("temp_angle");
+        Serial.println(angle);
+        last_angle = angle; //不断更新lastangle和temp_angle的数值
         
 //        errorL = setSpeeed - observeSpeed;
 //        totalL = 2 * errorL; 
-        errorA = temp_angle - init_angle;
-        if(errorA < -300)
+        errorA = temp_angle - init_angle; //角度误差为当前角度值-初始的角度值
+        if(errorA < -360)
             errorA += 360;
-        if(errorA > 300)
+        if(errorA > 360)
             errorA -= 360;
-        if(errorA < -20)
-            errorA = -20;
-        if(errorA > 20)
-            errorA = 20;
+//        if(errorA < -20)
+//            errorA = -20;
+//        if(errorA > 20)
+//            errorA = 20;
         Serial.print("errorA: ");
         Serial.println(errorA);
         if(errorA > 300) {//对超过360°（0°）界限时进行修正
@@ -246,8 +253,18 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
         else{ // 否则小车偏差较大，需要调整
           K_p = 30;
           K_i = 10;
-          K_d = 60;
+          K_d = 60;;
+        } 
+/*       if(errorA < 2){ // error较小表明小车无较大偏差
+          K_p = 100;
+          K_i = 0;
+          K_d = 0;
         }
+        else{ // 否则小车偏差较大，需要调整
+          K_p = 30;
+          K_i = 10;
+          K_d = 60;
+        } */        
 ////////////////////////////////////////////////////////////////////
 
         totalA = K_p * errorA + K_i * sumErrorA + K_d * tempErrorA;
@@ -263,18 +280,19 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
         
 //           leftSpeed = leftSpeed + totalL;
 //           rightSpeed = leftSpeed + totalA;
-         leftSpeed = 100 - totalA;
-         rightSpeed = 100 + totalA;
+         leftSpeed = 100 + totalA;
+         rightSpeed = 100 - totalA;
         
         
 //        Serial.print("len: ");
 //        Serial.println(sideLength - initLength);
         
-        len = sideLength - initLength;
+/*        len = sideLength - initLength;
         timer_2 = millis();
         timer = timer_2 - timer_1;
         
         // 时序启动
+        //初始定义了first = 0
         if(timer < 2000 && mode%2 == 0 && first == 0){
             double xtime = timer / 1000.0;
             float k = 1 / (1 + 0.1*exp(-xtime*2 + 4));
@@ -312,7 +330,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
             Serial.println("stop without buffer");
             return;
         }
-         
+         */
         Serial.print("leftSpeed: ");
         Serial.println(leftSpeed);
         Serial.print("rightSpeed: ");
