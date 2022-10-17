@@ -61,17 +61,17 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
 {
     // angleTurn为需要转到的角度，mode为左右转变量， smoothTurn为是否只动一个轮
     getEncoder();
-    temp_angle = angle;
+    temp_angle = angle;//记录当前的角度
     // mode 是一个判断左转还是右转的标志变量，1为右转，0为左转
     if (mode)
     {
       /*右转*/
       aim_angle = temp_angle - angletoturn;
-      if (aim_angle < -1e-7)
+     if (aim_angle < -1e-7)
       {
         aim_angle += 360;
       }
-       Serial.println(aim_angle);
+      // Serial.println(aim_angle);
         while (1)
         {
             getEncoder();
@@ -91,9 +91,10 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
             leftCoef = pow(temp/fabs(angletoturn), 0.6);       
             rightCoef = pow(temp/fabs(angletoturn), 0.6);//调整思路是什么?
             if(!smoothTurn)
-                walk(-55 * rightCoef -10, 55 * leftCoef + 5);
+               // walk(-55 * rightCoef -10, 55 * leftCoef + 5);
+               walk(55 * rightCoef +10, -55 * leftCoef - 5);
             else
-                walk(5, 55 * leftCoef + 5);
+                walk(5, -55 * leftCoef - 5);
 ////////////////////////////////////////////////////////////////////
         }
     }
@@ -124,9 +125,10 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
             leftCoef = pow(temp/fabs(angletoturn), 0.5);       
             rightCoef = pow(temp/fabs(angletoturn), 0.5);
             if(!smoothTurn)
-                walk(50 * leftCoef + 5, -50 * rightCoef -10);
+               // walk(50 * leftCoef + 5, -50 * rightCoef -10);
+                walk(-50 * leftCoef - 5, 50 * rightCoef +10);
             else
-                walk(50 * leftCoef + 5, 5);
+                walk(-50 * leftCoef - 5, 5);
 ////////////////////////////////////////////////////////////////////
         }
     }
@@ -251,9 +253,9 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
           K_d = 30;
         }
         else{ // 否则小车偏差较大，需要调整
-          K_p = 30;
+          K_p = 50;
           K_i = 10;
-          K_d = 60;;
+          K_d = 10;;
         } 
 /*       if(errorA < 2){ // error较小表明小车无较大偏差
           K_p = 100;
@@ -287,7 +289,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
 //        Serial.print("len: ");
 //        Serial.println(sideLength - initLength);
         
-/*        len = sideLength - initLength;
+        len = sideLength - initLength;
         timer_2 = millis();
         timer = timer_2 - timer_1;
         
@@ -330,7 +332,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
             Serial.println("stop without buffer");
             return;
         }
-         */
+         
         Serial.print("leftSpeed: ");
         Serial.println(leftSpeed);
         Serial.print("rightSpeed: ");

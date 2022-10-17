@@ -27,8 +27,13 @@ void loop(){
 //    delay(3000);
     Serial.println("ok");
 //    walk(50, 50);
-    alongLine(0,0);
-    getEncoder();
+    
+    turn(90,1);
+    alongLine(0,0,4000);   
+//    alongLine(0,0,5000);
+//    turn(90,0);
+//    alongLine(0,0,5000);
+//    getEncoder();
 //    alongCurve(400, 2);
 //    delay(3000);
 //    int lastlen = nowlen;
