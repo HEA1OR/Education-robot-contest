@@ -25,10 +25,10 @@ int nowlen = 0;
 void loop(){
 //    delay(3000);
     Serial.println("ok");
-   alongLine(500, 0);
+ alongLine(500, 0);
   
 //    delay(3000);
-    turn(180, 1);
+ 
 //    delay(3000);
 //    walk(50, 50);
 //    delay(3000);
