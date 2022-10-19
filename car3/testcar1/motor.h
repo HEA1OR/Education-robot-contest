@@ -4,8 +4,8 @@
 #include "Servo.h"
 #include "encoderLED.h"
 
-#define pinL 7  // 7是前进方向的左轮
-#define pinR 8  //8是前进方向的右轮
+#define pinL 8  // 7是前进方向的左轮
+#define pinR 7  //8是前进方向的右轮
 #define left 0
 #define right 1
 

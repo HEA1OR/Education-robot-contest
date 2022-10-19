@@ -26,19 +26,24 @@ int nowlen = 0;
 void loop(){
 //    delay(3000);
     Serial.println("ok");
-    alongLine(0, 0, 5000);
-    getEncoder();
+//    walk(50, 50);
+    
+    turn(90,1);
+    alongLine(0,0,4000);   
+//    alongLine(0,0,5000);
+//    turn(90,0);
+//    alongLine(0,0,5000);
+//    getEncoder();
 //    alongCurve(400, 2);
-//    delay(3000);
 //    delay(3000);
 //    int lastlen = nowlen;
 //    nowlen = sideLength;
 //    Serial.println(lastlen - nowlen);
 //    schedule();
-    Serial.print("aangle:");
-    Serial.println(angle);
-    Serial.print("length: ");
-    Serial.println(sideLength);
-    Serial.println("");
+//    Serial.print("tempangle:");
+//    Serial.println(angle);
+//    Serial.print("templength: ");
+//    Serial.println(sideLength);
+//    Serial.println("");
     
 }
