@@ -18,8 +18,8 @@ float temp_angle,e,temp,aim_angle;
 void motorInit() {
 
   // attach函数，设定舵机的接口
-  motorL.attach(pinL); //motor.h中已经定义了 pinL 为7  pinR 为8
-  motorR.attach(pinR);
+  motorL.attach(pinR); //motor.h中已经定义了 pinL 为7  pinR 为8
+  motorR.attach(pinL);
 
   //writeMicroseconds函数的取值是1000-2000,1500为静止,2000全速向前，1000全速向后
   motorL.writeMicroseconds(1500);
@@ -31,13 +31,13 @@ void walk(float left_speed, float right_speed)
 {
   //骅哥采取的代码是,左轮在1500的基础上减，右轮在1500的基础上加，这样就是后驱
 ////////////////////////  adjust  //////////////////////////////////
-  left_speed *= 1.20;
+  left_speed *= 1.18;
   right_speed *= 1.18;
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);
   right_speed = min(right_speed, 400);
-  motorL.writeMicroseconds(1500-left_speed);
-  motorR.writeMicroseconds(1500+right_speed);
+  motorL.writeMicroseconds(1500+left_speed);
+  motorR.writeMicroseconds(1500-right_speed);
 }
 
 
@@ -68,8 +68,8 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
         {
             getEncoder();
             
-              Serial.print("angle:");
-              Serial.println(angle);
+              //Serial.print("angle:");
+              //Serial.println(angle);
             if(fabs(aim_angle - angle) < 0.4){
             break;
             }
@@ -83,9 +83,9 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
             leftCoef = pow(temp/fabs(angletoturn), 0.6);       
             rightCoef = pow(temp/fabs(angletoturn), 0.6);
             if(!smoothTurn)
-                walk(-55 * rightCoef -10, 55 * leftCoef + 5);
+                walk( 55 * leftCoef + 5,-55 * rightCoef -10);
             else
-                walk(5, 55 * leftCoef + 5);
+                walk( 55 * leftCoef + 5,5);
 ////////////////////////////////////////////////////////////////////
         }
     }
@@ -112,12 +112,12 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
             float temp_1 = fabs(angletoturn - temp);
             temp = temp < temp_1 ? temp : temp_1;
 ////////////////////////  adjust  //////////////////////////////////
-            leftCoef = pow(temp/fabs(angletoturn), 0.5);       
-            rightCoef = pow(temp/fabs(angletoturn), 0.5);
+            leftCoef = pow(temp/fabs(angletoturn), 0.6);       
+            rightCoef = pow(temp/fabs(angletoturn), 0.6);
             if(!smoothTurn)
-                walk(50 * leftCoef + 5, -50 * rightCoef -10);
+                walk( -55 * rightCoef -10,55 * leftCoef + 5);
             else
-                walk(50 * leftCoef + 5, 5);
+                walk( 5,55 * leftCoef + 5);
 ////////////////////////////////////////////////////////////////////
         }
     }
@@ -129,13 +129,14 @@ void turn(float angletoturn, int mode, bool smoothTurn = false)
 
 
 //这个是小车的最核心函数，建议仔细研究
-void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngle = -1, float setBias = 0, float angleToTurn = 0)
+void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse = 0, float setAngle = -1, float setBias = 0, float angleToTurn = 0)
 {
     // mode 用来控制小车的启动停止速度，用来控制动作的衔接
     // 0：缓入缓出
     // 1：直入缓出
     // 2：缓入直出
     // 3：直入直出
+    // reverse 控制车辆行驶方向，0为前进，1为后退
     // setAngle 用来设置小车的初始角度，默认值为-1
     // setBias 是陀螺仪调整直线的偏差量，为0则走直线，否则走弧线，建议范围+-0.2
     // setBias 在alongLine中只保留接口，为防止歧义不应该直接修改，而是在alongCurve中修改
@@ -206,8 +207,8 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
 //        errorL = setSpeeed - observeSpeed;
 //        totalL = 2 * errorL; 
         errorA = temp_angle - init_angle;
-        Serial.print("errorA: ");
-        Serial.println(errorA);
+        //Serial.print("errorA: ");
+        //Serial.println(errorA);
         if(errorA > 300) {//对超过360°（0°）界限时进行修正
             errorA -= 360; 
         }
@@ -223,14 +224,14 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
 ////////////////////////  adjust  //////////////////////////////////
         // 一般当小车大幅度抖动甚至转圈时，需要调整此中参数，或者可以加入更多分段
         if(errorA < 2){ // error较小表明小车无较大偏差
-          K_p = 100;
+          K_p = 100; //70
           K_i = 0;
-          K_d = 0;
+          K_d = 0;  //30
         }
         else{ // 否则小车偏差较大，需要调整
-          K_p = 30;
-          K_i = 10;
-          K_d = 60;
+          K_p = 30; //60
+          K_i = 10; //15
+          K_d = 60; //10
         }
 ////////////////////////////////////////////////////////////////////
 
@@ -242,17 +243,24 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
         lastErrorA = errorA;
 //        Serial.print("totalL: ");
 //        Serial.println(totalL);
-        Serial.print("totalA: ");
-        Serial.println(totalA);
+        //Serial.print("totalA: ");
+        //Serial.println(totalA);
         
 //           leftSpeed = leftSpeed + totalL;
 //           rightSpeed = leftSpeed + totalA;
-         leftSpeed = 100 - totalA;
-         rightSpeed = 100 + totalA;
+// ====================================================================
+         if (!reverse){
+          leftSpeed = 100 + totalA;
+          rightSpeed = 100 - totalA;
+         }
+         else{
+          leftSpeed = -100 + totalA;
+          rightSpeed = -100 - totalA;
+         }
+// ====================================================================
         
-        
-        Serial.print("len: ");
-        Serial.println(sideLength - initLength);
+        //Serial.print("len: ");
+        //Serial.println(sideLength - initLength);
         
         
         len = sideLength - initLength;
@@ -262,8 +270,8 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
         if(timer < 2000 && mode%2 == 0 && first == 0){
             double xtime = timer / 1000.0;
             float k = 1 / (1 + 0.1*exp(-xtime*2 + 4));
-            Serial.print("k: ");
-            Serial.println(k);
+            //Serial.print("k: ");
+            //Serial.println(k);
             leftSpeed *= k;
             rightSpeed *= k;
         }
@@ -272,7 +280,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
 //        Serial.println(mode);
         
         if((len > setDistance || timer_2 - timer_1 > setTime || stopSequence) && mode < 2){
-            Serial.println("stop");
+            //Serial.println("stop");
             stopSequence = true;
             if(first == 0){
                 first = 1;
@@ -288,24 +296,24 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngl
                 int rightSpeedTemp = rightSpeed;
                 leftSpeedTemp *= k;
                 rightSpeedTemp *= k;
-                leftSpeed = leftSpeed ? leftSpeedTemp : leftSpeed < leftSpeedTemp;
-                rightSpeed = rightSpeed ? rightSpeedTemp : rightSpeed < rightSpeedTemp;
+                leftSpeed = leftSpeed ? leftSpeedTemp : abs(leftSpeed) < abs(leftSpeedTemp);
+                rightSpeed = rightSpeed ? rightSpeedTemp : abs(rightSpeed) < abs(rightSpeedTemp);
             }
         }
         else if((len > setDistance || timer_2 - timer_1 > setTime || stopSequence) && mode >1){
-            Serial.println("stop without buffer");
+            //Serial.println("stop without buffer");
             break;
         }
          
-        Serial.print("leftSpeed: ");
-        Serial.println(leftSpeed);
-        Serial.print("rightSpeed: ");
-        Serial.println(rightSpeed);
+        //Serial.print("leftSpeed: ");
+        //Serial.println(leftSpeed);
+        //Serial.print("rightSpeed: ");
+        //Serial.println(rightSpeed);
         Serial.println(" ");
         walk(leftSpeed, rightSpeed);
         delay(55);
     }
-    //standBy();
+    standBy();
 }
 
 

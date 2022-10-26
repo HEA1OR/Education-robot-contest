@@ -649,87 +649,39 @@ void loop()
     c = Serial.read();
     switch (c)
     {
-      case 'A': DispShowChar4('"',   0, 0, 255, 0); //党徽
+      case 'A': DispShowChar2('<',   255, 0, 0, 0); 
         break;
-      case 'B': DispShowChar2('$',   0, 0, 255, 0); //空心
+      case 'B': DispShowChar2('=',   255, 0, 0, 0);
         break;
-      case 'C': DispShowChar3('%',   0, 0, 255, 0); //医护十字
+      case 'C': DispShowChar2('@',   255, 0, 0, 0);
         break;
-      case 'D': for ( k = 0; k < 5; k++)
-        {
-          for (j = 'k'; j <= 'n'; j++)
-          {
-            DispShowChar2(j, 0, 255, 255, 0);
-            delay(300);
-          }
-          delay(300);
-        }
-        DispShowChar(' ', random(255), random(255), random(255), 0);
-        break;//喇叭
-      case 'E': for (j = 0; j < 3; j++)
-        {
-          DispShowChar2('q', 0, 0, 255, 0);
-          delay(500);
-          DispShowChar(' ', 1, 1, 1, 0);
-          delay(100);
-        }
-        break;//感叹号
-      case 'F': for ( k = 0; k < 2; k++)
-        {
-          for (j = '+'; j <= '9'; j++)
-          {
-            DispShowChar2(j, 255, 255, 0, 0);
-            delay(300);
-          }
-          delay(300);
-        }
-        DispShowChar(' ', random(255), random(255), random(255), 0);
-        break;//直行箭头
-      case 'G': DispShowChar2('*',   255, 255, 0, 0); //数字1
+      case 'D': DispShowChar2('A',   255, 0, 0, 0);
         break;
-      case 'H': DispShowChar2('(',   255, 255, 0, 0); //数字2
+      case 'E': DispShowChar2('B',   255, 255, 255, 0);
         break;
-      case 'I': DispShowChar2(')',   255, 255, 0, 0); //数字3
+      case 'F': DispShowChar2('D',   255, 255, 255, 0);
         break;
-      case 'J': DispShowChar2('e',   255, 255, 0, 0); //对勾
+      case 'G': DispShowChar2('H',   0, 0, 255, 0); 
         break;
-      case 'K': DispShowChar2('a',   255, 255, 0, 0); //N
+      case 'H': DispShowChar2('>',   0, 255, 0, 0);
         break;
-      case 'L': DispShowChar2('b',   255, 255, 0, 0); //J
+      case 'I': DispShowChar2(')',   255, 255, 0, 0); 
         break;
-      case 'M': DispShowChar2('c',   255, 255, 0, 0); //U
+      case 'J': DispShowChar2('?',   255, 255, 0, 0); 
         break;
-      case 'N': for (j = ':'; j <= 'G'; j++)
-        {
-          DispShowChar2(j,   0, 255, 255, 0);
-          delay(300);
-        }
-        delay(300);//运货
+      case 'K': DispShowChar2('B',   0, 255, 0, 0); 
         break;
-      case 'O':   
-        for ( k = 0; k < 18; k++)
-        {
-          for (j = 'M'; j <= 'P'; j++)
-          {
-            DispShowChar(j, random(255), random(255), random(255), 0);
-            delay(i + 100);
-          }
-          delay(100);
-        }
-        DispShowChar(' ', random(255), random(255), random(255), 0);
-        break;//三角
-
-      case 'P': for ( k = 0; k < 2; k++)
-        {
-          for (j = 'U'; j <= '^'; j++)
-          {
-            DispShowChar(j, random(255), random(255), random(255), 0);
-            delay(300);
-          }
-        }
-        DispShowChar(' ', random(255), random(255), random(255), 0);//烟花
-        break;//car1 car3结束
-      case 'Q': DispShowChar2('H',   255, 255, 0, 0); //数字4
+      case 'L': DispShowChar2('>',   255, 0, 255, 0); 
+        break;
+      case 'M': DispShowChar2('C',   255, 0, 0, 0); 
+        break;
+      case 'N': DispShowChar2('D',   0, 255, 0, 0);
+        break;
+      case 'O': DispShowChar2('E',   255, 255, 0, 0);
+        break;
+      case 'P': DispShowChar2('G',   244, 164, 95, 0);
+        break;
+      case 'Q': DispShowChar2('F',   255, 255, 255, 0); 
         break;
       case 'R': DispShowChar2('I',   255, 255, 0, 0); //数字5
         break;

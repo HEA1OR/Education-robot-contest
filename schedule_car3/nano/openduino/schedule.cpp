@@ -66,20 +66,27 @@ void command_execute(byte c)
     // step1
     if (c == 0x90)
     {
+      open_flash('G');
       alongLine(0,0,2000,0);
+      open_flash('H');
       turn(90,0);
+      open_flash('G');
       alongLine(0,0,3000,0);
+      open_flash('L');
       turn(90,0);
+      open_flash('G');
       alongLine(0,0,2000,0);
     }
     // step1.5
     if (c == 0x91)
     {
+      open_flash('H');
       turn(180,0);
     }
     // step2
     if (c == 0x92)
     {
+      open_flash('J');
       alongLine(0,0,2000,0);
       alongLine(0,0,4000,1);
       alongLine(0,0,4000,0);
@@ -88,19 +95,24 @@ void command_execute(byte c)
     // step2.5
     if (c == 0x93)
     {
+      open_flash('H');
       turn(90,1);
       alongLine(0,0,1000,0);
       turn(180,1);
+      open_flash('K');
     }
     // step3
     if (c == 0x94)
     {
+      open_flash('K');
       delay(4000);
+      open_flash('N');
       alongLine(0,0,1000,0);
     }
     // step4
     if (c == 0x96)
     {
+      open_flash('Q');
       turn(135,0);
       alongLine(0,0,3000,0);
       turn(135,0);

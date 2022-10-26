@@ -24,9 +24,15 @@ void setup(){
 int nowlen = 0;
 void loop(){
 //    delay(3000);
+
     Serial.println("ok");
- alongLine(500, 0);
-  
+    command_execute(0x90);
+    command_execute(0x91);
+    command_execute(0x92);
+    command_execute(0x93);
+    command_execute(0x94);
+    command_execute(0x95);
+    command_execute(0x96); 
 //    delay(3000);
  
 //    delay(3000);

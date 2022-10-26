@@ -10,7 +10,7 @@
 #define right 1
 
 void motorInit();
-void alongLine(int setDistance, int mode = 0, int setTime = 10000, float setAngle = -1, float setBias = 0, float angleToTurn = 0);
+void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse = 0, float setAngle = -1, float setBias = 0, float angleToTurn = 0);
 void alongCurve(int setDistance, float setBias, float angleToTurn, int mode = 0);
 void turn(float angletoturn, int mode, bool smoothTurn = false);
 void standBy();
