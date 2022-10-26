@@ -38,8 +38,8 @@ void walk(float left_speed, float right_speed)
   //后驱前进时，右轮在1500基础上减（逆时针）,左轮在1500基础上加(顺时针)
   //改为前驱设计,walk为右加左减少
 ////////////////////////  adjust  //////////////////////////////////
-  left_speed *= 1.46;
-  right_speed *= 1.38;//基本可以走直线 右轮比左轮转速快较多
+  left_speed *= 1.18;
+  right_speed *= 1.28;//基本可以走直线 右轮比左轮转速快较多
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);//最大到400
   right_speed = min(right_speed, 400);
@@ -243,7 +243,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
           sumErrorA += errorA;
 ////////////////////////  adjust  //////////////////////////////////
         // 一般当小车大幅度抖动甚至转圈时，需要调整此中参数，或者可以加入更多分段
-        if(errorA < 1){ // error较小表明小车无较大偏差
+        /*if(errorA < 1){ // error较小表明小车无较大偏差
           K_p = 150;
           K_i = 0;
           K_d = 0;
@@ -257,8 +257,8 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
           K_p = 50;
           K_i = 10;
           K_d = 10;;
-        }  
-        /*
+        }  */ 
+        
        if(errorA < 2){ // error较小表明小车无较大偏差
           K_p = 100;
           K_i = 0;
@@ -268,7 +268,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
           K_p = 30;
           K_i = 10;
           K_d = 60;
-        } */       
+        }       
 ////////////////////////////////////////////////////////////////////
 
         totalA = K_p * errorA + K_i * sumErrorA + K_d * tempErrorA;
