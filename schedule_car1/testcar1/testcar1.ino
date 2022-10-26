@@ -26,17 +26,17 @@ int nowlen = 0;
 void loop(){
 //    delay(3000);
     Serial.println("ok");
-//    walk(50, 50);
+    walk(50, 50);
     
 //    turn(90,1);
 //    alongLine(0,0,5000,1);   
-    command_execute(0x90);
+/*    command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
     command_execute(0x93);
     command_execute(0x94);
     command_execute(0x95);
-    command_execute(0x96);
+    command_execute(0x96);*/
 //    alongLine(0,0,5000);
 //    turn(90,0);
 //    alongLine(0,0,5000);
