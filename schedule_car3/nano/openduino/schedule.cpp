@@ -67,15 +67,15 @@ void command_execute(byte c)
     if (c == 0x90)
     {
       open_flash('G');
-      alongLine(0,0,2000,0);
+      alongLine(0,0,4000,0);
       open_flash('H');
       turn(90,0);
       open_flash('G');
-      alongLine(0,0,3000,0);
+      alongLine(0,0,6000,0);
       open_flash('L');
       turn(90,0);
       open_flash('G');
-      alongLine(0,0,2000,0);
+      alongLine(0,0,4000,0);
     }
     // step1.5
     if (c == 0x91)

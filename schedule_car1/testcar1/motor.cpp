@@ -39,7 +39,7 @@ void walk(float left_speed, float right_speed)
   //改为前驱设计,walk为右加左减少
 ////////////////////////  adjust  //////////////////////////////////
   left_speed *= 1.18;
-  right_speed *= 1.28;//基本可以走直线 右轮比左轮转速快较多
+  right_speed *= 1.27;//基本可以走直线 右轮比左轮转速快较多
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);//最大到400
   right_speed = min(right_speed, 400);
