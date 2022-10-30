@@ -1,5 +1,5 @@
 #include "schedule.h"
-#include "encoder&LED.h"
+#include "encoderLED.h"
 
 extern float angle;
 volatile float count = 0;
@@ -42,6 +42,7 @@ void schedule_init()
 void schedule()
 {
   byte c = getCommand();
+
   command_execute(c);
 }
 // car3
@@ -68,7 +69,7 @@ void command_execute(byte c)
     if (c == 0x91)
     {
       open_flash('H');
-      turn(180,0);
+      turn(0,0);
     }
     // step2
     if (c == 0x92)
@@ -83,9 +84,9 @@ void command_execute(byte c)
     if (c == 0x93)
     {
       open_flash('H');
-      turn(90,1);
+      turn(90,0);
       alongLine(0,0,1000,0);
-      turn(180,1);
+      turn(180,0);
       open_flash('K');
     }
     // step3
@@ -100,9 +101,9 @@ void command_execute(byte c)
     if (c == 0x96)
     {
       open_flash('Q');
-      turn(135,0);
+      turn(135,1);
       alongLine(0,0,3000,0);
-      turn(135,0);
+      turn(135,1);
       alongLine(0,0,5000,0);
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5

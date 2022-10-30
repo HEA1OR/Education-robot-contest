@@ -35,17 +35,12 @@ void encoderLEDInit(){
 
 void getEncoder(){
   //调用该函数将外部的leftLength和rightLength修改为最新检测到的。
-  //i的作用?
     int well = receive_data();
     for(int i = 0; i < 10; i ++){
         if(well == 1){
-                well = receive_data();
-                Serial.print("1");            
+            well = receive_data();
         }
-        else 
-        {
-            break;
-        }
+        else break;
     }
 }
 
@@ -141,16 +136,12 @@ int receive_data(void)
 
       sideLength = lengthTemp;
       angle = angleTemp;
-//      Serial.print("Tempangle:");
-//      Serial.println(angle); 
-//      Serial.print("Templength: ");
-//      Serial.println(sideLength);
-//      Serial.println("");      
+      
       return 0;   // 表示数据获取成功
   }
     else
     {
       //Serial.println(cnt);
-      return 1; //返回函数为值为1时代表数据获取失败
+      return 1;
     }
 }
