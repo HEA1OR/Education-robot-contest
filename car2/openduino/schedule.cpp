@@ -1,5 +1,5 @@
 #include "schedule.h"
-#include "encoder&LED.h"
+#include "encoderLED.h"
 
 extern float angle;
 volatile float count = 0;
@@ -62,6 +62,15 @@ void command_execute(byte c)
         turn(180, 1);
         open_flash('B');
         turn(180, 1);
+        
+        open_flash('A');
+        turn(180, 0);
+        open_flash('B');
+        turn(180, 0);
+        open_flash('A');
+        turn(180, 0);
+        open_flash('B');
+        turn(180, 0);
     }
     // step1.5
     // step2
