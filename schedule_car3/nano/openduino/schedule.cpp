@@ -48,8 +48,8 @@ void schedule()
 void command_execute(byte c)
 {
 
-    Serial.print("c: ");
-    Serial.println(c);
+    //Serial.print("c: ");
+    //Serial.println(c);
     // step1
     if (c == 0x90)
     {

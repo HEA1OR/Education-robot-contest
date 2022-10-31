@@ -168,12 +168,12 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
     int index = 0;
     while(1){
         getEncoder();
-        Serial.print("initangle: ");
-        Serial.println(init_angle);
+        //Serial.print("initangle: ");
+        //Serial.println(init_angle);
 //        Serial.print("length: ");
 //        Serial.println(sideLength);
-        Serial.print("angle: ");
-        Serial.println(angle);
+        //Serial.print("angle: ");
+        //Serial.println(angle);
 //        if(first == 0){
 //            first = 1;
 //            for(int i = 0; i < 5; i ++){
@@ -309,7 +309,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
         //Serial.println(leftSpeed);
         //Serial.print("rightSpeed: ");
         //Serial.println(rightSpeed);
-        Serial.println(" ");
+        //Serial.println(" ");
         walk(leftSpeed, rightSpeed);
         delay(55);
     }

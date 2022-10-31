@@ -47,8 +47,8 @@ void schedule()
 void command_execute(byte c)
 {
      // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
-    Serial.print("c: ");
-    Serial.println(c);
+//    Serial.print("c: ");
+//    Serial.println(c);
 
 
     // step1
