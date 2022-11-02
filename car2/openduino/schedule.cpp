@@ -43,7 +43,7 @@ void schedule()
   byte c = getCommand();
   command_execute(c);
 }
-// car5 社区车
+// car2
 void command_execute(byte c)
 {
      // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
@@ -97,7 +97,7 @@ void command_execute(byte c)
     if (c == 0x94)
     {
         open_flash('F');
-        alongLine(0, 0, 4000, 0);
+        alongLine(0, 0, 2000, 0);
         open_flash('E');
 
     }

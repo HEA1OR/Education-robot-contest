@@ -92,7 +92,7 @@ void command_execute(byte c)
     if (c == 0x94)
     {
       open_flash('K');
-      delay(4000);
+      delay(2000);
       open_flash('N');
       alongLine(0,0,1000,0);
     }

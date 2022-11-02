@@ -16,19 +16,19 @@ void loop() {
   Serial.write(0x90);
   Serial.flush();
   Serial.println(90);
-  delay(10000);
+  delay(20000);
 
   // step 1.5
   Serial.flush();
   Serial.write(0x91);
   Serial.flush();
-  delay(13000);
+  delay(3000);
 
   // step 2
   Serial.flush();
   Serial.write(0x92);
   Serial.flush();
-  delay(23000);
+  delay(18000);
 
   // step 2.5
   Serial.flush();
@@ -46,7 +46,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
-  delay(30000);
+  delay(7000);
 
   // step 4
   Serial.flush();

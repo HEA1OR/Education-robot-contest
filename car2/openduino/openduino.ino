@@ -26,6 +26,7 @@ void loop(){
 
     Serial.println("ok");
     schedule();
+//    walk(50, 50);
 /*
     command_execute(0x90);
     command_execute(0x91);
