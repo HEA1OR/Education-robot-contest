@@ -1,6 +1,6 @@
 #include "motor.h"
 #include "math.h"
-#include "encoder&LED.h"
+#include "encoderLED.h"
 
 Servo motorL, motorR;
 int sideChoose = 0; // 选择一边做为基准边，0为左，1为右

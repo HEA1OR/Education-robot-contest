@@ -1,4 +1,4 @@
-#include "encoder&LED.h"
+#include "encoderLED.h"
 #include "Arduino.h"
 #include "led_matrix.h"
 #include "motor.h"
@@ -29,15 +29,19 @@ void loop(){
 //    delay(3000);
 //    getEncoder();    
 //    Serial.println("ok");
-    schedule();
+//    schedule();
+//   setLightMode(3);
+//   delay(2000);
+//   setLightMode(2);
+//   delay(2000);
 
-/*    command_execute(0x90);
+    command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
     command_execute(0x93);
     command_execute(0x94);
     command_execute(0x95);
-    command_execute(0x96);*/
+    command_execute(0x96);
     
 /*
     Serial.print("aangle:");

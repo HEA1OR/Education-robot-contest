@@ -91,7 +91,7 @@ void command_execute(byte c)
         open_flash('E');
         turn(90, 1);
         alongLine(0, 0, 1000, 0);
-        turn(180, 0);
+        
     }
     // step3
     if (c == 0x94)
@@ -99,7 +99,8 @@ void command_execute(byte c)
         open_flash('F');
         alongLine(0, 0, 2000, 0);
         open_flash('E');
-
+        turn(180, 0);
+        alongLine(0, 0, 5000, 0)
     }
     // step3.5
     if (c == 0x95)

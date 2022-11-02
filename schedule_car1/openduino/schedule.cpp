@@ -93,7 +93,7 @@ void command_execute(byte c)
     if (c == 0x94)
     {
       open_flash('K');
-      delay(2000);
+      delay(6500);
       open_flash('N');
       alongLine(0,0,1000,0);
     }
@@ -101,9 +101,9 @@ void command_execute(byte c)
     if (c == 0x96)
     {
       open_flash('Q');
-      turn(135,0);
+      turn(135,1);
       alongLine(0,0,3000,0);
-      turn(135,0);
+      turn(135,1);
       alongLine(0,0,5000,0);
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
