@@ -100,7 +100,7 @@ void command_execute(byte c)
         alongLine(0, 0, 2000, 0);
         open_flash('E');
         turn(180, 0);
-        alongLine(0, 0, 5000, 0)
+        alongLine(0, 0, 5000, 0);
     }
     // step3.5
     if (c == 0x95)

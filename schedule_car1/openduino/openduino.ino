@@ -28,7 +28,7 @@ int nowlen = 0;
 void loop(){
 //    Serial.println("ok");
     schedule();
-    /*
+   
     command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
@@ -36,7 +36,7 @@ void loop(){
     command_execute(0x94);
     command_execute(0x95);
     command_execute(0x96);
-    */
+  
 /*    Serial.print("aangle:");
     Serial.println(angle);
     Serial.print("length: ");
