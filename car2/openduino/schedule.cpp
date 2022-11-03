@@ -13,7 +13,7 @@ void schedule_init()
 //  ultrasonic_init();
 //  compassInit();
 //  xbee_init();
-//  led_matrix_init();
+ led_matrix_init();
   pinMode(screwPin, OUTPUT);
 //  digitalWrite(ledpin, LOW); 
   pinMode(mpin, OUTPUT);

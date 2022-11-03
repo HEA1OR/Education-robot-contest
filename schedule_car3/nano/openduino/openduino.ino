@@ -14,7 +14,7 @@ extern long int sideLength;
 
 void setup(){
     encoderLEDInit();
-    //led_matrix_init();
+    led_matrix_init();
     motorInit();
     xbee_init();
     schedule_init();
