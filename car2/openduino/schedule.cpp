@@ -90,24 +90,22 @@ void command_execute(byte c)
     {
         open_flash('E');
         turn(90, 1);
-        alongLine(0, 0, 1000, 0);
-        
+        alongLine(0, 0, 2500, 0);
     }
     // step3
     if (c == 0x94)
     {
         open_flash('F');
-        alongLine(0, 0, 2000, 0);
         open_flash('E');
-        turn(180, 0);
-        alongLine(0, 0, 5000, 0);
+        turn(180, 1);
+        alongLine(0, 0, 3000, 0);
     }
     // step3.5
     if (c == 0x95)
     {
         open_flash('A');
         turn(180, 0);
-        alongLine(0, 0, 1500, 0);
+        alongLine(0, 0, 1000, 0);
         turn(90, 1);
     }
     // step4
@@ -117,6 +115,7 @@ void command_execute(byte c)
         alongLine(0, 0, 4500, 0);
         delay(500);
     }
+
 
       
     /*******************************第一阶段***********************************/
