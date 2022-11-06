@@ -105,12 +105,8 @@ void command_execute(byte c)
       turn(90,1);
       setLightMode(2);
       alongLine(0,0,1000,0);
-<<<<<<< HEAD:car3/schedule.cpp
       setLightMode(1);
       turn(180,1);
-=======
-      
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
       open_flash('K');
       setLightMode(0);
     }
@@ -118,13 +114,8 @@ void command_execute(byte c)
     if (c == 0x94)
     {
       open_flash('K');
-<<<<<<< HEAD:car3/schedule.cpp
       delay(4000);
       setLightMode(7);
-=======
-      turn(180,1);
-      delay(3000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
       open_flash('N');
       alongLine(0,0,1500,0);
       setLightMode(0);
@@ -140,7 +131,6 @@ void command_execute(byte c)
     // step4
     if (c == 0x96)
     {
-<<<<<<< HEAD:car3/schedule.cpp
       setLightMode(1);
       turn(70,1);
       setLightMode(2);
@@ -155,13 +145,6 @@ void command_execute(byte c)
       setLightMode(5);
         open_flash('P');
         alongLine(0, 0, 3000, 0);
-=======
-      open_flash('Q');
-      turn(110,0);
-      alongLine(0,0,3000,0);
-      turn(160,0);
-      alongLine(0,0,5000,0);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
     /*
