@@ -103,25 +103,18 @@ void command_execute(byte c)
     if (c == 0x93)
     {
       open_flash('H');
-<<<<<<< HEAD:car1/schedule.cpp
       setLightMode(1);
       turn(90,1);
       setLightMode(2);
       alongLine(0,0,1000,0);
       setLightMode(1);
       turn(180,1);
-=======
-      turn(90,1);
-      alongLine(0,0,1000,0);
-      
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car1/openduino/schedule.cpp
       open_flash('K');
       setLightMode(0);
     }
     // step3
     if (c == 0x94)
     {
-<<<<<<< HEAD:car1/schedule.cpp
       open_flash('N');
       setLightMode(2);
       alongLine(0,0,2000,0);
@@ -131,17 +124,10 @@ void command_execute(byte c)
     if (c == 0x95)
     {
       open_flash('A');
-=======
-      open_flash('K');
-      turn(180,1);
-      open_flash('N');
-      alongLine(0,0,2000,0);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car1/openduino/schedule.cpp
     }
     // step4
     if (c == 0x96)
     {
-<<<<<<< HEAD:car1/schedule.cpp
       setLightMode(1);
       turn(70,0);
       setLightMode(2);
@@ -156,13 +142,6 @@ void command_execute(byte c)
         setLightMode(5);
         open_flash('Q');
         alongLine(0, 0, 3000, 0);
-=======
-      open_flash('Q');
-      turn(70,0);
-      alongLine(0,0,3000,0);
-      turn(160,1);
-      alongLine(0,0,5000,0);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car1/openduino/schedule.cpp
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
     /*
