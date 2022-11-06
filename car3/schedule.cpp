@@ -50,118 +50,61 @@ void command_execute(byte c)
 
     //Serial.print("c: ");
     //Serial.println(c);
-    // step0
-    if (c == 0x89)
-    {
-        open_flash("A");
-        setLightMode(7);
-        delay(3000);
-    }
-    
     // step1
     if (c == 0x90)
     {
-      setLightMode(1);
       open_flash('G');
       alongLine(0,0,4000,0);
-      setLightMode(4);
       open_flash('H');
       turn(90,0);
-      setLightMode(1);
       open_flash('G');
-      alongLine(0,0,7000,0);
-      setLightMode(4);
+      alongLine(0,0,6000,0);
       open_flash('L');
       turn(90,0);
-      setLightMode(2);
       open_flash('G');
       alongLine(0,0,4000,0);
     }
     // step1.5
     if (c == 0x91)
     {
-      setLightMode(1);
       open_flash('H');
       turn(180,0);
     }
     // step2
     if (c == 0x92)
     {
-      setLightMode(0);
       open_flash('J');
       alongLine(0,0,2000,0);
-      setLightMode(2);
       alongLine(0,0,4000,1);
-      setLightMode(0);
       alongLine(0,0,4000,0);
-      setLightMode(2);
       alongLine(0,0,2000,1);
     }
     // step2.5
     if (c == 0x93)
     {
       open_flash('H');
-      setLightMode(1);
       turn(90,1);
-      setLightMode(2);
       alongLine(0,0,1000,0);
-<<<<<<< HEAD:car3/schedule.cpp
-      setLightMode(1);
-      turn(180,1);
-=======
       
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
       open_flash('K');
-      setLightMode(0);
     }
     // step3
     if (c == 0x94)
     {
       open_flash('K');
-<<<<<<< HEAD:car3/schedule.cpp
-      delay(4000);
-      setLightMode(7);
-=======
       turn(180,1);
       delay(3000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
       open_flash('N');
-      alongLine(0,0,1500,0);
-      setLightMode(0);
-    }
-    // step3.5
-    if (c == 0x95)
-    {
-        open_flash('A');
-        setLightMode(1);
-        turn(180, 0);
-        setLightMode(0);
+      alongLine(0,0,1000,0);
     }
     // step4
     if (c == 0x96)
     {
-<<<<<<< HEAD:car3/schedule.cpp
-      setLightMode(1);
-      turn(70,1);
-      setLightMode(2);
-      alongLine(0,0,3000,0);
-      setLightMode(1);
-      turn(160,0);
-      setLightMode(0);
-    }
-    // step5
-    if (c == 0x97)
-    {
-      setLightMode(5);
-        open_flash('P');
-        alongLine(0, 0, 3000, 0);
-=======
       open_flash('Q');
       turn(110,0);
       alongLine(0,0,3000,0);
       turn(160,0);
       alongLine(0,0,5000,0);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1:schedule_car3/nano/openduino/schedule.cpp
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
     /*
