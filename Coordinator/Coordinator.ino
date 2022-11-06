@@ -23,11 +23,8 @@ void loop() {
   Serial.write(0x90);
   Serial.flush();
   Serial.println(90);
-<<<<<<< HEAD
+
   delay(24000);
-=======
-  delay(21000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1
 
   // step 1.5
   Serial.flush();
@@ -45,21 +42,15 @@ void loop() {
   Serial.flush();
   Serial.write(0x93);
   Serial.flush();
-<<<<<<< HEAD
+
   delay(11000);
-=======
-  delay(5000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1
 
   // step3
   Serial.flush();
   Serial.write(0x94);
   Serial.flush();
-<<<<<<< HEAD
+
   delay(15000);
-=======
-  delay(17000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1
 
   // step3.5
   Serial.flush();
@@ -71,7 +62,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x96);
   Serial.flush();
-<<<<<<< HEAD
+
   delay(14000);
 
   // step 5
@@ -80,8 +71,5 @@ void loop() {
   Serial.flush();
   delay(7000);
 
-=======
-  delay(7000);
->>>>>>> da50a07571e7aef7308c69cd90b0d571efeb6cc1
 
 }
