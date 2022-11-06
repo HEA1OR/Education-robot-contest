@@ -649,25 +649,38 @@ void loop()
     c = Serial.read();
     switch (c)
     {
-      case 'A': for ( k = 0; k < 2; k++)           //渐变转圈（取代普通转圈）
-        {
-          for (l=0, j=0; i<= 14; j++,l++)
+      case 'A': for (j = 0, l=0; j <= 14; j++,l++)
           {
-            DispShowChar2('<', 255-10*l, 100+10*l, 15*l, 0); 
-            delay(200);
+            DispShowChar2('<',   255, 0, 15*l, 0);
+            delay(80);
           }
-          delay(300);
-        }
+          for (j = 0, l=14; j <= 14; j++,l--)
+          {
+            DispShowChar2('<', 0, 255-10*l, 15*l, 0); 
+            delay(80);
+          }
+          for (j = 0, l=14; j <= 14; j++,l--)
+          {
+            DispShowChar2('<', 15*l, 0,255-10*l , 0); 
+            delay(80);
+          }
         break;
-      case 'B': for ( k = 0; k < 2; k++)           //渐变转圈（取代普通转圈）
-        {
-          for (j = 0, l=0; j <= 14; j++,l++)
+      case 'B': for (j = 0, l=0; j <= 14; j++,l++)
           {
-            DispShowChar2('=', 255-10*l, 100+10*l, 15*l, 0); 
-            delay(200);
+            DispShowChar2('=', 255-10*l, 0, 15*l, 0); 
+            delay(80);
           }
-          delay(300);
-        }
+          for (j = 0, l=14; j <= 14; j++,l--)
+          {
+            DispShowChar2('=', 0, 255-10*l, 15*l, 0); 
+            delay(80);
+          }
+          for (j = 0, l=14; j <= 14; j++,l--)
+          {
+            DispShowChar2('=', 15*l, 255-10*l,0 , 0); 
+            delay(80);
+          }
+        break;
       case 'C': DispShowChar2('@',   255, 0, 0, 0);
         break;
       case 'D': DispShowChar2('A',   255, 0, 0, 0);
@@ -680,20 +693,20 @@ void loop()
         {
           for (j = '+', l=0; j <= '9'; j++,l++)
           {
-            DispShowChar2(j, 255-10*l, 100+10*l, 15*l, 0);
-            delay(200);
+            DispShowChar2(j, 255-10*l, 0, 15*l, 0);
+            delay(100);
           }
-          delay(300);
+          delay(30);
         }
         break;
       case 'H': for ( k = 0; k < 2; k++)           //渐变转圈（取代普通转圈）
         {
           for (j = 0, l=0; j <= 15; j++,l++)
           {
-            DispShowChar2('>', 255-10*l, 100+10*l, 15*l, 0); 
-            delay(200);
+            DispShowChar2('>', 255-10*l,0, 15*l, 0); 
+            delay(80);
           }
-          delay(300);
+          delay(100);
         }
         break;
       case 'I': DispShowChar2(')',   255, 255, 0, 0); 
@@ -706,10 +719,10 @@ void loop()
         {
           for (j = 0, l=0; j <= 15; j++,l++)
           {
-            DispShowChar2('>', 255-10*l, 100+10*l, 15*l, 0); 
-            delay(200);
+            DispShowChar2('>', 255-10*l, 100+10*l, 0, 0); 
+            delay(80);
           }
-          delay(300);
+          delay(100);
         }
         break;
       case 'M': DispShowChar2('C',   255, 0, 0, 0); 
