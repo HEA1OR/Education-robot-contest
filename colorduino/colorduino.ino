@@ -744,7 +744,13 @@ void loop()
         break;
       case 'I': DispShowChar2(')',   255, 255, 0, 0); 
         break;
-      case 'J': DispShowChar2('?',   255, 255, 0, 0); 
+      case 'J': 
+      DispShowChar2('?',   255, 255, 0, 0); 
+      delay(333);
+      DispShowChar2('?',   255, 255, 0, -1); 
+      delay(333);
+      DispShowChar2('?',   255, 255, 0, 0); 
+      delay(333);
         break;
       case 'K':  //绿圆一秒
       for (j = 0, l=0; j <= 10; j++,l++)

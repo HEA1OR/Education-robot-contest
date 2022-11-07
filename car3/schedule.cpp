@@ -63,17 +63,33 @@ void command_execute(byte c)
     {
       setLightMode(1);
       open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
       alongLine(0,0,4000,0);
+      
       setLightMode(4);
       open_flash('H');
       turn(90,0);
+      
       setLightMode(1);
       open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
       alongLine(0,0,7000,0);
+      
       setLightMode(4);
       open_flash('L');
       turn(90,0);
+      
       setLightMode(2);
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
       open_flash('G');
       alongLine(0,0,4000,0);
     }
@@ -89,12 +105,26 @@ void command_execute(byte c)
     {
       setLightMode(0);
       open_flash('J');
+      open_flash('J');
       alongLine(0,0,2000,0);
+      
       setLightMode(2);
+      open_flash('J');
+      open_flash('J');
+      open_flash('J');
+      open_flash('J');
       alongLine(0,0,4000,1);
+      
       setLightMode(0);
+      open_flash('J');
+      open_flash('J');
+      open_flash('J');
+      open_flash('J');
       alongLine(0,0,4000,0);
+      
       setLightMode(2);
+      open_flash('J');
+      open_flash('J');
       alongLine(0,0,2000,1);
     }
     // step2.5
@@ -103,8 +133,10 @@ void command_execute(byte c)
       open_flash('H');
       setLightMode(1);
       turn(90,1);
+      
       setLightMode(2);
       alongLine(0,0,1000,0);
+      
       setLightMode(1);
       turn(180,1);
       open_flash('K');
@@ -114,8 +146,13 @@ void command_execute(byte c)
     if (c == 0x94)
     {
       open_flash('K');
+      open_flash('K');
+      open_flash('K');
+      open_flash('K');
       delay(4000);
+      
       setLightMode(7);
+      open_flash('N');
       open_flash('N');
       alongLine(0,0,1500,0);
       setLightMode(0);
@@ -132,10 +169,17 @@ void command_execute(byte c)
     if (c == 0x96)
     {
       setLightMode(1);
+      open_flash('A');
       turn(70,1);
+      
       setLightMode(2);
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
       alongLine(0,0,3000,0);
+      
       setLightMode(1);
+      open_flash('A');
       turn(160,0);
       setLightMode(0);
     }
@@ -143,6 +187,8 @@ void command_execute(byte c)
     if (c == 0x97)
     {
       setLightMode(5);
+        open_flash('P');
+        open_flash('P');
         open_flash('P');
         alongLine(0, 0, 3000, 0);
     }

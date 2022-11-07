@@ -81,6 +81,9 @@ void setup (void)
   pinMode(LEDModePin0, INPUT);
   pinMode(LEDModePin1, INPUT);
   pinMode(LEDModePin2, INPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+
   digitalWrite(SS, HIGH);    // SS - pin 10
   digitalWrite(MISO, INPUT);
   digitalWrite(MOSI, OUTPUT);
