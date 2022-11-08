@@ -30,8 +30,10 @@ void loop(){
 //    getEncoder();    
 //    Serial.println("ok");
     schedule();
+  
 //    walk(50, 50);
-//   setLightMode(3);
+//   setLightMode(5);
+//   delay(5000);
 //   delay(2000);
 //   setLightMode(2);
 //   delay(2000);
