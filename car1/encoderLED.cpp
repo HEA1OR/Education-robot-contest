@@ -6,7 +6,7 @@ volatile long int sideLength = 0;     // 一定时间内左右轮所走长度
 float angle = 0;
 #define LEDModePin0 2
 #define LEDModePin1 3              // 译码法选择灯带显示模式
-#define LEDModePin1 4   
+#define LEDModePin2 4   
 //下面四行的作用是将数据拆分为字节的形式
 
 #define BYTE0(dwTemp)       ( *( (char *)(&dwTemp)    ) )

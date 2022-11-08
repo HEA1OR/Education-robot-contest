@@ -232,15 +232,14 @@ void engine_act()
 {
   digitalWrite(IN1,HIGH);
   digitalWrite(IN2,LOW);
-  analogWrite(ENA,200);
+  analogWrite(ENA,500);
 }
 
 
 void engine_stop()
 {
     digitalWrite(IN1,LOW); //控制电机停下
-    digitalWrite(IN2,LOW); 
-    analogWrite(ENA,255); 
+    digitalWrite(IN2,LOW);
 }
 
 void rise(){         // 升旗仪式

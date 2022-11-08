@@ -51,9 +51,9 @@ void command_execute(byte c)
     // step0
     if (c == 0x89)
     {
-        open_flash("A");
-        open_flash("A");
-        open_flash("A");
+        open_flash('A');
+        open_flash('A');
+        open_flash('A');
         setLightMode(7);
         delay(3000);
     }
