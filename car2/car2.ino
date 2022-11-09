@@ -23,8 +23,8 @@ void setup(){
 */
 int nowlen = 0;
 void loop(){
-
-    Serial.println("ok");
+//    alongLine(0, 0, 5000, 0);
+//    alongLine(0, 0, 5000, 1);
 //    schedule();
 //    walk(50, 50);
     command_execute(0x89);

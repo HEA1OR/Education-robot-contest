@@ -61,26 +61,20 @@ void command_execute(byte c)
     // step1 冰舞
     if (c == 0x90)
     {
-      setLightMode(1);
+      //setLightMode(1);
       open_flash('G');
       open_flash('G');
       open_flash('G');
       open_flash('G');
       alongLine(0,0,4000,0);
       
-      setLightMode(4);
+      //setLightMode(4);
       open_flash('H');
       turn(90,0);
       turn(180,0);
       turn(180,0);
       
       setLightMode(1);
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
       open_flash('G');
       alongLine(0,0,7000,0);
       
@@ -190,8 +184,6 @@ void command_execute(byte c)
     if (c == 0x97)
     {
       setLightMode(5);
-        open_flash('P');
-        open_flash('P');
         open_flash('P');
         alongLine(0, 0, 3000, 0);
     }

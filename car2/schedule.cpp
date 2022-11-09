@@ -52,8 +52,6 @@ void command_execute(byte c)
     if (c == 0x89)
     {
         open_flash('A');
-        open_flash('A');
-        open_flash('A');
         setLightMode(7);
         delay(3000);
     }
@@ -85,27 +83,26 @@ void command_execute(byte c)
         setLightMode(0);
     }
     // step1.5
+    if (c == 0x91)
+    {
+      turn(180, 0);
+    }
     // step2  滑雪
     if (c == 0x92)
     {
-        setLightMode(6);
+        //setLightMode(6);
         open_flash('C');
-        open_flash('C');
-        alongLine(0, 0, 2000, 1);
-        open_flash('D');
-        open_flash('D');
-        open_flash('D');
+        alongLine(0, 0, 2000, 0);
+        turn(180, 0);
         open_flash('D');
         alongLine(0, 0, 4000, 0);
+        turn(180, 0);
         open_flash('C');
-        open_flash('C');
-        open_flash('C');
-        open_flash('C');
-        alongLine(0, 0, 4000, 1);
-        open_flash('D');
+        alongLine(0, 0, 4000, 0);
+        turn(180, 0);
         open_flash('D');
         alongLine(0, 0, 2000, 0);
-        setLightMode(0);
+        //setLightMode(0);
     }
     // step2.5  右移
     if (c == 0x93)
@@ -113,7 +110,6 @@ void command_execute(byte c)
         setLightMode(1);
         open_flash('E');
         turn(90, 1);
-        open_flash('E');
         open_flash('E');
         setLightMode(2);
         alongLine(0, 0, 2500, 0);
@@ -124,7 +120,6 @@ void command_execute(byte c)
     // step3  冰壶
     if (c == 0x94)
     {
-        open_flash('F');
         open_flash('F');
         setLightMode(2);
         alongLine(0, 0, 3800, 0);
@@ -138,7 +133,7 @@ void command_execute(byte c)
         turn(180, 0);
         setLightMode(2);
         open_flash('L');
-        alongLine(0, 0, 400, 0);
+        alongLine(0, 0, 500, 0);
         setLightMode(1);
         open_flash('A');
         turn(90, 1);
@@ -147,8 +142,6 @@ void command_execute(byte c)
     // step4  回位
     if (c == 0x96)
     {
-        open_flash('L');
-        open_flash('L');
         open_flash('L');
         setLightMode(2);
         alongLine(0, 0, 2700, 0);
@@ -160,9 +153,9 @@ void command_execute(byte c)
     // step5  颁奖
     if (c == 0x97)
     {
-        setLightMode(5);
-        open_flash('O');
-        open_flash('O');
+        //setLightMode(5);
+        //open_flash('O');
+        //open_flash('O');
         open_flash('O');
        
         alongLine(0, 0, 3500, 0);
