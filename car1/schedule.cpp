@@ -173,7 +173,7 @@ void command_execute(byte c)
     {
       open_flash('A');
       setLightMode(1);
-      turn(70,0);
+      turn(160,0);
 
       open_flash('G');
       open_flash('G');

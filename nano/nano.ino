@@ -151,12 +151,13 @@ void loop (void)
       fadeinout(25*y, 20);
     }
   }
-  else if(mode == 7){             //快速变色
-    engine_act();       //开马达
+  else if(mode == 7){             //快速变色    
     for(int y=0;y<10;y++)
     {
       fadeinout(25*y, 40);
     }
+    engine_act();       //开马达
+
   }
 }
 

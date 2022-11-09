@@ -6,7 +6,7 @@ void setup() {
   S.attach(13);
   pinMode(10, OUTPUT);
   digitalWrite(10, HIGH);
-  delay(7000);
+  delay(4000);
 }
 
 void loop() {
@@ -16,14 +16,13 @@ void loop() {
   Serial.write(0x89);
   Serial.flush();
   Serial.println(89);
-  delay(4000);
+  delay(10000);
   
     // step 1   冰舞
   Serial.flush();
   Serial.write(0x90);
   Serial.flush();
   Serial.println(90);
-
   delay(24000);
 
   // step 1.5
@@ -49,7 +48,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
-  delay(5000);
+  delay(7000);
   
   // step 2 滑雪
   Serial.flush();
@@ -61,7 +60,6 @@ void loop() {
   Serial.flush();
   Serial.write(0x96);
   Serial.flush();
-
   delay(14000);
 
   // step 5 颁奖
