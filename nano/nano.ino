@@ -247,11 +247,11 @@ void rise(){         // 升旗仪式
   int pos=0;
   //myservo.write(50);
   //delay(50);
-  for (pos = 50; pos <= 130; pos += 10) {   
+  for (pos = 60; pos <= 120; pos += 10) {   
     myservo.write(pos);               // 舵机角度写入
     delay(50);                         // 控制移动速度
   }
-  for (pos = 130; pos >= 50; pos -= 10) {   
+  for (pos = 130; pos >= 60; pos -= 10) {   
     myservo.write(pos);               // 舵机角度写入
     delay(50);                         // 控制移动速度
   }

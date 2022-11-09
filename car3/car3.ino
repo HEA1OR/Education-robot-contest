@@ -29,7 +29,7 @@ void loop(){
 //    delay(3000);
 //    getEncoder();    
 //    Serial.println("ok");
-    schedule();
+//    schedule();
   
 //    walk(50, 50);
 //   setLightMode(5);
@@ -37,8 +37,9 @@ void loop(){
 //   delay(2000);
 //   setLightMode(2);
 //   delay(2000);
-/*
-    command_execute(0x90);
+    //command_execute(0x90);
+    command_execute(0x92);
+/*    command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
     command_execute(0x93);
@@ -46,7 +47,7 @@ void loop(){
     command_execute(0x95);
     command_execute(0x96);
     
-/*
+
     Serial.print("aangle:");
     Serial.println(angle);
     Serial.print("length: ");
