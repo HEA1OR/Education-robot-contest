@@ -18,7 +18,7 @@ void loop() {
   Serial.println(89);
   delay(4000);
   
-    // step 1
+    // step 1   冰舞
   Serial.flush();
   Serial.write(0x90);
   Serial.flush();
@@ -32,40 +32,39 @@ void loop() {
   Serial.flush();
   delay(7000);
 
-  // step 2
-  Serial.flush();
-  Serial.write(0x92);
-  Serial.flush();
-  delay(25000);
-
-  // step 2.5
+ // step 2.5  右移
   Serial.flush();
   Serial.write(0x93);
   Serial.flush();
 
   delay(11000);
 
-  // step3
+  // step3  冰壶
   Serial.flush();
   Serial.write(0x94);
   Serial.flush();
-
   delay(15000);
-
-  // step3.5
+  
+  // step3.5 回正
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
   delay(5000);
+  
+  // step 2 滑雪
+  Serial.flush();
+  Serial.write(0x92);
+  Serial.flush();
+  delay(25000);
 
-  // step 4
+  // step 4 回位
   Serial.flush();
   Serial.write(0x96);
   Serial.flush();
 
   delay(14000);
 
-  // step 5
+  // step 5 颁奖
   Serial.flush();
   Serial.write(0x97);
   Serial.flush();

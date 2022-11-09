@@ -62,7 +62,7 @@ void command_execute(byte c)
         delay(3000);
     }
 
-    // step1
+    // step1 冰舞
     if (c == 0x90)
     {
       setLightMode(1);
@@ -75,6 +75,8 @@ void command_execute(byte c)
       setLightMode(4);
       open_flash('H');
       turn(90,0);
+      turn(180, 0);
+      turn(180, 0);
       
       setLightMode(1);
       open_flash('G');
@@ -105,7 +107,7 @@ void command_execute(byte c)
       open_flash('H');
       turn(0,0);
     }
-    // step2
+    // step2 滑雪
     if (c == 0x92)
     {
       setLightMode(0);
@@ -148,7 +150,7 @@ void command_execute(byte c)
       open_flash('K');
       setLightMode(0);
     }
-    // step3
+    // step3  冰壶
     if (c == 0x94)
     {
       open_flash('M');
@@ -160,8 +162,13 @@ void command_execute(byte c)
     if (c == 0x95)
     {
       open_flash('A');
+      turn(90, 1);
     }
-    // step4
+    /*if (c == 0x95)
+    {
+      open_flash('A');
+    }*/
+    // step4  回位
     if (c == 0x96)
     {
       open_flash('A');
@@ -179,7 +186,7 @@ void command_execute(byte c)
       turn(160,1);
       setLightMode(0);
     }
-    // step5
+    // step5  领奖
     if (c == 0x97)
     {
         setLightMode(5);

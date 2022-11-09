@@ -27,10 +27,11 @@ void setup(){
 int nowlen = 0;
 void loop(){
 //    Serial.println("ok");
-    schedule();
+//    schedule();
+    
 //   walk(50, 50);
-/*    command_execute(0x90);
-    command_execute(0x91);
+    command_execute(0x97);
+/*    command_execute(0x91);
     command_execute(0x92);
     command_execute(0x93);
     command_execute(0x94);
