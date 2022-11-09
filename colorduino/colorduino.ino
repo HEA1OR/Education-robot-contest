@@ -722,7 +722,7 @@ void loop()
           }
         break;
       case 'G':   //动态箭头一秒
-          for (l=-7; l <= 7; l++)
+          for (l=-7; l <= 8; l++)
           {
             DispShowChar2('+', 255-10*l, 0, 150, l);
             delay(66);
