@@ -146,7 +146,8 @@ void command_execute(byte c)
       alongLine(0,0,1000,0);
       
       setLightMode(1);
-      turn(180,1);
+      turn(90,1);
+      turn(90,1);
       open_flash('K');
       setLightMode(0);
     }

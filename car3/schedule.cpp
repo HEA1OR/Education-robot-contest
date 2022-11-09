@@ -167,7 +167,7 @@ void command_execute(byte c)
     {
       setLightMode(1);
       open_flash('A');
-      turn(110,1);
+      turn(160,1);
       
       setLightMode(2);
       open_flash('G');
@@ -177,7 +177,7 @@ void command_execute(byte c)
       
       setLightMode(1);
       open_flash('A');
-      turn(110,0);
+      turn(160,0);
       setLightMode(0);
     }
     // step5 领奖
