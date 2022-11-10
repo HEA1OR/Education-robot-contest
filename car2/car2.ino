@@ -27,6 +27,9 @@ void loop(){
 //    alongLine(0, 0, 5000, 1);
 //    schedule();
 //    walk(50, 50);
+//    setLightMode(7);
+//    delay(5000);
+//    setLightMode(0);
     command_execute(0x89);
     command_execute(0x90);
     command_execute(0x91);

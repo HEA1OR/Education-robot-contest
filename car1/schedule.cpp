@@ -83,10 +83,6 @@ void command_execute(byte c)
       open_flash('G');
       open_flash('G');
       open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
       alongLine(0,0,8000,0);
       
       setLightMode(4);
