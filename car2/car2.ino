@@ -25,12 +25,12 @@ int nowlen = 0;
 void loop(){
 //    alongLine(0, 0, 5000, 0);
 //    alongLine(0, 0, 5000, 1);
-//    schedule();
+    schedule();
 //    walk(50, 50);
 //    setLightMode(7);
 //    delay(5000);
 //    setLightMode(0);
-    command_execute(0x89);
+/*    command_execute(0x89);
     command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
@@ -38,7 +38,7 @@ void loop(){
     command_execute(0x94);
     command_execute(0x95);
     command_execute(0x96); 
-    command_execute(0x97);
+    command_execute(0x97);*/
    
     
 }
