@@ -157,8 +157,6 @@ void loop (void)
     {
       fadeinout(25*y, 40);
     }
-    
-
   }
 }
 

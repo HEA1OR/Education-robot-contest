@@ -60,6 +60,8 @@ void command_execute(byte c)
         open_flash('R');
         open_flash('R');
         open_flash('R');
+        open_flash('R');
+        open_flash('R');
         setLightMode(7);
         delay(3000);
     }
@@ -162,15 +164,18 @@ void command_execute(byte c)
         turn(180, 0);
         setLightMode(2);
         open_flash('L');
-        alongLine(0, 0, 500, 0);
+        alongLine(0, 0, 800, 0);
         setLightMode(1);
         open_flash('A');
-        turn(90, 1);
+        turn(90, 0);
         setLightMode(0);
     }
     // step4  回位
     if (c == 0x96)
     {
+        open_flash('A');
+        setLightMode(1);
+        turn(180,0);
         open_flash('L');
         setLightMode(2);
         alongLine(0, 0, 2700, 0);

@@ -29,7 +29,7 @@ void loop() {
   Serial.write(0x90);
   Serial.flush();
   Serial.println(90);
-  delay(28000);
+  delay(37000);
   /*
   // step 1.5
   Serial.flush();
@@ -47,13 +47,13 @@ void loop() {
   Serial.flush();
   Serial.write(0x94);
   Serial.flush();
-  delay(17000);
+  delay(13000);
   
   // step3.5 回正
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
-  delay(10000);
+  delay(15000);
   
   // step 2 滑雪
   Serial.flush();

@@ -70,9 +70,9 @@ void command_execute(byte c)
     // step0
     if (c == 0x89)
     {
-        open_flash("R");
-        open_flash("R");
-        open_flash("R");
+        open_flash('R');
+        open_flash('R');
+        open_flash('R');
         setLightMode(7);
         delay(3000);
     }
@@ -167,6 +167,7 @@ void command_execute(byte c)
     // step2.5
     if (c == 0x93)
     {
+      
       open_flash('H');
       setLightMode(1);
       turn(93,1);
@@ -191,8 +192,16 @@ void command_execute(byte c)
     }
     if (c == 0x95)
     {
+      setLightMode(1);
+      open_flash('A')
+      turn(180, 0);
+      setLightMode(2);
+      open_flash('L');
+      alongLine(0, 0, 800, 0);
+      setLightMode(1);
       open_flash('A');
-      turn(90, 1);
+      turn(90, 0);
+      setLightMode(0);
     }
     /*if (c == 0x95)
     {
