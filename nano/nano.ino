@@ -17,7 +17,7 @@ float angle = 0;
 #define SUB false
 #define LEDModePin0 5
 #define LEDModePin1 6     // 译码法选择灯带显示模式
-#define LEDModePin2 7     // 译码法选择灯带显示模式
+#define LEDModePin2 7     // 译码法选择灯·带显示模式
 #define RISEPIN 8     // 舵机引脚
 #define IN1 2  //定义IN1为2
 #define IN2 3 //定义IN2为3
@@ -151,12 +151,13 @@ void loop (void)
       fadeinout(25*y, 20);
     }
   }
-  else if(mode == 7){             //快速变色    
+  else if(mode == 7){             //快速变色
+    engine_act();       //开马达    
     for(int y=0;y<10;y++)
     {
       fadeinout(25*y, 40);
     }
-    engine_act();       //开马达
+    
 
   }
 }

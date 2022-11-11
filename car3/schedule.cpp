@@ -61,14 +61,14 @@ void command_execute(byte c)
     // step1 冰舞
     if (c == 0x90)
     {
-      //setLightMode(1);
+      setLightMode(1);
       open_flash('G');
       open_flash('G');
       open_flash('G');
       open_flash('G');
       alongLine(0,0,4000,0);
       
-      //setLightMode(4);
+      setLightMode(4);
       open_flash('H');
       turn(90,0);
       turn(180,0);
@@ -76,7 +76,12 @@ void command_execute(byte c)
       
       setLightMode(1);
       open_flash('G');
-      alongLine(0,0,7000,0);
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      open_flash('G');
+      alongLine(0,0,6000,0);
       
       setLightMode(4);
       open_flash('L');
@@ -102,26 +107,29 @@ void command_execute(byte c)
       setLightMode(0);
       open_flash('J');
       open_flash('J');
-      alongLine(0,0,2000,0);
+      alongLine(0,3,3000,0);
+      delay(800);
       
       setLightMode(2);
       open_flash('J');
       open_flash('J');
       open_flash('J');
       open_flash('J');
-      alongLine(0,0,4000,1);
+      alongLine(0,3,6000,1);
+      delay(800);
       
       setLightMode(0);
       open_flash('J');
       open_flash('J');
       open_flash('J');
       open_flash('J');
-      alongLine(0,0,4000,0);
+      alongLine(0,3,6000,0);
+      delay(800);
       
       setLightMode(2);
       open_flash('J');
       open_flash('J');
-      alongLine(0,0,2000,1);
+      alongLine(0,3,3000,1);
     }
     // step2.5
     if (c == 0x93)
@@ -134,7 +142,7 @@ void command_execute(byte c)
       alongLine(0,0,1000,0);
       
       setLightMode(1);
-      turn(180,1);
+      turn(177,1);
       open_flash('K');
       setLightMode(0);
     }
@@ -157,7 +165,7 @@ void command_execute(byte c)
     if (c == 0x95)
     {
         open_flash('A');
-        turn(90, 1);
+        turn(87, 1);
         /*setLightMode(1);
         turn(180, 0);
         setLightMode(0);*/
@@ -167,7 +175,7 @@ void command_execute(byte c)
     {
       setLightMode(1);
       open_flash('A');
-      turn(110,1);
+      turn(160,1);
       
       setLightMode(2);
       open_flash('G');
@@ -177,7 +185,7 @@ void command_execute(byte c)
       
       setLightMode(1);
       open_flash('A');
-      turn(110,0);
+      turn(160,0);
       setLightMode(0);
     }
     // step5 领奖

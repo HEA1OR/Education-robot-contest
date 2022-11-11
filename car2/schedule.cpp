@@ -92,14 +92,11 @@ void command_execute(byte c)
     {
         //setLightMode(6);
         open_flash('C');
-        alongLine(0, 0, 2000, 0);
-        turn(180, 0);
+        alongLine(0, 0, 2000, 1);
         open_flash('D');
         alongLine(0, 0, 4000, 0);
-        turn(180, 0);
         open_flash('C');
-        alongLine(0, 0, 4000, 0);
-        turn(180, 0);
+        alongLine(0, 0, 4000, 1);
         open_flash('D');
         alongLine(0, 0, 2000, 0);
         //setLightMode(0);

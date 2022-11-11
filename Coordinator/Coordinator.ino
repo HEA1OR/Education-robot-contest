@@ -54,7 +54,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x92);
   Serial.flush();
-  delay(25000);
+  delay(28000);
 
   // step 4 回位
   Serial.flush();

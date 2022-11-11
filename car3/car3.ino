@@ -26,14 +26,15 @@ void setup(){
 */
 int nowlen = 0;
 void loop(){
-//    schedule();
-    command_execute(0x89);
+    schedule();
+/*     command_execute(0x89);
     command_execute(0x90);
     command_execute(0x91);
-    command_execute(0x92);
     command_execute(0x93);
     command_execute(0x94);
     command_execute(0x95);
+    command_execute(0x92);
     command_execute(0x96);
-    command_execute(0x97);
+    command_execute(0x97);*/
+
 }
