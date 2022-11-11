@@ -51,7 +51,20 @@ void command_execute(byte c)
 
 //    Serial.print("c: ");
 //    Serial.println(c);
-
+    if (c == 0x88)
+    {   
+        setLightMode(1);
+        alongLine(0, 0, 5000, 0);
+        delay(500);
+        setLightMode(4);
+        turn(90,0);
+        delay(500);
+        setLightMode(1);
+        alongLine(0, 0, 1200, 0);
+        delay(500);
+        setLightMode(4);
+        turn(90,0);
+    }
     // step0
     if (c == 0x89)
     {
@@ -87,9 +100,7 @@ void command_execute(byte c)
       open_flash('G');
       open_flash('G');
       open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      alongLine(0,0,8000,0);
+      alongLine(0,0,6000,0);
       
       setLightMode(4);
       open_flash('L');

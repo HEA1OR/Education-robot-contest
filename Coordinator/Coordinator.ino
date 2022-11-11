@@ -11,6 +11,12 @@ void setup() {
 
 void loop() {
 
+  Serial.flush();
+  Serial.write(0x88);
+  Serial.flush();
+  Serial.println(88);
+  delay(13000);
+  
   // step 0
   Serial.flush();
   Serial.write(0x89);
