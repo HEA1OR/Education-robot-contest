@@ -41,14 +41,13 @@ void loop() {
   Serial.flush();
   Serial.write(0x93);
   Serial.flush();
-
-  delay(11000);
+  delay(17000);
 
   // step3  冰壶
   Serial.flush();
   Serial.write(0x94);
   Serial.flush();
-  delay(15000);
+  delay(17000);
   
   // step3.5 回正
   Serial.flush();

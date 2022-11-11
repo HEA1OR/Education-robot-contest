@@ -54,6 +54,8 @@ void command_execute(byte c)
     if (c == 0x88)
     {   
         setLightMode(1);
+        open_flash('W');
+        open_flash('W');
         alongLine(0, 0, 5000, 0);
         delay(500);
         setLightMode(4);
@@ -68,9 +70,9 @@ void command_execute(byte c)
     // step0
     if (c == 0x89)
     {
-        open_flash("A");
-        open_flash("A");
-        open_flash("A");
+        open_flash("R");
+        open_flash("R");
+        open_flash("R");
         setLightMode(7);
         delay(3000);
     }
@@ -88,10 +90,13 @@ void command_execute(byte c)
       setLightMode(4);
       open_flash('H');
       turn(93,0);
+      delay(500);
       open_flash('L');
       turn(180, 0);
+      delay(500);
       open_flash('L');
       turn(180, 0);
+      delay(500);
       
       setLightMode(1);
       open_flash('G');
@@ -100,7 +105,9 @@ void command_execute(byte c)
       open_flash('G');
       open_flash('G');
       open_flash('G');
-      alongLine(0,0,6000,0);
+      open_flash('G');
+      open_flash('G');
+      alongLine(0,0,8000,0);
       
       setLightMode(4);
       open_flash('L');
@@ -126,10 +133,13 @@ void command_execute(byte c)
       setLightMode(0);
       open_flash('J');
       open_flash('J');
+      open_flash('J');
       alongLine(0,3,3000,0);
       delay(800);
       
       setLightMode(2);
+      open_flash('J');
+      open_flash('J');
       open_flash('J');
       open_flash('J');
       open_flash('J');
@@ -142,10 +152,14 @@ void command_execute(byte c)
       open_flash('J');
       open_flash('J');
       open_flash('J');
+      open_flash('J');
+      open_flash('J');
       alongLine(0,3,6000,0);
       delay(800);
       
       setLightMode(2);
+      open_flash('J');
+      open_flash('J');
       open_flash('J');
       open_flash('J');
       alongLine(0,3,3000,1);

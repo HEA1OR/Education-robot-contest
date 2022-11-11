@@ -47,11 +47,19 @@ void command_execute(byte c)
      // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
 //    Serial.print("c: ");
 //    Serial.println(c);
-
+    if (c == 0x88)
+    {   
+        setLightMode(1);
+        open_flash('X');
+        open_flash('X');
+        alongLine(0, 0, 5000, 0);
+    }
     // step0
     if (c == 0x89)
     {
-        open_flash('A');
+        open_flash('R');
+        open_flash('R');
+        open_flash('R');
         setLightMode(7);
         delay(3000);
     }
@@ -90,16 +98,40 @@ void command_execute(byte c)
     // step2  滑雪
     if (c == 0x92)
     {
-        //setLightMode(6);
+        setLightMode(6);
         open_flash('C');
-        alongLine(0, 0, 2000, 1);
-        open_flash('D');
-        alongLine(0, 0, 4000, 0);
         open_flash('C');
-        alongLine(0, 0, 4000, 1);
+        open_flash('C');
+        alongLine(0, 3, 3000, 1);
+        delay(800);
+        
+        setLightMode(0);
         open_flash('D');
-        alongLine(0, 0, 2000, 0);
-        //setLightMode(0);
+        open_flash('D');
+        open_flash('D');
+        open_flash('D');
+        open_flash('D');
+        open_flash('D');
+        alongLine(0, 3, 6000, 0);
+        delay(800);
+        
+        setLightMode(6);
+        open_flash('C');
+        open_flash('C');
+        open_flash('C');
+        open_flash('C');
+        open_flash('C');
+        open_flash('C');
+        alongLine(0, 3, 6000, 1);
+        delay(800);
+        
+        setLightMode(0);
+        open_flash('D');
+        open_flash('D');
+        open_flash('D');
+        alongLine(0, 3, 3000, 0);
+        delay(800);
+        
     }
     // step2.5  右移
     if (c == 0x93)
