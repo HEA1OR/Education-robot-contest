@@ -676,11 +676,11 @@ void loop()
       case 'C':     //人1滑雪一秒
       DispShowChar2('@',   255, 0, 0, 1);
       delay(200);
-      DispShowChar2('@',   255, 0, 0, 0);
+      DispShowChar2('@',   255, 255, 0, 0);
       delay(200);
-      DispShowChar2('@',   255, 0, 0, -1);
+      DispShowChar2('@',   255, 0, 255, -1);
       delay(200);
-      DispShowChar2('@',   255, 0, 0, 0);
+      DispShowChar2('@',   0, 255, 255, 0);
       delay(200);
       DispShowChar2('@',   255, 0, 0, 1);
       delay(200);
@@ -688,11 +688,11 @@ void loop()
       case 'D':      //人2滑雪一秒
       DispShowChar2('A',   255, 0, 0, -1); 
       delay(200);
-      DispShowChar2('A',   255, 0, 0, 0);
+      DispShowChar2('A',   255, 255, 0, 0);
       delay(200);
-      DispShowChar2('A',   255, 0, 0, 1);
+      DispShowChar2('A',   255, 0, 255, 1);
       delay(200);
-      DispShowChar2('A',   255, 0, 0, 0);
+      DispShowChar2('A',   0, 255, 255, 0);
       delay(200);
       DispShowChar2('A',   255, 0, 0, -1);
       delay(200);
@@ -779,11 +779,11 @@ void loop()
       case 'M':         // 推冰球1秒
         DispShowChar2('C',   255, 0, 0, 1);
         delay(200);
-        DispShowChar2('C',   255, 0, 0, 0);
+        DispShowChar2('C',   255, 255, 0, 0);
         delay(200);
-        DispShowChar2('C',   255, 0, 0, -1);
+        DispShowChar2('C',   255, 0, 255, -1);
         delay(200);
-        DispShowChar2('C',   255, 0, 0, 0);
+        DispShowChar2('C',   0, 255, 255, 0);
         delay(200);
         DispShowChar2('C',   255, 0, 0, 1);
         delay(200);
@@ -836,8 +836,54 @@ void loop()
             delay(50);
           }
         break;
-      case 'R': DispShowChar2('I',   255, 255, 0, 0); //数字5
+      case 'R': //双花
+          for (j = 'U'; j <= '^'; j++)
+          {
+            DispShowChar(j, random(255), random(255), random(255), 0);
+            delay(100);
+          }
+        DispShowChar(' ', random(255), random(255), random(255), 0);//烟花
         break;
+      case 'W':  //C
+      for (j = 0, l=0; j <= 10; j++,l++)
+          {
+            DispShowChar2('9',    0,25*l, 255, 0);
+            delay(50);
+          }
+      for (j = 0, l=10; j <= 10; j++,l--)
+          {
+            DispShowChar2('9',   0,25*l, 255, 0);;
+            delay(50);
+          }
+        break;
+      case 'X': //H
+      for (j = 0, l=0; j <= 10; j++,l++)
+          {
+            DispShowChar2(':',   0,25*l, 255, 0);
+            delay(50);
+          }
+      for (j = 0, l=10; j <= 10; j++,l--)
+          {
+            DispShowChar2(':',   0,25*l, 255, 0);;
+            delay(50);
+          }
+        break;
+      case 'Y':  //N
+      for (j = 0, l=0; j <= 10; j++,l++)
+          {
+            DispShowChar2(';',    0,25*l, 255, 0);
+            delay(50);
+          }
+      for (j = 0, l=10; j <= 10; j++,l--)
+          {
+            DispShowChar2(';',    0,25*l, 255, 0);;
+            delay(50);
+          }
+        break;  
+
+
+
+        
       case 'S': DispShowChar2('J',   0,0,255, 0);//八叉
         delay(3000);
         break;
