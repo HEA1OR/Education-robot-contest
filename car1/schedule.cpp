@@ -193,7 +193,7 @@ void command_execute(byte c)
     if (c == 0x95)
     {
       setLightMode(1);
-      open_flash('A')
+      open_flash('A');
       turn(180, 0);
       setLightMode(2);
       open_flash('L');
