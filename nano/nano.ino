@@ -112,6 +112,10 @@ void loop (void)
   }
   // 复位从机
   // digitalWrite(SS, HIGH);    // SS - pin 10
+  Serial.print("angle: ");
+  Serial.println(angle);
+  Serial.print("cc: ");
+  Serial.println(cc);
  
   if(mode == 0){             //蓝色呼吸灯
     engine_stop();              //关马达
@@ -132,7 +136,7 @@ void loop (void)
     tail(0);
     color += 3;
   }
-  else if(mode ==4){            //彩虹效果，每个灯珠颜色不一
+  else if(mode == 4){            //彩虹效果，每个灯珠颜色不一
     engine_stop();             //关马达
     rainbow();
   }
@@ -144,7 +148,6 @@ void loop (void)
       strip.setPixelColor(i, hsvcolor);
       }
       strip.show();
-      delay(10);
       if(val<10)
       {change=1;
       changecolor=124;}
@@ -152,9 +155,9 @@ void loop (void)
       {change=0;
       changecolor=36;}
       
-      if(change==1)
+      if(change == 1)
       {val+=10;}
-      else if(change==0)
+      else if(change == 0)
       {val-=10;}
   }
   else if(mode == 6){            //变色呼吸灯
@@ -171,9 +174,9 @@ void loop (void)
       else if(val>140)
       {change=0;}
       
-      if(change==1)
+      if(change == 1)
       {val+=10;}
-      else if(change==0)
+      else if(change == 0)
       {val-=10;}
     
   }
