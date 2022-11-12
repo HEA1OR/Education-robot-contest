@@ -53,7 +53,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
-  delay(15000);
+  delay(18000);
   
   // step 2 滑雪
   Serial.flush();

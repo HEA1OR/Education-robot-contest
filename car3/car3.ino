@@ -27,7 +27,9 @@ void setup(){
 int nowlen = 0;
 void loop(){
     schedule();
-/*     command_execute(0x89);
+//    walk(50, 50);
+/*    command_execute(0x89);
+    command_execute(0x89);
     command_execute(0x90);
     command_execute(0x91);
     command_execute(0x93);
