@@ -112,10 +112,6 @@ void loop (void)
   }
   // 复位从机
   // digitalWrite(SS, HIGH);    // SS - pin 10
-  Serial.print("angle: ");
-  Serial.println(angle);
-  Serial.print("cc: ");
-  Serial.println(cc);
  
   if(mode == 0){             //蓝色呼吸灯
     engine_stop();              //关马达
