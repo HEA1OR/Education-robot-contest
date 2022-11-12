@@ -140,25 +140,25 @@ void loop (void)
     engine_stop();             //关马达
     rainbow();
   }
-  else if(mode == 5){           //升旗+红黄双呼吸
+  else if(mode == 5){           //升旗+呼吸
     engine_act();              //开马达
     rise();   
-     for(int i=0;i<=27;i++){
+    for(int i=0;i<=27;i++){
       hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
       strip.setPixelColor(i, hsvcolor);
       }
       strip.show();
       if(val<10)
       {change=1;
-      changecolor=124;}
+      changecolor=random(250);}
       else if(val>140)
-      {change=0;
-      changecolor=36;}
+      {change=0;}
       
       if(change == 1)
       {val+=10;}
       else if(change == 0)
       {val-=10;}
+    
   }
   else if(mode == 6){            //变色呼吸灯
     engine_stop();               //关马达

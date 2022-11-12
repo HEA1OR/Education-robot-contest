@@ -49,7 +49,7 @@ void command_execute(byte c)
 //    Serial.println(c);
     if (c == 0x88)
     {   
-        setLightMode(1);
+        setLightMode(6);
         open_flash('X');
         open_flash('X');
         open_flash('X');
@@ -69,7 +69,7 @@ void command_execute(byte c)
     // step1  冰舞
     if (c == 0x90)
     {
-        setLightMode(0);
+        setLightMode(6);
         open_flash('A');
         open_flash('B');
         turn(180, 1);
@@ -103,6 +103,7 @@ void command_execute(byte c)
     // step1.5
     if (c == 0x91)
     {
+      setLightMode(3);
       open_flash('A');
       open_flash('A');
       turn(180, 0);
@@ -117,7 +118,6 @@ void command_execute(byte c)
         alongLine(0, 3, 3000, 1);
         delay(800);
         
-        setLightMode(0);
         open_flash('D');
         open_flash('D');
         open_flash('D');
@@ -127,7 +127,6 @@ void command_execute(byte c)
         alongLine(0, 3, 6000, 0);
         delay(800);
         
-        setLightMode(6);
         open_flash('C');
         open_flash('C');
         open_flash('C');
@@ -137,24 +136,23 @@ void command_execute(byte c)
         alongLine(0, 3, 6000, 1);
         delay(800);
         
-        setLightMode(0);
         open_flash('D');
         open_flash('D');
         open_flash('D');
         alongLine(0, 3, 3000, 0);
         delay(800);
-        
+        setLightMode(0);
     }
     // step2.5  右移
     if (c == 0x93)
     {
-        setLightMode(1);
+        setLightMode(4);
         open_flash('H');
         turn(90, 1);
         open_flash('E');
         setLightMode(2);
         alongLine(0, 0, 2500, 0);
-        setLightMode(1);
+        setLightMode(3);
 
         turn(180, 1);
         setLightMode(0);
@@ -169,18 +167,19 @@ void command_execute(byte c)
         setLightMode(2);
         alongLine(0, 0, 3800, 0);
         open_flash('E');
+        setLightMode(0);
     }
     // step3.5  回正
     if (c == 0x95)
     {
-        setLightMode(1);
+        setLightMode(4);
         open_flash('H');
         open_flash('H');
         turn(180, 0);
         setLightMode(2);
         open_flash('L');
         alongLine(0, 0, 800, 0);
-        setLightMode(1);
+        setLightMode(3);
         open_flash('A');
         turn(90, 0);
         setLightMode(0);
@@ -190,14 +189,14 @@ void command_execute(byte c)
     {
         open_flash('A');
         open_flash('A');
-        setLightMode(1);
+        setLightMode(6);
         turn(180,0);
         open_flash('G');
         open_flash('G');
         open_flash('G');
         setLightMode(2);
         alongLine(0, 0, 2700, 0);
-        setLightMode(1);
+        setLightMode(6);
         open_flash('A');
         open_flash('A');
         turn(180, 0);
@@ -206,7 +205,7 @@ void command_execute(byte c)
     // step5  颁奖
     if (c == 0x97)
     {
-        //setLightMode(5);
+        setLightMode(5);
         open_flash('O');
         open_flash('O');
         open_flash('O');
