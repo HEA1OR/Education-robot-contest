@@ -56,20 +56,28 @@ void command_execute(byte c)
         setLightMode(1);
         open_flash('W');
         open_flash('W');
+        open_flash('W');
         alongLine(0, 0, 5000, 0);
         delay(500);
         setLightMode(4);
+        
+        open_flash('A');
         turn(90,0);
         delay(500);
         setLightMode(1);
+
+        open_flash('T');
         alongLine(0, 0, 1200, 0);
         delay(500);
         setLightMode(4);
+
+        open_flash('B');
         turn(90,0);
     }
     // step0
     if (c == 0x89)
     {
+        open_flash('R');
         open_flash('R');
         open_flash('R');
         open_flash('R');
@@ -85,6 +93,7 @@ void command_execute(byte c)
       open_flash('G');
       open_flash('G');
       open_flash('G');
+      open_flash('G');
       alongLine(0,0,4000,0);
       
       setLightMode(4);
@@ -92,13 +101,16 @@ void command_execute(byte c)
       turn(93,0);
       delay(500);
       open_flash('L');
+      open_flash('L');
       turn(180, 0);
       delay(500);
+      open_flash('L');
       open_flash('L');
       turn(180, 0);
       delay(500);
       
       setLightMode(1);
+      open_flash('G');
       open_flash('G');
       open_flash('G');
       open_flash('G');
@@ -118,6 +130,7 @@ void command_execute(byte c)
       open_flash('G');
       open_flash('G');
       open_flash('G');
+      open_flash('G');
       alongLine(0,0,4000,0);
     }
     // step1.5
@@ -125,7 +138,6 @@ void command_execute(byte c)
     {
       setLightMode(1);
       open_flash('H');
-      turn(0,0);
     }
     // step2 滑雪
     if (c == 0x92)
@@ -175,10 +187,10 @@ void command_execute(byte c)
       setLightMode(2);
       open_flash('K');
       alongLine(0,0,1000,0);
-      
+
+      open_flash('K');
       setLightMode(1);
       turn(180,1);
-      open_flash('K');
       setLightMode(0);
     }
     // step3  冰壶
@@ -193,6 +205,7 @@ void command_execute(byte c)
     if (c == 0x95)
     {
       setLightMode(1);
+      open_flash('A');
       open_flash('A');
       turn(180, 0);
       setLightMode(2);
@@ -210,7 +223,8 @@ void command_execute(byte c)
     // step4  回位
     if (c == 0x96)
     {
-      open_flash('A');
+      open_flash('R');
+      open_flash('R');
       setLightMode(1);
       turn(160,0);
 
@@ -221,7 +235,8 @@ void command_execute(byte c)
       alongLine(0,0,3000,0);
       
       setLightMode(1);
-      open_flash('A');
+      open_flash('L');
+      open_flash('L');
       turn(160,1);
       setLightMode(0);
     }
