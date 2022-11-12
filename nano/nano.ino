@@ -38,6 +38,8 @@ int rightMainLight = 27;         // 流水灯的主灯位置（右）
 int sideBrightness = 100;        // 侧灯的最大亮度
 int tailGroup[] = {13, 14};// 尾灯的灯珠位置
 int tailNumber = 0;              // 尾灯数量
+int change=0;                   //
+int changecolor=0;
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);//创建灯条对象
 uint32_t hsvcolor = strip.ColorHSV(0*256,255, val); //控制颜色
 
@@ -117,11 +119,11 @@ void loop (void)
  
   if(mode == 0){             //蓝色呼吸灯
     engine_stop();              //关马达
-      fadeinout(127,15);
+      fadeinout(124,15);
   }
   else if(mode == 1){           // 蓝色跑马灯
     engine_stop();              //关马达
-    forword(128);
+    forword(124);
     tail(0);
   }
   else if(mode == 2){          //红色呼吸灯
@@ -141,23 +143,66 @@ void loop (void)
   else if(mode == 5){           //升旗+红黄双呼吸
     engine_act();              //开马达
     rise();   
-    fadeinout(42, 20);
-    fadeinout(127,10);
+     for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
+      strip.setPixelColor(i, hsvcolor);
+      }
+      strip.show();
+      delay(10);
+      if(val<10)
+      {change=1;
+      changecolor=124;}
+      else if(val>140)
+      {change=0;
+      changecolor=36;}
+      
+      if(change==1)
+      {val+=10;}
+      else if(change==0)
+      {val-=10;}
   }
   else if(mode == 6){            //变色呼吸灯
     engine_stop();               //关马达
-    for(int y=0;y<10;y++)
-    {
-      fadeinout(25*y, 20);
-    }
+    
+      for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
+      strip.setPixelColor(i, hsvcolor);
+      }
+      strip.show();
+      if(val<10)
+      {change=1;
+      changecolor=random(250);}
+      else if(val>140)
+      {change=0;}
+      
+      if(change==1)
+      {val+=10;}
+      else if(change==0)
+      {val-=10;}
+    
   }
   else if(mode == 7){             //快速变色
     engine_act();       //开马达    
-    for(int y=0;y<10;y++)
+    for(int y=0;y<=10;y++)
     {
-      fadeinout(25*y, 40);
+      for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(y*6250, 255, 150);
+      strip.setPixelColor(i, hsvcolor);
+      strip.show();
+      }
+     
+    }
+    for(int y=10;y>=0;y--)
+    {
+      for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(y*6250, 255, 150);
+      strip.setPixelColor(i, hsvcolor);
+      strip.show();
+      }
+      
     }
   }
+  
 }
 
 
