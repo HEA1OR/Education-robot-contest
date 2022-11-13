@@ -244,9 +244,9 @@ void command_execute(byte c)
   if (c == 0x97)
   {
     setLightMode(5);
-    open_flash('Q');
-    open_flash('Q');
-    open_flash('Q');
+    open_flash('P');
+    open_flash('P');
+    open_flash('P');
     alongLine(0, 0, 3000, 0);
   }
 

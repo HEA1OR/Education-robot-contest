@@ -244,9 +244,9 @@ void command_execute(byte c)
     if (c == 0x97)
     {
         setLightMode(5);
-        open_flash('P');
-        open_flash('P');
-        open_flash('P');
+        open_flash('Q');
+        open_flash('Q');
+        open_flash('Q');
         alongLine(0, 0, 3000, 0);
     }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5

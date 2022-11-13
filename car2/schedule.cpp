@@ -165,7 +165,7 @@ void command_execute(byte c)
         open_flash('F');
         open_flash('F');
         setLightMode(2);
-        alongLine(0, 0, 3800, 0);
+        alongLine(0, 0, 3000, 0);
         open_flash('E');
         setLightMode(0);
     }
