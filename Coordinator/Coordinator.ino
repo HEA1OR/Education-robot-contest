@@ -71,7 +71,7 @@ void loop() {
   Serial.flush();
   Serial.write(0x97);
   Serial.flush();
-  delay(7000);
+  delay(70000);
 
 
 }
