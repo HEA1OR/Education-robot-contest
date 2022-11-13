@@ -39,7 +39,4 @@ void loop(){
     command_execute(0x92);
     command_execute(0x96);
     command_execute(0x97);*/
-
-    
-   
 }
