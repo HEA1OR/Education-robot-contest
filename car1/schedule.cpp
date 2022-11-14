@@ -81,6 +81,10 @@ void command_execute(byte c)
     open_flash('R');
     open_flash('R');
     open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
     setLightMode(7);
     delay(3000);
   }
