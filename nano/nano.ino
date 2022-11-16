@@ -19,6 +19,7 @@ float angle = 0;
 #define LEDModePin1 6     // 译码法选择灯带显示模式
 #define LEDModePin2 7     // 译码法选择灯·带显示模式
 #define RISEPIN 8     // 舵机引脚
+
 #define IN1 2  //定义IN1为2
 #define IN2 3 //定义IN2为3
 #define  ENA 4  //定义ENA为A4
@@ -26,6 +27,8 @@ float angle = 0;
 uint8_t mode = 0;         // 灯带状态
 boolean stat1 = true;     //呼吸状态反转标志
 int val = 130;            //呼吸亮度变量
+int flag =90;
+int changeflag =0;
 int color;            //色彩改变变量
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
@@ -83,6 +86,7 @@ void setup (void)
   pinMode(LEDModePin0, INPUT);
   pinMode(LEDModePin1, INPUT);
   pinMode(LEDModePin2, INPUT);
+
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
 
@@ -110,39 +114,49 @@ void loop (void)
       Send_Data(cc, angle);
       delay(4);
   }
-  // 复位从机
-  // digitalWrite(SS, HIGH);    // SS - pin 10
-  Serial.print("angle: ");
-  Serial.println(angle);
-  Serial.print("cc: ");
-  Serial.println(cc);
- 
+
   if(mode == 0){             //蓝色呼吸灯
+   myservo.write(90); 
     engine_stop();              //关马达
       fadeinout(124,15);
+///////////////////////////////
+  
   }
   else if(mode == 1){           // 蓝色跑马灯
+   myservo.write(90); 
     engine_stop();              //关马达
     forword(124);
     tail(0);
+///////////////////////////////////
+    
   }
   else if(mode == 2){          //红色呼吸灯
+   myservo.write(90); 
     engine_stop();
     fadeinout(0, 20);           
+///////////////////////////////////
+   
   }
   else if(mode == 3){           //彩色跑马灯
+   myservo.write(90); 
     engine_stop();              //关马达
     forword(color);
     tail(0);
     color += 3;
+//////////////////////////////////
+ 
   }
   else if(mode == 4){            //彩虹效果，每个灯珠颜色不一
+   myservo.write(90); 
     engine_stop();             //关马达
     rainbow();
+///////////////////////////////////////////////
+    
   }
   else if(mode == 5){           //升旗+呼吸
     engine_act();              //开马达
-    rise();   
+    rise();
+    
     for(int i=0;i<=27;i++){
       hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
       strip.setPixelColor(i, hsvcolor);
@@ -158,9 +172,12 @@ void loop (void)
       {val+=10;}
       else if(change == 0)
       {val-=10;}
+////////////////////////////////////
+    
     
   }
   else if(mode == 6){            //变色呼吸灯
+   myservo.write(90); 
     engine_stop();               //关马达
     
       for(int i=0;i<=27;i++){
@@ -178,31 +195,34 @@ void loop (void)
       {val+=10;}
       else if(change == 0)
       {val-=10;}
-    
+
+////////////////////////////////////////
+   
   }
   else if(mode == 7){             //快速变色
-    engine_act();       //开马达    
-    for(int y=0;y<=10;y++)
-    {
+    engine_act();       //开马达  
+     rise();
       for(int i=0;i<=27;i++){
-      hsvcolor = strip.ColorHSV(y*6250, 255, 150);
+      hsvcolor = strip.ColorHSV(val*6250, 255, 150);
       strip.setPixelColor(i, hsvcolor);
       strip.show();
       }
-     
-    }
-    for(int y=10;y>=0;y--)
-    {
-      for(int i=0;i<=27;i++){
-      hsvcolor = strip.ColorHSV(y*6250, 255, 150);
-      strip.setPixelColor(i, hsvcolor);
-      strip.show();
-      }
+      if(val<40)
+      {change=1;}
+      else if(val>250)
+      {change=0;}
       
+      if(change == 1)
+      {val+=30;}
+      else if(change == 0)
+      {val-=30;}
+/////////////////////////////////////////
+
+    
     }
   }
   
-}
+
 
 
 void setLightMode(){
@@ -291,13 +311,13 @@ void rise(){         // 升旗仪式
   int pos=0;
   //myservo.write(50);
   //delay(50);
-  for (pos = 60; pos <= 120; pos += 10) {   
+  for (pos = 60; pos <= 120; pos += 1) {   
     myservo.write(pos);               // 舵机角度写入
-    delay(50);                         // 控制移动速度
+    delay(12);                         // 控制移动速度
   }
-  for (pos = 130; pos >= 60; pos -= 10) {   
+  for (pos = 120; pos >= 60; pos -= 1) {   
     myservo.write(pos);               // 舵机角度写入
-    delay(50);                         // 控制移动速度
+    delay(12);                         // 控制移动速度
   }
 
 }
