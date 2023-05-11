@@ -50,209 +50,107 @@ void command_execute(byte c)
 
     //Serial.print("c: ");
     //Serial.println(c);
-    // step0
-    if (c == 0x88)
+  // step1  入场
+  if (c == 0x88)
+  {
+    alongLine(0, 0, 4000, 0);
+  }
+  // step2  花滑
+  if (c == 0x89)
+  {
+    for (int i=1;i<=12;i++)
     {
-        setLightMode(6);
-        open_flash('Y');
-        open_flash('Y');
-        open_flash('Y');
-        alongLine(0, 0, 5000, 0);
-        delay(500);
-        setLightMode(4);
+      turn(90, 0);
+      delay(200);
+    }
+    /*
+    turn(180, 1);
+    delay(200);
+    turn(180, 1);
+    delay(200);
+    turn(180, 1);
+    delay(200);
+    turn(180, 1);
+    */
+  }
 
-        open_flash('A');
-        turn(90,1);
-        delay(500);
-        setLightMode(0);
-
-        open_flash('T');
-        alongLine(0, 0, 1200, 0);
-        delay(500);
-        setLightMode(4);
-
-        open_flash('B');
-        turn(90,0);
-        
-    }
-    if (c == 0x89)
+  // step3 花滑to冰壶
+  if (c == 0x90)
+  {
+    alongLine(0, 0, 1000, 0);
+    delay(200);
+    turn(92, 0);
+    delay(200);
+    alongLine(0, 0, 2200, 0);
+    delay(200);
+    turn(177, 1);
+    delay(200);
+  }
+  // step4 冰壶
+  if (c == 0x91)
+  {
+    alongLine(0, 0, 4000, 0);
+    delay(200);
+  }
+  // step5 冰壶to冰球
+  if (c == 0x92)
+  {
+    turn(90.5, 0);
+    delay(200);
+    alongLine(0, 0, 3000, 0);
+    delay(200);
+    turn(90.5, 0);
+    delay(200);
+    alongLine(0, 0, 4200, 0);
+    delay(200);
+    turn(177, 1);
+  }
+  // step6 冰球-car3不动
+  if (c == 0x93)
+  {
+    delay(1000);
+  }
+  // step7 冰球-car3直行接球
+  if (c == 0x94)
+  {
+    alongLine(0, 0, 3200, 0);
+    delay(200);
+  }
+  // step8 冰球-car3直行
+  if (c == 0x95)
+  {
+    alongLine(0, 0, 1200, 0);
+    delay(200);
+  }
+  // step9 冰球to颁奖
+  if (c == 0x96)
+  {
+    turn(177, 1);
+    delay(200);
+    alongLine(0, 0, 2000, 0);
+    delay(200);
+    turn(90.5, 0);
+    delay(200);
+    alongLine(0, 0, 6000, 0);
+    delay(200);
+    turn(177, 1);
+    delay(200);
+  }
+  /*if (c == 0x95)
     {
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        open_flash('R');
-        setLightMode(7);
-        delay(3000);
-    }
-    
-    // step1 冰舞
-    if (c == 0x90)
-    {
-      setLightMode(3);
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      alongLine(0,0,4000,0);
-      
-      setLightMode(4);
-      open_flash('H');
-      turn(90,0);
-      open_flash('L');
-      open_flash('L');
-      turn(180,0);
-      open_flash('L');
-      open_flash('L');
-      turn(180,0);
-      
-      setLightMode(3);
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      alongLine(0,0,8000,0);
-      
-      setLightMode(4);
-      open_flash('L');
-      turn(90,0);
-      
-      setLightMode(6);
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      alongLine(0,0,4000,0);
-    }
-    // step1.5
-    if (c == 0x91)
-    {
-      setLightMode(1);
-      open_flash('H');
-    }
-    // step2 滑雪
-    if (c == 0x92)
-    {
-      setLightMode(0);
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      alongLine(0,3,3000,0);
-      delay(800);
-      
-      setLightMode(2);
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      alongLine(0,3,6000,1);
-      delay(800);
-      
-      setLightMode(0);
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      alongLine(0,3,6000,0);
-      delay(800);
-      
-      setLightMode(2);
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      open_flash('J');
-      alongLine(0,3,3000,1);
-    }
-    // step2.5
-    if (c == 0x93)
-    {
-      open_flash('H');
-      setLightMode(3);
-      turn(90,0);
-
-      setLightMode(2);
-      open_flash('K');
-      alongLine(0,0,1000,0);
-
-      open_flash('K');
-      setLightMode(4);
-      turn(177,1);
-      setLightMode(0);
-    }
-    // step3 冰壶
-    if (c == 0x94)
-    {
-      open_flash('K');
-      open_flash('K');
-      delay(4000);
-      
-      setLightMode(6);
-      open_flash('N');
-      open_flash('N');
-      alongLine(0,0,1500,0);
-      setLightMode(0);
-    }
-    // step3.5
-    if (c == 0x95)
-    {
-        setLightMode(4);
-        open_flash('A');
-        open_flash('A');
-        turn(180, 0);
-        setLightMode(2);
-        open_flash('L');
-        alongLine(0, 0, 800, 0);
-        setLightMode(3);
-        open_flash('A');
-        turn(87, 0);
-        setLightMode(0);
-        /*setLightMode(1);
-        turn(180, 0);
-        setLightMode(0);*/
-    }
-    // step4 回位
-    if (c == 0x96)
-    {
-      setLightMode(3);
-      open_flash('R');
-      open_flash('R');
-      turn(160,1);
-      
-      setLightMode(2);
-      open_flash('G');
-      open_flash('G');
-      open_flash('G');
-      alongLine(0,0,3000,0);
-      
-      setLightMode(6);
-      open_flash('L');
-      open_flash('L');
-      turn(160,0);
-      setLightMode(0);
-    }
-    // step5 领奖
-    if (c == 0x97)
-    {
-        setLightMode(5);
-        open_flash('Q');
-        open_flash('Q');
-        open_flash('Q');
-        alongLine(0, 0, 3000, 0);
-    }
+    open_flash('A');
+    }*/
+  // step10 颁奖
+  if (c == 0x97)
+  {
+    alongLine(0, 0, 3000, 0);
+    delay(200);
+    /* 
+     *  =============
+     *  摇旗
+     *  =============
+     */
+  }
     // 目前用这个0x90作为调试信号，当car5接受到调试信号后，显示5
     /*
     if (c == 0x90){
@@ -268,9 +166,9 @@ void command_execute(byte c)
       turn(90, 1);
       setLightMode(1);
       //
-      delay(500);
+      delay(200);
 //      digitalWrite(mpin, HIGH);
-//      flash(500, 1);
+//      flash(200, 1);
       standBy();
 //      analogWrite(screwPin, 0);
     }
@@ -280,8 +178,8 @@ void command_execute(byte c)
       // 主车第一阶段动作
 //      digitalWrite(mpin, HIGH);
 //      flash(300, 1);
-      delay(500);
-      alongLine(500, 0);
+      delay(200);
+      alongLine(200, 0);
 //      digitalWrite(mpin, LOW);
       standBy();
     }
@@ -293,7 +191,7 @@ void command_execute(byte c)
 //      digitalWrite(mpin, HIGH);
       // 主车第一阶段连接
       turn(180, 1);
-      alongLine(500);
+      alongLine(200);
 //      digitalWrite(mpin, LOW);
       standBy();
     }
@@ -329,12 +227,12 @@ void command_execute(byte c)
 //      digitalWrite(mpin, HIGH);
       open_flash('a');
       if(count == 0){
-        alongLine(500);
+        alongLine(200);
         count ++;
       }
       else{
         initAngle_ = initAngle_ < 180 ? initAngle_ + 180 : initAngle_ - 180;
-        alongLine(500, 0, initAngle_);
+        alongLine(200, 0, initAngle_);
       }
 //      flash(300, 1);
 //      digitalWrite(mpin, LOW);

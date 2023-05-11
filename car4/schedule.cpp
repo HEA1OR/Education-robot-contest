@@ -61,23 +61,13 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    alongLine(0, 0, 3000, 0);
+    alongCurve(5000, -1, 90);
     delay(500);
-    turn(90, 0);
+    alongCurve(5000, -1, 90);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongCurve(5000, -1, 90);
     delay(500);
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 6000, 0);
-    delay(500);
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 6000, 0);
-     delay(500);
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 3000, 0);
+    alongCurve(5000, -1, 90);
     
     /*
     turn(180, 1);
@@ -93,54 +83,68 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
+    turn(180, 1);
+    delay(500);
+    alongLine(0, 0, 1000, 0);
+    delay(500);
     turn(90, 1);
     delay(500);
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 2500, 0);
     delay(500);
-    turn(180, 1);
+    turn(45, 0);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 0, 3000, 0);
+    delay(5800);
+    alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
-    turn(90, 1);
+    turn(45, 0);
     delay(500);
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 1500, 0);
     delay(500);
-    turn(90, 1);
+    turn(90, 0);
     delay(500);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
-    turn(180, 1);
-  }
-  // step6 冰球-car1接球
-  if (c == 0x93)
-  {
-    delay(2000);    // 等球跑一会
     alongLine(0, 0, 2000, 0);
     delay(500);
     turn(60, 0);
   }
-  // step7 冰球-car1不动
+  // step6 冰球-car4向car1移动
+  if (c == 0x93)
+  {
+    delay(1000);
+    alongLine(0, 0, 3000, 0)
+  }
+  // step7 冰球-car4向car3移动
   if (c == 0x94)
   {
     delay(1000);
+    turn(150, 1);
+    delay(1000);
+    alongLine(0, 0, 3000, 0);
   }
-  // step8 冰球-car1不动
+  // step8 冰球-car4向car2移动（追球）
   if (c == 0x95)
   {
+    alongLine(0, 0, 1000, 0);
     delay(1000);
+    turn(90, 1);
+    delay(500);
+    alongLine(0, 0, 1000, 0);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(90, 1);
+    turn(180, 1);
     delay(500);
     alongLine(0, 0, 2000, 0);
+    delay(500);
+    turn(90, 0);
+    delay(500);
+    alongLine(0, 0, 3000, 0);
     delay(500);
     turn(180, 1);
   }
@@ -151,22 +155,13 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    turn(180, 1);
+    alongLine(0, 0, 4000, 0);
     delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
+    /* 
+     *  =============
+     *  摇旗
+     *  =============
+     */
   }
 
 }
