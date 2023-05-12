@@ -58,11 +58,13 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    for (int i=1;i<=12;i++)
+    for (int i=1;i<=11;i++)
     {
-      turn(90, 0);
+      turn(89, 0);
       delay(200);
     }
+    turn(89, 0);
+    delay(200);
     /*
     turn(180, 1);
     delay(200);
@@ -79,11 +81,11 @@ void command_execute(byte c)
   {
     alongLine(0, 0, 1000, 0);
     delay(200);
-    turn(92, 0);
+    turn(89, 0);
     delay(200);
-    alongLine(0, 0, 2200, 0);
+    alongLine(0, 0, 2800, 0);
     delay(200);
-    turn(177, 1);
+    turn(180, 1);
     delay(200);
   }
   // step4 冰壶
@@ -95,15 +97,15 @@ void command_execute(byte c)
   // step5 冰壶to冰球
   if (c == 0x92)
   {
-    turn(90.5, 0);
+    turn(92, 0);
     delay(200);
     alongLine(0, 0, 3000, 0);
     delay(200);
-    turn(90.5, 0);
+    turn(89, 0);
     delay(200);
     alongLine(0, 0, 4200, 0);
     delay(200);
-    turn(177, 1);
+    turn(180, 1);
   }
   // step6 冰球-car3不动
   if (c == 0x93)
@@ -125,15 +127,15 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(177, 1);
+    turn(180, 1);
     delay(200);
     alongLine(0, 0, 2000, 0);
     delay(200);
-    turn(90.5, 0);
+    turn(89, 0);
     delay(200);
     alongLine(0, 0, 6000, 0);
     delay(200);
-    turn(177, 1);
+    turn(178, 1);
     delay(200);
   }
   /*if (c == 0x95)
