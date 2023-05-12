@@ -498,7 +498,7 @@ void turn_test(float angletoturn, int mode, bool smoothTurn = false) //只考虑
                 walk(55 * leftCoef + 5, 5);
             ////////////////////////////////////////////////////////////////////
         }
-        }
+       
   }
 
   standBy();
