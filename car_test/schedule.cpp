@@ -2,6 +2,8 @@
 #include "encoderLED.h"
 
 extern float angle;
+float tempangle;
+float subangle;
 volatile float count = 0;
 float delta;
 float initAngle_;
@@ -55,19 +57,19 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
-    delay(500);
-    turn(180, 1);
+    delay(200);
+  //  turn(180, 1);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
+    alongCurve(18000, -1, 360);
+    delay(200);
+//    alongCurve(3800, -1, 360);
+//    delay(200);
+//    alongCurve(3800, -1, 360);
+//    delay(200);
+//    alongCurve(3800, -1, 360);
     
     /*
     turn(180, 1);
@@ -83,14 +85,14 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(180, 1);
-    delay(500);
+ //   turn(180, 1);
+    delay(200);
     alongLine(0, 0, 1000, 0);
-    delay(500);
+    delay(200);
     turn(90, 1);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 2500, 0);
-    delay(500);
+    delay(200);
     turn(45, 0);
   }
   // step4 冰壶
@@ -103,13 +105,13 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     turn(45, 0);
-    delay(500);
+    delay(200);  
     alongLine(0, 0, 1500, 0);
-    delay(500);
+    delay(200);
     turn(90, 0);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 2000, 0);
-    delay(500);
+    delay(200);
     turn(60, 0);
   }
   // step6 冰球-car4向car1移动
@@ -132,20 +134,20 @@ void command_execute(byte c)
     alongLine(0, 0, 1000, 0);
     delay(1000);
     turn(90, 1);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 1000, 0);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
     turn(180, 1);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 2000, 0);
-    delay(500);
+    delay(200);
     turn(90, 0);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 3000, 0);
-    delay(500);
+    delay(200);
     turn(180, 1);
   }
   /*if (c == 0x95)
@@ -156,7 +158,33 @@ void command_execute(byte c)
   if (c == 0x97)
   {
     alongLine(0, 0, 4000, 0);
-    delay(500);
+    delay(200);
+    /* 
+     *  =============
+     *  摇旗
+     *  =============
+     */
+  }
+
+    if (c == 0x98)
+  {
+   /* getEncoder();
+    tempangle = angle; */
+    turn_test(183, 0);
+    delay(2000);
+    turn_test(183, 0);
+    delay(2000);
+    /*getEncoder();
+    subangle = angle - tempangle;
+    if(subangle>=0)
+    {
+      turn(subangle ,1);
+      }
+    else
+    {
+      turn(fabs(subangle),0);
+      }*/
+    delay(200);
     /* 
      *  =============
      *  摇旗
