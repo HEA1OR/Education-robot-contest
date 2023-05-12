@@ -21,30 +21,30 @@ void motorInit() {
   motorL.attach(pinR); //motor.h中已经定义了 pinL 为7  pinR 为8
   motorR.attach(pinL);
 
-  //writeMicroseconds函数的取值是1000-2000,1500为静止,2000全速向前，1000全速向后
-  motorL.writeMicroseconds(1500);
-  motorR.writeMicroseconds(1500);
+  //writeMicroseconds函数的取值是1000-2000,1495为静止,2000全速向前，1000全速向后
+  motorL.writeMicroseconds(1495);
+  motorR.writeMicroseconds(1495);
   
 }
 
 void walk(float left_speed, float right_speed)
 {
-  //骅哥采取的代码是,左轮在1500的基础上减，右轮在1500的基础上加，这样就是后驱
+  //骅哥采取的代码是,左轮在1495的基础上减，右轮在1495的基础上加，这样就是后驱
 ////////////////////////  adjust  //////////////////////////////////
   left_speed *= 1.18;
-  right_speed *= 1.18;
+  right_speed *= 1.14;
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);
   right_speed = min(right_speed, 400);
-  motorL.writeMicroseconds(1500+left_speed);
-  motorR.writeMicroseconds(1500-right_speed);
+  motorL.writeMicroseconds(1495+left_speed);
+  motorR.writeMicroseconds(1495-right_speed);
 }
 
 
 void standBy()
 {
-  motorL.writeMicroseconds(1500);
-  motorR.writeMicroseconds(1500);
+  motorL.writeMicroseconds(1495);
+  motorR.writeMicroseconds(1495);
 }
 
 
