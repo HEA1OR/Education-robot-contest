@@ -55,27 +55,29 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
+    delay(500);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 4000, 0);
     delay(500);
     turn(90, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 7000, 0);
     delay(500);
     turn(90, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 8000, 0);
     delay(500);
     turn(90, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 7000, 0);
      delay(500);
-    turn(90, 0);
+    turn(88, 0);
     delay(500);
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 4000, 0);
+    delay(500);
     
     /*
     turn(180, 1);
@@ -95,11 +97,8 @@ void command_execute(byte c)
     delay(500);
     alongLine(0, 0, 1000, 0);
     delay(500);
-    turn(90, 0);
+    turn(45, 0);
     delay(500);
-    alongLine(0, 0, 1500, 0);
-    delay(500);
-    turn(45, 1);
   }
   // step4 冰壶
   if (c == 0x91)
@@ -114,7 +113,7 @@ void command_execute(byte c)
     delay(500);
     alongLine(0, 0, 500, 0);
     delay(500);
-    turn(90, 1);
+    turn(88, 1);
     delay(500);
     alongLine(0, 0, 2000, 0);
     delay(500);
@@ -123,7 +122,7 @@ void command_execute(byte c)
   if (c == 0x93)
   {
     delay(1000);
-    alongLine(0, 0, 1500, 0)
+    alongLine(0, 0, 1500, 0);
   }
   // step7 冰球-car5向car3移动
   if (c == 0x94)
@@ -149,9 +148,9 @@ void command_execute(byte c)
     delay(500);
     alongLine(0, 0, 1000, 0);
     delay(500);
-    turn(90, 0);
+    turn(91, 0);
     delay(500);
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 6000, 0);
     delay(500);
     turn(180, 1);
   }
