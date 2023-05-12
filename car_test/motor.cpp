@@ -13,7 +13,7 @@ long int record[5];
 int initVoltage = 0;
 int initSpeed = 40;
 
-float temp_angle,e,temp,aim_angle;
+float temp_angle,e,temp,aim_angle，aim_angle_1;
 
 void motorInit() {
 
@@ -410,5 +410,96 @@ void turn_walk(float angletoturn, int mode, bool smoothTurn = false)
         }
     }
     
+  standBy();
+}
+
+void turn_test(float angletoturn, int mode, bool smoothTurn = false) //只考虑360度以内旋转
+{
+  // angleTurn为需要转到的角度，mode为左右转变量， smoothTurn为是否只动一个轮
+  getEncoder();
+  temp_angle = angle;
+  // mode 是一个判断左转还是右转的标志变量，1为右转，0为左转
+  if (mode)
+  {
+        /*右转*/
+        aim_angle = temp_angle - angletoturn;
+        if (aim_angle < -1e-7)
+        {
+            aim_angle += 360;
+        }
+        //      Serial.println(aim_angle);
+        while (1)
+        {
+            getEncoder();
+
+            // Serial.print("angle:");
+            // Serial.println(angle);
+            if (fabs(aim_angle - angle) < 0.4)
+            {
+                break;
+            }
+            float leftCoef, rightCoef;
+            if(angle < aim_angle)
+                temp = 360 + angle - aim_angle;
+            else
+                temp = angle - aim_angle; 
+            ////////////////////////  adjust  //////////////////////////////////
+            if (temp < 5){
+                leftCoef = pow(temp / 5, 0.6);
+                rightCoef = pow(temp / 5, 0.6);
+            }
+            else{
+                leftCoef = 1;
+                rightCoef = 1;
+            }
+            if (!smoothTurn)
+                walk(55 * leftCoef + 80, -55 * rightCoef + 80);
+            // walk(100, 50);
+            else
+                walk(55 * leftCoef + 5, 5);
+            ////////////////////////////////////////////////////////////////////
+        }
+  }
+  else
+  {
+        /*左转*/
+        aim_angle = temp_angle + angletoturn;
+        if (aim_angle >= 360)
+        {
+            aim_angle -= 360;
+        }
+
+        while (1)
+        {
+            getEncoder();
+
+            // Serial.print("angle:");
+            // Serial.println(angle);
+            if (fabs(aim_angle - angle) < 0.4)
+            {
+                break;
+            }
+            float leftCoef, rightCoef;
+            if (angle > aim_angle)
+                temp = 360 + aim_angle - angle;
+            else
+                temp = aim_angle - angle;
+            ////////////////////////  adjust  //////////////////////////////////
+            if (temp < 5){
+                leftCoef = pow(temp / 5, 0.6);
+                rightCoef = pow(temp / 5, 0.6);
+            }
+            else {leftCoef = 1;
+                  rightCoef = 1;}
+            if (!smoothTurn)
+                walk(55 * leftCoef + 80, -55 * rightCoef + 80);
+            // walk(100, 50);
+            else
+                walk(55 * leftCoef + 5, 5);
+            ////////////////////////////////////////////////////////////////////
+        }
+        }
+  }
+
   standBy();
 }
