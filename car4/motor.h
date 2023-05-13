@@ -12,6 +12,7 @@
 void motorInit();
 void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse = 0, float setAngle = -1, float setBias = 0, float angleToTurn = 0);
 void alongCurve(int setDistance, float setBias, float angleToTurn, int mode = 0);
+void turn_test(float angletoturn, int mode, bool smoothTurn = false); //只考虑360度以内旋转
 void turn(float angletoturn, int mode, bool smoothTurn = false);
 void standBy();
 void walk(float left_speed, float right_speed);

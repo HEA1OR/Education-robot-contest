@@ -168,32 +168,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
     int index = 0;
     while(1){
         getEncoder();
-//        Serial.print("initangle: ");
-//       Serial.println(init_angle);
-//        Serial.print("length: ");
-//        Serial.println(sideLength);
-//        Serial.print("angle: ");
-//        Serial.println(angle);
-//        if(first == 0){
-//            first = 1;
-//            for(int i = 0; i < 5; i ++){
-//                record[i] = sideLength;
-//            }
-//        }
-//        else{
-//            index += 1;
-//            if(index == 5)
-//              index = 0;
-//            record[index] = sideLength;
-//            int lastindex = index + 1 > 4 ? 0 : index + 1;
-////            Serial.print("index: ");
-////            Serial.print(index);
-////            Serial.print("  lastindex: ");
-////            Serial.println(lastindex); 
-//            observeSpeed = record[index] - record[lastindex];
-//        }
-//        Serial.print("ObserveSpeed: ");
-//        Serial.println(observeSpeed);
+
         if(countAngle > angleToTurn)
             setBias = 0;
         else{
@@ -204,11 +179,9 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
         }
         temp_angle = angle;
         
-//        errorL = setSpeeed - observeSpeed;
-//        totalL = 2 * errorL; 
+
         errorA = temp_angle - init_angle;
-        //Serial.print("errorA: ");
-        //Serial.println(errorA);
+
         if(errorA > 300) {//对超过360°（0°）界限时进行修正
             errorA -= 360; 
         }
@@ -256,13 +229,7 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
 ////////////////////////////////////////////////////////////////////
 
         lastErrorA = errorA;
-//        Serial.print("totalL: ");
-//        Serial.println(totalL);
-        //Serial.print("totalA: ");
-        //Serial.println(totalA);
-        
-//           leftSpeed = leftSpeed + totalL;
-//           rightSpeed = leftSpeed + totalA;
+
 // ====================================================================
          if (!reverse){
           leftSpeed = 100 + totalA;
@@ -274,8 +241,6 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
          }
 // ====================================================================
         
-        //Serial.print("len: ");
-        //Serial.println(sideLength - initLength);
         
         
         len = sideLength - initLength;
@@ -292,7 +257,6 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
         }
         
         // 控停
-//        Serial.println(mode);
         
         if((len > setDistance || timer_2 - timer_1 > setTime || stopSequence) && mode < 2){
             //Serial.println("stop");
@@ -316,15 +280,9 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
             }
         }
         else if((len > setDistance || timer_2 - timer_1 > setTime || stopSequence) && mode >1){
-            //Serial.println("stop without buffer");
             break;
         }
          
-        //Serial.print("leftSpeed: ");
-        //Serial.println(leftSpeed);
-        //Serial.print("rightSpeed: ");
-        //Serial.println(rightSpeed);
-        //Serial.println(" ");
         walk(leftSpeed, rightSpeed);
         delay(55);
     }
@@ -332,6 +290,121 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
 }
 
 
-void alongCurve(int setDistance, float setBias,  float angleToTurn, int mode = 0){
-  alongLine(setDistance, mode, 10000, 0, -1, setBias=setBias, angleToTurn=angleToTurn);
+void alongCurve(int setTime, float setBias,  float angleToTurn, int mode = 0){
+  alongLine(0, mode, setTime, 0, -1, setBias=setBias, angleToTurn=angleToTurn);
+}
+
+
+
+void turn_test(float angletoturn, int mode, bool smoothTurn = false) //只考虑360度以内旋转
+{
+  // angleTurn为需要转到的角度，mode为左右转变量， smoothTurn为是否只动一个轮
+  getEncoder();
+  temp_angle = angle;
+  // mode 是一个判断左转还是右转的标志变量，1为右转，0为左转
+  if (mode)
+  {
+        /*右转*/
+        aim_angle = temp_angle - angletoturn;
+        if (aim_angle < -1e-7)
+        {
+            aim_angle += 360;
+        }
+        //      Serial.println(aim_angle);
+        while (1)
+        {
+            getEncoder();
+
+            // Serial.print("angle:");
+            // Serial.println(angle);
+            if (fabs(aim_angle - angle) < 0.4)
+            {
+                break;
+            }
+            float leftCoef, rightCoef;
+            if(angle < aim_angle)
+                temp = 360 + angle - aim_angle;
+            else
+                temp = angle - aim_angle; 
+            ////////////////////////  adjust  //////////////////////////////////
+            if (temp < 5){
+                leftCoef = pow(temp / 5, 0.6);
+                rightCoef = pow(temp / 5, 0.6);
+            }
+            else{
+                leftCoef = 1;
+                rightCoef = 1;
+            }
+            if (!smoothTurn)
+                walk(55 * leftCoef + 80, -55 * rightCoef + 80);
+             //walk(100, 50);
+            else
+                walk(55 * leftCoef + 5, 5);
+            ////////////////////////////////////////////////////////////////////
+        }
+  }
+  else
+  {
+        /*左转*/
+        aim_angle = temp_angle + angletoturn ;
+        if (aim_angle >= 360)
+        {
+            aim_angle -= 360;
+        }
+
+        while (1)
+        {
+            getEncoder();
+            int temp1 = 0;
+            // Serial.print("angle:");
+            // Serial.println(angle);
+            if (angle > aim_angle)
+                temp = 360 + aim_angle - angle;
+            else
+                temp = aim_angle - angle;
+            if(temp<3)break;
+            /*
+            if ((temp < 5)&&(5 <aim_angle<355))
+            {
+                temp1 = angle - aim_angle;
+                if(temp1>-1)break;
+            }
+            if((temp < 5)&&(aim_angle>355)){
+                if(355< angle <360)temp1 = angle - aim_angle;
+                if(angle <10)temp1 = 360+ angle - aim_angle;
+                if(temp1>-1)break;
+              }
+          */
+            float leftCoef, rightCoef;
+            
+            ////////////////////////  adjust  //////////////////////////////////
+            if (temp < 15){
+                leftCoef = pow(temp / 15, 0.8);
+                rightCoef = pow(temp / 15, 0.8);
+            }     
+            else {leftCoef = 1;
+                  rightCoef = 1;}
+            if (angle > aim_angle)
+                temp = 360 + aim_angle - angle;
+            else
+                temp = aim_angle - angle;
+            if(temp<1)break;
+            if (!smoothTurn)
+                walk(60*leftCoef, 180 * rightCoef);
+            // walk(100, 50);
+            else
+                walk(55 * leftCoef + 5, 5);
+            /*    
+            if (angle > aim_angle)
+                temp = 360 + aim_angle - angle;
+            else
+                temp = aim_angle - angle;
+            if(temp<1)break;
+            */
+            ////////////////////////////////////////////////////////////////////
+        }
+       
+  }
+
+  standBy();
 }
