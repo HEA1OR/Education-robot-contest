@@ -64,7 +64,7 @@ void command_execute(byte c)
     delay(500);
     turn(90, 0);
     delay(500);
-    alongLine(0, 0, 7000, 0);
+    alongLine(0, 0, 9000, 0);
     delay(500);
     turn(90, 0);
     delay(500);
@@ -72,7 +72,7 @@ void command_execute(byte c)
     delay(500);
     turn(90, 0);
     delay(500);
-    alongLine(0, 0, 7000, 0);
+    alongLine(0, 0, 9000, 0);
      delay(500);
     turn(88, 0);
     delay(500);
@@ -93,11 +93,13 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(180, 1);
+    turn(90, 0);
+    delay(500);
+    alongLine(0, 0, 1500, 0);
+    delay(500);
+    turn(135, 0);
     delay(500);
     alongLine(0, 0, 1000, 0);
-    delay(500);
-    turn(45, 0);
     delay(500);
   }
   // step4 冰壶

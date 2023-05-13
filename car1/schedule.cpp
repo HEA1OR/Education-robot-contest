@@ -61,23 +61,23 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 4000, 0);
     delay(500);
-    turn(90, 0);
+    turn(88, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 9000, 0);
     delay(500);
-    turn(90, 0);
+    turn(88, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 8000, 0);
     delay(500);
-    turn(90, 0);
+    turn(88, 0);
     delay(500);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 9000, 0);
      delay(500);
-    turn(90, 0);
+    turn(88, 0);
     delay(500);
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 4000, 0);
     
     /*
     turn(180, 1);
@@ -93,23 +93,25 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(90, 1);
+    turn(90, 0);
     delay(500);
-    alongLine(0, 0, 2000, 0);
+    /*
+    alongLine(0, 0, 2500, 0);
     delay(500);
     turn(180, 1);
+    */
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
     turn(90, 1);
     delay(500);
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 3000, 0);
     delay(500);
     turn(90, 1);
     delay(500);
@@ -138,7 +140,7 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(90, 1);
+    turn(120, 0);
     delay(500);
     alongLine(0, 0, 2000, 0);
     delay(500);
