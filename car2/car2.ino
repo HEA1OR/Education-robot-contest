@@ -24,14 +24,15 @@ void setup(){
 int nowlen = 0;
 void loop(){
 //    alongLine(0, 0, 5000, 0);
-//    alongLine(0, 0, 5000, 1);
-    schedule();
-//    walk(50, 50);
+//    turn(90,0);
+//    schedule();
+  // walk(50, 50);
 //    setLightMode(7);
 //    delay(5000);
 //    setLightMode(0);
-/*    command_execute(0x89);
-    command_execute(0x90);
+    command_execute(0x88);
+    command_execute(0x89);
+ /*   command_execute(0x90);
     command_execute(0x91);
     command_execute(0x92);
     command_execute(0x93);

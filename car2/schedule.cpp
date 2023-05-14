@@ -4,6 +4,8 @@
 extern float angle;
 volatile float count = 0;
 float delta;
+float tempangle;
+float subangle;
 float initAngle_;
 
 void schedule_init()
@@ -50,28 +52,35 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
+    delay(200);
+    turn(180,0);
+    delay(200);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    
-    /*
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    */
-  }
+    getEncoder();
+    tempangle = angle;
+    delay(1000); 
+    alongCurve(3600, 1, 90);
+    delay(1000);
+    alongCurve(3200, 1.2, 90);
+    delay(1000);
+    alongCurve(3200, 1.2, 90);
+    delay(1000);
+    alongCurve(3600, 1, 90);
+    delay(1000);
+    getEncoder();
+    subangle = angle - tempangle;
+    if(subangle>0&&subangle<90)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<0&&subangle>-90)
+    {
+      turn(fabs(subangle),0);
+      }
+  }    
 
   // step3 花滑to冰壶
   if (c == 0x90)
