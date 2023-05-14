@@ -40,12 +40,12 @@ void loop(){
   //   command_execute  (0x98);
     command_execute  (0x88);
    command_execute  (0x89);
-  //  command_execute  (0x90);
- //   command_execute  (0x91);
- //   command_execute  (0x92);
- //   command_execute  (0x93);
- //   command_execute  (0x94);
- //   command_execute  (0x95);// step8 冰球-car4向car2移动（追球）
- //   command_execute  (0x96); // step9 冰球to颁奖
- //   command_execute  (0x97);// step10 颁奖 
+   command_execute  (0x90);
+    command_execute  (0x91);
+    command_execute  (0x92);
+    command_execute  (0x93);
+    command_execute  (0x94);
+    command_execute  (0x95);// step8 冰球-car4向car2移动（追球）
+    command_execute  (0x96); // step9 冰球to颁奖
+    command_execute  (0x97);
 }
