@@ -115,7 +115,7 @@ void command_execute(byte c)
   // step7 冰球-car3直行接球
   if (c == 0x94)
   {
-    alongLine(0, 0, 3200, 0);
+    alongLine(0, 0, 3500, 0);
     delay(200);
   }
   // step8 冰球-car3直行

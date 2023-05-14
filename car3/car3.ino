@@ -1,4 +1,4 @@
-#include "encoderLED.h"
+ #include "encoderLED.h"
 #include "Arduino.h"
 #include "led_matrix.h"
 #include "motor.h"
@@ -10,13 +10,11 @@ extern float angle;
 extern long int sideLength;
 //extern float leftLength, rightLength;
 
-
-
 void setup(){
     encoderLEDInit();
     led_matrix_init();
     motorInit();
-    xbee_init();
+    //xbee_init();
     schedule_init();
     Serial.begin(9600);
     delay(3000);
@@ -26,17 +24,20 @@ void setup(){
 */
 int nowlen = 0;
 void loop(){
-    schedule();
+//    schedule();
 //    walk(50, 50);
-/*    command_execute(0x89);
+/*    alongLine(0, 0, 3000, 0);
+  turn(90, 1);*/
+    command_execute(0x88);
     command_execute(0x89);
+    
     command_execute(0x90);
     command_execute(0x91);
+    command_execute(0x92);
     command_execute(0x93);
     command_execute(0x94);
     command_execute(0x95);
-    command_execute(0x92);
     command_execute(0x96);
-    command_execute(0x97);*/
+    //command_execute(0x97)
 
 }

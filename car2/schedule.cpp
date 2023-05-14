@@ -72,70 +72,86 @@ void command_execute(byte c)
     delay(1000);
     getEncoder();
     subangle = angle - tempangle;
-    if(subangle>0&&subangle<90)
+    if (subangle < -90)
+        subangle += 360;
+    else if (subangle > 90)
+        subangle -= 360;
+    if(subangle>1)
     {
       turn(subangle ,1);
       }
-    else if(subangle<0&&subangle>-90)
+    else if(subangle<-1)
     {
       turn(fabs(subangle),0);
-      }
+    }
+    delay(200);
   }    
 
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
+    turn(88, 1);
+    delay(200);
+    alongLine(0, 0, 1000, 0);
+    delay(200);
     turn(180, 1);
+    delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 2, 6000, 0);
+    alongLine(0, 0, 6000, 0);
+    delay(200);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
+    turn(92, 0);
+    delay(200);
+    alongLine(0, 0, 6000, 0);
+    delay(200);
     turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 7500, 0);
-    delay(500);
-    turn(120, 0);
+    delay(200);
+    alongLine(0, 0, 4100, 0);
+    delay(200);
+    turn(90, 0);
+    delay(200);
   }
   // step6 冰球-car2从3到1
   if (c == 0x93)
   {
-    alongLine(0, 0, 3600, 0);
-    delay(500);
-    turn(120, 0);
-    delay(500);
+    alongLine(0, 0, 8000, 0);
+    delay(200);
+    turn(165, 0);
+    delay(200);
   }
   // step7 冰球-car2从1到3
   if (c == 0x94)
   {
-    alongLine(0, 0, 3600, 0);
-    delay(500);
-    turn(60, 1);
+    alongLine(0, 0, 8000, 0);
+    delay(200);
+    turn(75, 1);
+    delay(200);
   }
   // step8 冰球-car2直行+射门
   if (c == 0x95)
   {
-    alongLine(0, 0, 1500, 0);
-    delay(500);
-    turn(60, 1);
     alongLine(0, 0, 2000, 0);
+    delay(200);
+    turn(45, 1);
+    delay(200);
+    alongLine(0, 0, 3800, 0);
+    delay(200);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(30, 1);
-    delay(500);
-    alongLine(0, 0, 4000, 0);
-    delay(500);
+    turn(45, 1);
+    delay(200);
+    alongLine(0, 0, 4800, 0);
+    delay(200);
     turn(180, 1);
+    delay(200);
   }
   /*if (c == 0x95)
     {
