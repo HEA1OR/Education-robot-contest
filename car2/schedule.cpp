@@ -4,6 +4,8 @@
 extern float angle;
 volatile float count = 0;
 float delta;
+float tempangle;
+float subangle;
 float initAngle_;
 
 void schedule_init()
@@ -49,84 +51,118 @@ void command_execute(byte c)
   // step1  入场
   if (c == 0x88)
   {
-    alongLine(0, 0, 4000, 0);
+    alongLine(0, 0, 4300, 0);
+    delay(200);
+    turn(180,0);
+    delay(200);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongCurve(5000, -1, 90);
+    getEncoder();
+    tempangle = angle;
+    delay(1000); 
+    alongCurve(3600, 1, 90);
+    delay(1000);
+    alongCurve(3200, 1.2, 90);
+    delay(1000);
+    alongCurve(3200, 1.2, 90);
+    delay(1000);
+    alongCurve(3600, 1, 90);
+    delay(1000);
     delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    delay(500);
-    alongCurve(5000, -1, 90);
-    
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
     /*
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    */
-  }
+    
+    getEncoder();
+    subangle = angle - tempangle;
+    if (subangle < -90)
+        subangle += 360;
+    else if (subangle > 90)
+        subangle -= 360;
+    if(subangle>1)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-1)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    delay(200);
+  }    
 
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
+    turn(88, 1);
+    delay(200);
+    alongLine(0, 0, 500, 0);
+    delay(200);
     turn(180, 1);
+    delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 2, 6000, 0);
+    alongLine(0, 0, 6800, 0);
+    delay(200);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
+    turn(92, 0);
+    delay(200);
+    alongLine(0, 0, 5500, 0);
+    delay(200);
     turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 7500, 0);
-    delay(500);
-    turn(120, 0);
+    delay(200);
+    alongLine(0, 0, 4400, 0);
+    delay(200);
+    turn(90, 0);
+    delay(200);
   }
   // step6 冰球-car2从3到1
   if (c == 0x93)
   {
-    alongLine(0, 0, 3600, 0);
-    delay(500);
-    turn(120, 0);
-    delay(500);
+    alongLine(0, 0, 8000, 0);
+    delay(200);
+    turn(165, 0);
+    delay(200);
   }
   // step7 冰球-car2从1到3
   if (c == 0x94)
   {
-    alongLine(0, 0, 3600, 0);
-    delay(500);
-    turn(60, 1);
+    alongLine(0, 0, 7000, 0);
+    delay(200);
+    turn(70, 1);
+    delay(200);
   }
   // step8 冰球-car2直行+射门
   if (c == 0x95)
   {
-    alongLine(0, 0, 1500, 0);
-    delay(500);
-    turn(60, 1);
     alongLine(0, 0, 2000, 0);
+    delay(200);
+    turn(45, 1);
+    delay(200);
+    alongLine(0, 0, 3800, 0);
+    delay(200);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(30, 1);
-    delay(500);
-    alongLine(0, 0, 4000, 0);
-    delay(500);
+    turn(40, 1);
+    delay(200);
+    alongLine(0, 0, 4800, 0);
+    delay(200);
     turn(180, 1);
+    delay(200);
   }
   /*if (c == 0x95)
     {

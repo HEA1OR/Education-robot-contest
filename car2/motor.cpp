@@ -32,7 +32,7 @@ void walk(float left_speed, float right_speed)
   //骅哥采取的代码是,左轮在1500的基础上减，右轮在1500的基础上加，这样就是后驱
 ////////////////////////  adjust  //////////////////////////////////
   left_speed *= 1.18;
-  right_speed *= 1.18;
+  right_speed *= 1.20;
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);
   right_speed = min(right_speed, 400);
@@ -333,6 +333,6 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
 }
 
 
-void alongCurve(int setDistance, float setBias,  float angleToTurn, int mode = 0){
-  alongLine(setDistance, mode, -1, setBias, angleToTurn);
+void alongCurve(int setTime, float setBias,  float angleToTurn, int mode = 0){
+  alongLine(0, mode, setTime, 0, -1, setBias=setBias, angleToTurn=angleToTurn);
 }

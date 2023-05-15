@@ -53,18 +53,34 @@ void command_execute(byte c)
   // step1  入场
   if (c == 0x88)
   {
-    alongLine(0, 0, 4000, 0);
+    alongLine(0, 0, 3600, 0);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    for (int i=1;i<=11;i++)
+    getEncoder();
+    float tempangle = angle;
+    for (int i=1;i<=20;i++)
     {
       turn(89, 0);
       delay(200);
     }
-    turn(89, 0);
     delay(200);
+    /*
+    getEncoder();
+    float subangle = angle - tempangle;
+    if (subangle < -90)
+        subangle += 360;
+    else if (subangle > 90)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }*/
     /*
     turn(180, 1);
     delay(200);
@@ -79,7 +95,7 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 900, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -115,7 +131,8 @@ void command_execute(byte c)
   // step7 冰球-car3直行接球
   if (c == 0x94)
   {
-    alongLine(0, 0, 3200, 0);
+    delay(3000);
+    alongLine(0, 0, 3500, 0);
     delay(200);
   }
   // step8 冰球-car3直行

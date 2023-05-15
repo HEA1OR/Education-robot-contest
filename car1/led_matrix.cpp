@@ -18,8 +18,6 @@ void sendData2(byte data)
 	led_matrix_serial.write(data);
 	led_matrix_serial.flush();
 }
-
-
 byte getData2()
 {
 	byte data = -1;
