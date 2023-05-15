@@ -25,6 +25,7 @@ void encoderLEDInit(){
     pinMode(MOSI, INPUT);
     pinMode(LEDModePin0, OUTPUT);
     pinMode(LEDModePin1, OUTPUT);
+    
     //将使能端设置为低电平，使其工作
     digitalWrite(SS, LOW);
 
