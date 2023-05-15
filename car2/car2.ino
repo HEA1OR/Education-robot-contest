@@ -9,7 +9,7 @@
 extern float angle;
 extern long int sideLength;
 //extern float leftLength, rightLength;
-
+ 
 void setup(){
     encoderLEDInit();
     led_matrix_init();
@@ -25,7 +25,7 @@ int nowlen = 0;
 void loop(){
 //    alongLine(0, 0, 5000, 0);
 //    turn(90,0);
-//    schedule();
+    schedule();
   // walk(50, 50);
 //    setLightMode(7);
 //    delay(5000);
@@ -51,7 +51,7 @@ void loop(){
       turn(fabs(subangle),0);
     }
 */
-
+/*
     command_execute(0x88);
     command_execute(0x89);
     command_execute(0x90);
@@ -62,5 +62,5 @@ void loop(){
     command_execute(0x95);
     command_execute(0x96); 
     command_execute(0x97);
-    
+    */
 }

@@ -56,7 +56,7 @@ void command_execute(byte c)
   // step1  入场
   if (c == 0x88)
   {
-    alongLine(0, 0, 4000, 0);
+    alongLine(0, 0, 4300, 0);
     delay(200);
   }
   // step2  花滑
@@ -87,15 +87,31 @@ void command_execute(byte c)
     {
       turn(fabs(subangle),0);
       }
-    /*
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    delay(500);
-    turn(180, 1);
-    */
+    getEncoder();
+    tempangle = angle;
+    delay(1000);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    getEncoder();
+    subangle = angle - tempangle;
+    if (subangle < -90)
+        subangle += 360;
+    else if (subangle > 90)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }
   }
 
   // step3 花滑to冰壶
@@ -103,16 +119,20 @@ void command_execute(byte c)
   {
  //   turn(180, 1);
     delay(200);
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 500, 0);
     delay(200);
-    turn(45, 1);
+    turn(90, 1);
     delay(200);
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 800, 0);
+    delay(200);
+    turn(45, 0);
+    delay(200);
+    //alongLine(0, 0, 1000, 0);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    delay(5800);
+    delay(6800);
     alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球

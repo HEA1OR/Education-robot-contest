@@ -29,7 +29,7 @@ void setup(){
 int nowlen = 0;
 void loop(){
 //    Serial.println("ok");
- //    schedule();
+     schedule();
  //   turn(90, 0);
  //   alongLine(0, 0, 4000, 0);
  //     walk(100, 100);
@@ -38,6 +38,7 @@ void loop(){
     turn_test(183, 0);
     delay(2000); */
   //   command_execute  (0x98);
+  /*
     command_execute  (0x88);
    command_execute  (0x89);
    command_execute  (0x90);
@@ -47,5 +48,5 @@ void loop(){
     command_execute  (0x94);
     command_execute  (0x95);// step8 冰球-car4向car2移动（追球）
     command_execute  (0x96); // step9 冰球to颁奖
-    command_execute  (0x97);
+    command_execute  (0x97);*/
 }

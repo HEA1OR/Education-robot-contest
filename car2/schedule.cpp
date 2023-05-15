@@ -51,7 +51,7 @@ void command_execute(byte c)
   // step1  入场
   if (c == 0x88)
   {
-    alongLine(0, 0, 4000, 0);
+    alongLine(0, 0, 4300, 0);
     delay(200);
     turn(180,0);
     delay(200);
@@ -70,6 +70,17 @@ void command_execute(byte c)
     delay(1000);
     alongCurve(3600, 1, 90);
     delay(1000);
+    delay(500);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    /*
+    
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)
@@ -83,7 +94,7 @@ void command_execute(byte c)
     else if(subangle<-1)
     {
       turn(fabs(subangle),0);
-    }
+    }*/
     delay(200);
   }    
 
@@ -92,7 +103,7 @@ void command_execute(byte c)
   {
     turn(88, 1);
     delay(200);
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 500, 0);
     delay(200);
     turn(180, 1);
     delay(200);
@@ -100,7 +111,7 @@ void command_execute(byte c)
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 6800, 0);
     delay(200);
   }
   // step5 冰壶to冰球
@@ -108,11 +119,11 @@ void command_execute(byte c)
   {
     turn(92, 0);
     delay(200);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 5500, 0);
     delay(200);
     turn(90, 0);
     delay(200);
-    alongLine(0, 0, 4100, 0);
+    alongLine(0, 0, 4400, 0);
     delay(200);
     turn(90, 0);
     delay(200);
@@ -128,9 +139,9 @@ void command_execute(byte c)
   // step7 冰球-car2从1到3
   if (c == 0x94)
   {
-    alongLine(0, 0, 8000, 0);
+    alongLine(0, 0, 7000, 0);
     delay(200);
-    turn(75, 1);
+    turn(70, 1);
     delay(200);
   }
   // step8 冰球-car2直行+射门
@@ -146,7 +157,7 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(45, 1);
+    turn(40, 1);
     delay(200);
     alongLine(0, 0, 4800, 0);
     delay(200);

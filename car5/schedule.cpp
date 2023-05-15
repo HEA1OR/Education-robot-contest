@@ -55,29 +55,29 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
-    delay(500);
+    delay(200);
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongLine(0, 0, 4000, 0);
-    delay(500);
-    turn(90, 0);
-    delay(500);
+    alongLine(0, 0, 3500, 0);
+    delay(200);
+    turn(89.5, 0);
+    delay(200);
     alongLine(0, 0, 9000, 0);
-    delay(500);
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 8000, 0);
-    delay(500);
-    turn(90, 0);
-    delay(500);
+    delay(200);
+    turn(89.5, 0);
+    delay(200);
+    alongLine(0, 0, 7000, 0);
+    delay(200);
+    turn(89.5, 0);
+    delay(200);
     alongLine(0, 0, 9000, 0);
-     delay(500);
-    turn(88, 0);
-    delay(500);
-    alongLine(0, 0, 4000, 0);
-    delay(500);
+    delay(200);
+    turn(89.5, 0);
+    delay(200);
+    alongLine(0, 0, 3500, 0);
+    delay(200);
     
     /*
     turn(180, 1);
@@ -93,14 +93,14 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(90, 0);
-    delay(500);
-    alongLine(0, 0, 1500, 0);
-    delay(500);
-    turn(135, 0);
-    delay(500);
-    alongLine(0, 0, 1000, 0);
-    delay(500);
+    turn(180, 1);
+    delay(200);
+    alongLine(0, 0, 1200, 0);
+    delay(200);
+    turn(45, 0);
+    delay(200);
+    //alongLine(0, 0, 1000, 0);
+    //delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
@@ -112,19 +112,19 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     turn(45, 1);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 500, 0);
-    delay(500);
+    delay(200);
     turn(88, 1);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 2000, 0);
-    delay(500);
+    delay(200);
   }
   // step6 冰球-car5向car1移动
   if (c == 0x93)
   {
     delay(1000);
-    alongLine(0, 0, 1500, 0);
+    alongLine(0, 0, 2000, 0);
   }
   // step7 冰球-car5向car3移动
   if (c == 0x94)
@@ -137,7 +137,7 @@ void command_execute(byte c)
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
   {
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 1500, 0);
     delay(1000);
     turn(90, 1);
     delay(500);
