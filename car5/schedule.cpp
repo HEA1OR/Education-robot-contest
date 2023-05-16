@@ -76,7 +76,7 @@ void command_execute(byte c)
     delay(200);
     turn(89.5, 0);
     delay(200);
-    alongLine(0, 0, 3500, 0);
+    alongLine(0, 0, 2200, 0);
     delay(200);
     
     /*
@@ -92,12 +92,15 @@ void command_execute(byte c)
 
   // step3 花滑to冰壶
   if (c == 0x90)
-  {
+  {/*
     turn(180, 1);
     delay(200);
     alongLine(0, 0, 1200, 0);
     delay(200);
     turn(45, 0);
+    delay(200);
+    */
+    turn(135, 1);
     delay(200);
     //alongLine(0, 0, 1000, 0);
     //delay(200);
@@ -105,7 +108,7 @@ void command_execute(byte c)
   // step4 冰壶
   if (c == 0x91)
   {
-    delay(5800);
+    delay(7500);
     alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
@@ -123,37 +126,37 @@ void command_execute(byte c)
   // step6 冰球-car5向car1移动
   if (c == 0x93)
   {
-    delay(1000);
+    delay(5000);
     alongLine(0, 0, 2000, 0);
   }
   // step7 冰球-car5向car3移动
   if (c == 0x94)
   {
-    delay(1000);
+    delay(6000);
     turn(90, 1);
-    delay(1500);
-    alongLine(0, 0, 3000, 0);
+    delay(2000);
+    alongLine(0, 0, 1200, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
   {
-    alongLine(0, 0, 1500, 0);
-    delay(1000);
+    alongLine(0, 0, 1000, 0);
+    delay(1500);
     turn(90, 1);
-    delay(500);
+    delay(1500);
     alongLine(0, 0, 1000, 0);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(180, 1);
-    delay(500);
-    alongLine(0, 0, 1000, 0);
-    delay(500);
-    turn(91, 0);
-    delay(500);
-    alongLine(0, 0, 6000, 0);
-    delay(500);
+    //turn(180, 1);
+    //delay(200);
+    //alongLine(0, 0, 500, 0);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    alongLine(0, 0, 3000, 0);
+    delay(200);
     turn(180, 1);
   }
   /*if (c == 0x95)

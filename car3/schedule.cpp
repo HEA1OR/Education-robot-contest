@@ -95,7 +95,8 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    alongLine(0, 0, 900, 0);
+    delay(1000);
+    alongLine(0, 0, 3000, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -115,11 +116,11 @@ void command_execute(byte c)
   {
     turn(92, 0);
     delay(200);
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 1600, 0);
     delay(200);
     turn(89, 0);
     delay(200);
-    alongLine(0, 0, 4200, 0);
+    alongLine(0, 0, 4300, 0);
     delay(200);
     turn(180, 1);
   }
@@ -132,13 +133,14 @@ void command_execute(byte c)
   if (c == 0x94)
   {
     delay(3000);
-    alongLine(0, 0, 3500, 0);
+    alongLine(0, 0, 2700, 0);
     delay(200);
   }
   // step8 冰球-car3直行
   if (c == 0x95)
   {
-    alongLine(0, 0, 1200, 0);
+    //delay(1000);
+    alongLine(0, 0, 2000, 0);
     delay(200);
   }
   // step9 冰球to颁奖
@@ -146,11 +148,11 @@ void command_execute(byte c)
   {
     turn(180, 1);
     delay(200);
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 3800, 0);
     delay(200);
     turn(89, 0);
     delay(200);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 8500, 0);
     delay(200);
     turn(178, 1);
     delay(200);
