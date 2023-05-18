@@ -4,7 +4,7 @@
 extern float angle;
 volatile float count = 0;
 float delta;
-float initAngle_;
+float initAngle_, subangle;
 int command = 0;
 
 void schedule_init()
@@ -55,37 +55,54 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
-    delay(500);
+    delay(200);
     turn(180, 1);
+    delay(200);
+    getEncoder();
+    initAngle_ = angle;
   }
   // step2  花滑
   if (c == 0x89)
   {
-    alongLine(0, 0, 4000, 0);
-    delay(500);
+    alongLine(0, 0, 3500, 0);
+    delay(200);
     turn(88, 0);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 9000, 0);
-    delay(500);
+    delay(200);
     turn(88, 0);
-    delay(500);
-    alongLine(0, 0, 8000, 0);
-    delay(500);
+    delay(200);
+    alongLine(0, 0, 7000, 0);
+    delay(200);
     turn(88, 0);
-    delay(500);
+    delay(200);
     alongLine(0, 0, 9000, 0);
-     delay(500);
+     delay(200);
     turn(88, 0);
-    delay(500);
-    alongLine(0, 0, 4000, 0);
-    
+    delay(200);
+    alongLine(0, 0, 3600, 0);
+    delay(200);
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -90)
+        subangle += 360;
+    else if (subangle > 90)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }
     /*
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
     */
   }
@@ -93,38 +110,40 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(90, 0);
-    delay(500);
-    /*
-    alongLine(0, 0, 2500, 0);
-    delay(500);
+    turn(90, 1);
+    delay(200);
+    alongLine(0, 0, 1200, 0);
+    delay(200);
     turn(180, 1);
+    /*
+    alongLine(0, 0, 2200, 0);
+    
     */
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 3300, 0);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
     turn(90, 1);
-    delay(500);
-    alongLine(0, 0, 3000, 0);
-    delay(500);
+    delay(200);
+    alongLine(0, 0, 3500, 0);
+    delay(200);
     turn(90, 1);
-    delay(500);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
+    delay(200);
+    alongLine(0, 0, 2200, 0);
+    delay(200);
     turn(180, 1);
   }
   // step6 冰球-car1接球
   if (c == 0x93)
   {
-    delay(2000);    // 等球跑一会
+    delay(5000);    // 等球跑一会
     alongLine(0, 0, 2000, 0);
-    delay(500);
+    delay(1600);
     turn(60, 0);
   }
   // step7 冰球-car1不动
@@ -141,10 +160,10 @@ void command_execute(byte c)
   if (c == 0x96)
   {
     turn(120, 0);
-    delay(500);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
-    turn(180, 1);
+    delay(200);
+    alongLine(0, 0, 1700, 0);
+    delay(200);
+    turn(90, 1);
   }
   /*if (c == 0x95)
     {
@@ -154,21 +173,21 @@ void command_execute(byte c)
   if (c == 0x97)
   {
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
     turn(180, 1);
-    delay(500);
+    delay(200);
   }
 
 }

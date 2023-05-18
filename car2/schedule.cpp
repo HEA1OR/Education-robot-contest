@@ -76,11 +76,11 @@ void command_execute(byte c)
         subangle += 360;
     else if (subangle > 90)
         subangle -= 360;
-    if(subangle>1)
+    if(subangle>0.4)
     {
       turn(subangle ,1);
       }
-    else if(subangle<-1)
+    else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
     }
@@ -101,11 +101,11 @@ void command_execute(byte c)
         subangle += 360;
     else if (subangle > 90)
         subangle -= 360;
-    if(subangle>1)
+    if(subangle>0.4)
     {
       turn(subangle ,1);
       }
-    else if(subangle<-1)
+    else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
     }
@@ -114,27 +114,27 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    turn(88, 0);
-    delay(200);
-    alongLine(0, 0, 500, 0);
-    delay(200);
-    turn(88, 1);
+    turn(90, 0);
     delay(200);
     alongLine(0, 0, 800, 0);
     delay(200);
-    turn(88, 1);
+    turn(90, 1);
+    delay(200);
+    alongLine(0, 0, 800, 0);
+    delay(200);
+    turn(90, 1);
     delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 6300, 0);
     delay(200);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
-    turn(92, 0);
+    turn(90, 0);
     delay(1500);
     alongLine(0, 0, 4000, 0);
     delay(200);

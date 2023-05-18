@@ -4,7 +4,7 @@
 extern float angle;
 volatile float count = 0;
 float delta;
-float initAngle_;
+float initAngle_, subangle;
 int command = 0;
 
 void schedule_init()
@@ -22,7 +22,7 @@ led_matrix_init();
   close_flash();
 //  open_flash('A');
   getEncoder();
-  
+  initAngle_ = angle;
   delta=angle-180;
 }
 
@@ -156,6 +156,20 @@ void command_execute(byte c)
     delay(200);
     turn(178, 1);
     delay(200);
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }
   }
   /*if (c == 0x95)
     {

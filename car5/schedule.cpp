@@ -4,7 +4,7 @@
 extern float angle;
 volatile float count = 0;
 float delta;
-float initAngle_;
+float initAngle_, subangle;
 int command = 0;
 
 void schedule_init()
@@ -22,7 +22,7 @@ void schedule_init()
   close_flash();
   //  open_flash('A');
   getEncoder();
-
+  initAngle_ = angle;
   delta = angle - 180;
 }
 
@@ -134,8 +134,8 @@ void command_execute(byte c)
   {
     delay(6000);
     turn(90, 1);
-    delay(2000);
-    alongLine(0, 0, 1200, 0);
+    delay(2400);
+    alongLine(0, 0, 1300, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
@@ -152,13 +152,30 @@ void command_execute(byte c)
     //turn(180, 1);
     //delay(200);
     //alongLine(0, 0, 500, 0);
-    delay(200);
+    delay(200);    
     turn(90, 1);
     delay(200);
     alongLine(0, 0, 3000, 0);
     delay(200);
     turn(180, 1);
-  }
+    delay(200);
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }
+    delay(200);
+  }    
+
   /*if (c == 0x95)
     {
     open_flash('A');

@@ -223,6 +223,17 @@ void alongLine(int setDistance, int mode = 0, int setTime = 10000, int reverse =
           sumErrorA += errorA;
 ////////////////////////  adjust  //////////////////////////////////
         // 一般当小车大幅度抖动甚至转圈时，需要调整此中参数，或者可以加入更多分段
+        /*if(errorA < 2){ // error较小表明小车无较大偏差
+          K_p = 100;
+          K_i = 0;
+          K_d = 0;
+        }
+        else{ // 否则小车偏差较大，需要调整
+          K_p = 30;
+          K_i = 10;
+          K_d = 60;
+        }*/
+        
         if(errorA < 1){ // error较小表明小车无较大偏差
           K_p = 150;
           K_i = 0;
