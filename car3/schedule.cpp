@@ -96,7 +96,7 @@ void command_execute(byte c)
   if (c == 0x90)
   {
     delay(1000);
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 1500, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -116,7 +116,7 @@ void command_execute(byte c)
   {
     turn(92, 0);
     delay(200);
-    alongLine(0, 0, 1600, 0);
+    alongLine(0, 0, 3100, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -146,6 +146,28 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    turn(90, 1);
+    delay(3000);
+    alongLine(0, 0, 5500, 0);
+    delay(200);
+    turn(180, 1);
+    delay(200);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }*/
+    /*
     turn(180, 1);
     delay(200);
     alongLine(0, 0, 3800, 0);
@@ -169,7 +191,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-      }
+      }*/
   }
   /*if (c == 0x95)
     {
@@ -178,7 +200,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    alongLine(0, 0, 3000, 0);
+    //alongLine(0, 0, 3000, 0);
     delay(200);
     /* 
      *  =============

@@ -75,9 +75,9 @@ void command_execute(byte c)
     delay(200);
     getEncoder();
     subangle = angle - tempangle;
-    if (subangle < -90)
+    if (subangle < -300)
         subangle += 360;
-    else if (subangle > 90)
+    else if (subangle > 300)
         subangle -= 360;
     if(subangle>0.4)
     {
@@ -99,8 +99,9 @@ void command_execute(byte c)
     delay(200);
     turn(90, 1);
     delay(200);
-    turn(90, 1);
+    turn(84, 1);
     delay(200);
+    /*
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)
@@ -114,7 +115,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-      }
+      }*/
   }
 
   // step3 花滑to冰壶
@@ -124,7 +125,7 @@ void command_execute(byte c)
     delay(200);
     alongLine(0, 0, 1800, 0);
     delay(200);
-    turn(90, 1);
+    turn(88, 1);
     delay(200);
     alongLine(0, 0, 1400, 0);
     delay(200);
@@ -146,7 +147,7 @@ void command_execute(byte c)
     delay(200);  
     alongLine(0, 0, 1500, 0);
     delay(200);*/
-    turn(145, 0);
+    turn(135, 0);
     delay(6500);
     alongLine(0, 0, 2000, 0);
     delay(200);
@@ -162,27 +163,61 @@ void command_execute(byte c)
   if (c == 0x94)
   {
     delay(6000);
-    turn(148, 1);
+    turn(146, 1);
+    delay(200);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
     delay(2000);
     alongLine(0, 0, 1400, 0);
   }
   // step8 冰球-car4向car2移动（追球）
   if (c == 0x95)
   {
+    delay(2000);
     alongLine(0, 0, 1000, 0);
     delay(1500);
-    turn(83, 1);
+    turn(85, 1);
     delay(1500);
     alongLine(0, 0, 1000, 0);
+    delay(200);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
-    turn(180, 1);
+    turn(176, 1);
     delay(200);
     alongLine(0, 0, 2000, 0);
     delay(200);
-    turn(90, 0);
+    turn(87, 1);
+    delay(200);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    /*
     delay(200);
     alongLine(0, 0, 6000, 0);
     delay(200);
@@ -201,7 +236,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-    }
+    }*/
     delay(200);
   }
   /*if (c == 0x95)
@@ -211,7 +246,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    alongLine(0, 0, 4500, 0);
+    //alongLine(0, 0, 4500, 0);
     delay(200);
     /* 
      *  =============

@@ -134,12 +134,29 @@ void command_execute(byte c)
   {
     delay(6000);
     turn(90, 1);
+    delay(200);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
     delay(2400);
     alongLine(0, 0, 1300, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
   {
+    delay(2000);
     alongLine(0, 0, 1000, 0);
     delay(1500);
     turn(90, 1);
@@ -152,6 +169,28 @@ void command_execute(byte c)
     //turn(180, 1);
     //delay(200);
     //alongLine(0, 0, 500, 0);
+    turn(180, 1);
+    delay(200);
+    alongLine(0, 0, 5000, 0);
+    delay(200);
+    turn(90, 1);
+    delay(200);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    /*
     delay(200);    
     turn(90, 1);
     delay(200);
@@ -172,7 +211,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-    }
+    }*/
     delay(200);
   }    
 
@@ -183,7 +222,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    alongLine(0, 0, 3000, 0);
+    //alongLine(0, 0, 3000, 0);
     delay(500);
     /* 
      *  =============

@@ -135,7 +135,7 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     turn(90, 0);
-    delay(1500);
+    delay(2500);
     alongLine(0, 0, 4000, 0);
     delay(200);
     turn(90, 0);
