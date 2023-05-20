@@ -4,7 +4,7 @@
 extern float angle;
 volatile float count = 0;
 float delta;
-float initAngle_;
+float initAngle_, subangle;
 int command = 0;
 
 void schedule_init()
@@ -22,7 +22,7 @@ led_matrix_init();
   close_flash();
 //  open_flash('A');
   getEncoder();
-  
+  initAngle_ = angle;
   delta=angle-180;
 }
 
@@ -95,7 +95,8 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
-    alongLine(0, 0, 900, 0);
+    delay(1000);
+    alongLine(0, 0, 2200, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -115,11 +116,11 @@ void command_execute(byte c)
   {
     turn(92, 0);
     delay(200);
-    alongLine(0, 0, 3000, 0);
+    alongLine(0, 0, 2400, 0);
     delay(200);
     turn(89, 0);
     delay(200);
-    alongLine(0, 0, 4200, 0);
+    alongLine(0, 0, 4300, 0);
     delay(200);
     turn(180, 1);
   }
@@ -132,28 +133,65 @@ void command_execute(byte c)
   if (c == 0x94)
   {
     delay(3000);
-    alongLine(0, 0, 3500, 0);
+    alongLine(0, 0, 2700, 0);
     delay(200);
   }
   // step8 冰球-car3直行
   if (c == 0x95)
   {
-    alongLine(0, 0, 1200, 0);
+    //delay(1000);
+    alongLine(0, 0, 2000, 0);
     delay(200);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    turn(90, 1);
+    delay(3000);
+    alongLine(0, 0, 5500, 0);
+    delay(200);
     turn(180, 1);
     delay(200);
-    alongLine(0, 0, 2000, 0);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }*/
+    /*
+    turn(180, 1);
+    delay(200);
+    alongLine(0, 0, 3800, 0);
     delay(200);
     turn(89, 0);
     delay(200);
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 8500, 0);
     delay(200);
     turn(178, 1);
     delay(200);
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+      }*/
   }
   /*if (c == 0x95)
     {
@@ -162,7 +200,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    alongLine(0, 0, 3000, 0);
+    //alongLine(0, 0, 3000, 0);
     delay(200);
     /* 
      *  =============

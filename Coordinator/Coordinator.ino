@@ -29,19 +29,19 @@ void loop() {
   Serial.write(0x90);
   Serial.flush();
   Serial.println(90);
-  delay(15000);
+  delay(20000);
   
   // step4 冰壶
   Serial.flush();
   Serial.write(0x91);
   Serial.flush();
-  delay(8000);
+  delay(13000);
 
   // step5 冰壶to冰球
   Serial.flush();
   Serial.write(0x92);
   Serial.flush();
-  delay(20000);
+  delay(25000);
 
   // step6 冰球1
   Serial.flush();
@@ -53,19 +53,19 @@ void loop() {
   Serial.flush();
   Serial.write(0x94);
   Serial.flush();
-  delay(12000);
+  delay(13000);
   
   // step8 冰球
   Serial.flush();
   Serial.write(0x95);
   Serial.flush();
-  delay(8000);
+  delay(18000);
 
   // step9 冰球to颁奖
   Serial.flush();
   Serial.write(0x96);
   Serial.flush();
-  delay(9000);
+  delay(30000);
 
   // step 5 颁奖
   Serial.flush();

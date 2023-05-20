@@ -4,7 +4,7 @@
 extern float angle;
 volatile float count = 0;
 float delta;
-float initAngle_;
+float initAngle_, subangle;
 int command = 0;
 
 void schedule_init()
@@ -22,7 +22,7 @@ void schedule_init()
   close_flash();
   //  open_flash('A');
   getEncoder();
-
+  initAngle_ = angle;
   delta = angle - 180;
 }
 
@@ -55,29 +55,29 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
-    delay(200);
+    delay(500);
   }
   // step2  花滑
   if (c == 0x89)
   {
     alongLine(0, 0, 3500, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 9000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 7000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 9000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
-    alongLine(0, 0, 3500, 0);
-    delay(200);
+    delay(500);
+    alongLine(0, 0, 2500, 0);
+    delay(500);
     
     /*
     turn(180, 1);
@@ -92,70 +92,129 @@ void command_execute(byte c)
 
   // step3 花滑to冰壶
   if (c == 0x90)
-  {
+  {/*
     turn(180, 1);
     delay(200);
     alongLine(0, 0, 1200, 0);
     delay(200);
     turn(45, 0);
     delay(200);
+    */
+    turn(135, 1);
+    delay(500);
     //alongLine(0, 0, 1000, 0);
     //delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
   {
-    delay(5800);
+    delay(7500);
     alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
     turn(45, 1);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 500, 0);
-    delay(200);
+    delay(500);
     turn(88, 1);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 2000, 0);
-    delay(200);
+    delay(500);
   }
   // step6 冰球-car5向car1移动
   if (c == 0x93)
   {
-    delay(1000);
+    delay(5000);
     alongLine(0, 0, 2000, 0);
   }
   // step7 冰球-car5向car3移动
   if (c == 0x94)
   {
-    delay(1000);
+    delay(6000);
     turn(90, 1);
-    delay(1500);
-    alongLine(0, 0, 3000, 0);
+    delay(500);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    delay(2400);
+    alongLine(0, 0, 1300, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
   {
-    alongLine(0, 0, 1500, 0);
-    delay(1000);
+    delay(2000);
+    alongLine(0, 0, 1000, 0);
+    delay(1500);
     turn(90, 1);
-    delay(500);
+    delay(1500);
     alongLine(0, 0, 1000, 0);
   }
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    //turn(180, 1);
+    //delay(200);
+    //alongLine(0, 0, 500, 0);
     turn(180, 1);
     delay(500);
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 5000, 0);
     delay(500);
-    turn(91, 0);
+    turn(90, 1);
     delay(500);
-    alongLine(0, 0, 6000, 0);
-    delay(500);
+    /*
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    /*
+    delay(200);    
+    turn(90, 1);
+    delay(200);
+    alongLine(0, 0, 3000, 0);
+    delay(200);
     turn(180, 1);
-  }
+    delay(200);
+    getEncoder();
+    subangle = angle - initAngle_;
+    if (subangle < -300)
+        subangle += 360;
+    else if (subangle > 300)
+        subangle -= 360;
+    if(subangle>0.4)
+    {
+      turn(subangle ,1);
+      }
+    else if(subangle<-0.4)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    delay(500);
+  }    
+
   /*if (c == 0x95)
     {
     open_flash('A');
@@ -163,7 +222,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    alongLine(0, 0, 3000, 0);
+    //alongLine(0, 0, 3000, 0);
     delay(500);
     /* 
      *  =============

@@ -30,6 +30,8 @@ void loop(){
     schedule();
 //    turn(90, 0);
 //   walk(50, 50);
+//    alongLine(0, 0, 6000, 0);
+//    delay(500);
 //    alongCurve(5000, 1, 60);
 /*
     command_execute(0x88);

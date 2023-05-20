@@ -26,7 +26,7 @@ void loop(){
 //    alongLine(0, 0, 5000, 0);
 //    turn(90,0);
     schedule();
-  // walk(50, 50);
+//      walk(50, 50);
 //    setLightMode(7);
 //    delay(5000);
 //    setLightMode(0);

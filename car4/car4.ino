@@ -17,9 +17,9 @@ void setup(){
     encoderLEDInit();
     led_matrix_init();
     motorInit();
-//    xbee_init();
+    xbee_init();
 
- //    schedule_init();
+    schedule_init();
     Serial.begin(9600);
     delay(3000);
 }
@@ -32,7 +32,7 @@ void loop(){
      schedule();
  //   turn(90, 0);
  //   alongLine(0, 0, 4000, 0);
- //     walk(100, 100);
+//     walk(100, 100);
 /*     turn_test(183, 0);
     delay(2000);
     turn_test(183, 0);
