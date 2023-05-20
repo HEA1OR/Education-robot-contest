@@ -66,11 +66,11 @@ void command_execute(byte c)
   {
     alongLine(0, 0, 3500, 0);
     delay(200);
-    turn(88, 0);
+    turn(89, 0);
     delay(200);
     alongLine(0, 0, 9000, 0);
     delay(200);
-    turn(88, 0);
+    turn(91, 0);
     delay(200);
     alongLine(0, 0, 7000, 0);
     delay(200);
@@ -80,8 +80,8 @@ void command_execute(byte c)
      delay(200);
     turn(88, 0);
     delay(200);
-    alongLine(0, 0, 3600, 0);
-    delay(200);
+    alongLine(0, 0, 2000, 0);
+    delay(500);
     getEncoder();
     subangle = angle - initAngle_;
     if (subangle < -90)
@@ -112,7 +112,7 @@ void command_execute(byte c)
   {
     turn(90, 1);
     delay(200);
-    alongLine(0, 0, 1200, 0);
+    alongLine(0, 0, 800, 0);
     delay(200);
     turn(180, 1);
     /*
@@ -130,7 +130,7 @@ void command_execute(byte c)
   {
     turn(90, 1);
     delay(200);
-    alongLine(0, 0, 3500, 0);
+    alongLine(0, 0, 4000, 0);
     delay(200);
     turn(90, 1);
     delay(200);

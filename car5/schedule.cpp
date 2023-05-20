@@ -55,29 +55,29 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     alongLine(0, 0, 4000, 0);
-    delay(200);
+    delay(500);
   }
   // step2  花滑
   if (c == 0x89)
   {
     alongLine(0, 0, 3500, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 9000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 7000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 9000, 0);
-    delay(200);
+    delay(500);
     turn(89.5, 0);
-    delay(200);
-    alongLine(0, 0, 2200, 0);
-    delay(200);
+    delay(500);
+    alongLine(0, 0, 2500, 0);
+    delay(500);
     
     /*
     turn(180, 1);
@@ -101,7 +101,7 @@ void command_execute(byte c)
     delay(200);
     */
     turn(135, 1);
-    delay(200);
+    delay(500);
     //alongLine(0, 0, 1000, 0);
     //delay(200);
   }
@@ -115,13 +115,13 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     turn(45, 1);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 500, 0);
-    delay(200);
+    delay(500);
     turn(88, 1);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 2000, 0);
-    delay(200);
+    delay(500);
   }
   // step6 冰球-car5向car1移动
   if (c == 0x93)
@@ -134,7 +134,7 @@ void command_execute(byte c)
   {
     delay(6000);
     turn(90, 1);
-    delay(200);
+    delay(500);
     /*
     getEncoder();
     subangle = angle - initAngle_;
@@ -170,11 +170,11 @@ void command_execute(byte c)
     //delay(200);
     //alongLine(0, 0, 500, 0);
     turn(180, 1);
-    delay(200);
+    delay(500);
     alongLine(0, 0, 5000, 0);
-    delay(200);
+    delay(500);
     turn(90, 1);
-    delay(200);
+    delay(500);
     /*
     getEncoder();
     subangle = angle - initAngle_;
@@ -212,7 +212,7 @@ void command_execute(byte c)
     {
       turn(fabs(subangle),0);
     }*/
-    delay(200);
+    delay(500);
   }    
 
   /*if (c == 0x95)

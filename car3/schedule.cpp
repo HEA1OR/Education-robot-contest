@@ -96,7 +96,7 @@ void command_execute(byte c)
   if (c == 0x90)
   {
     delay(1000);
-    alongLine(0, 0, 1500, 0);
+    alongLine(0, 0, 2200, 0);
     delay(200);
     turn(89, 0);
     delay(200);
@@ -116,7 +116,7 @@ void command_execute(byte c)
   {
     turn(92, 0);
     delay(200);
-    alongLine(0, 0, 3100, 0);
+    alongLine(0, 0, 2400, 0);
     delay(200);
     turn(89, 0);
     delay(200);

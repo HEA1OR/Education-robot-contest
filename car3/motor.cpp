@@ -31,8 +31,8 @@ void walk(float left_speed, float right_speed)
 {
   //骅哥采取的代码是,左轮在1495的基础上减，右轮在1495的基础上加，这样就是后驱
 ////////////////////////  adjust  //////////////////////////////////
-  left_speed *= 1.18;
-  right_speed *= 1.14;
+  left_speed *= 1.25;
+  right_speed *= 1.18;
 ////////////////////////////////////////////////////////////////////
   left_speed = min(left_speed, 400);
   right_speed = min(right_speed, 400);
