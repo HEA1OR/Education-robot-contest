@@ -33,7 +33,7 @@ int changeflag =0;
 int color;            //色彩改变变量
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
-int leftStartLight = 0;          // 左侧灯珠的起始位置
+int leftSt``artLight = 0;          // 左侧灯珠的起始位置
 int rightStartLight = 27;        // 右侧灯珠的起始位置
 int leftEndLight = 13;           // 左侧灯珠的结束位置
 int rightEndLight = 14;          // 右侧灯珠的结束位置

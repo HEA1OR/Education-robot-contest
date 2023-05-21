@@ -117,27 +117,27 @@ void loop (void)
       forword(124);
       tail(0);
   }
-  else if(mode == 1){           // 蓝色呼吸灯，电机停止
+  if(mode == 1){           // 蓝色呼吸灯，电机停止
     fadeinout(124, 15);
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
   }
-  else if(mode == 2){          //红色呼吸灯+小角度摇晃，用于冰球人物
+  if(mode == 2){          //红色呼吸灯+小角度摇晃，用于冰球人物
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);           
   }
-  else if(mode == 3){           //彩虹渐变+大角度摇晃
+  if(mode == 3){           //彩虹渐变+大角度摇晃
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, HIGH);
     rainbow();
   }
-  else if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
+  if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);
   }
-  else if(mode == 5){           //升旗+彩虹渐变
+  if(mode == 5){           //升旗+彩虹渐变
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     rainbow2();
@@ -145,12 +145,12 @@ void loop (void)
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
   }
-  else if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
+  if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
     fadeinout(50, 15);
   }
-  else if(mode == 7){             //随机变色+大角度摇晃
+  if(mode == 7){             //随机变色+大角度摇晃
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, HIGH);
     randomcolor();
@@ -251,7 +251,6 @@ void rainbow2(void){
   }
   // 灯串显示
   strip.show();
-  delay(2);
   // 彩虹色索引递增
   hueIndex++;
 }
@@ -269,7 +268,6 @@ void randomcolor(void){
   }
 
   strip.show();
-  delay(2);
 }
 
 void fadeinout(int colorTemp, int patial = 5){
