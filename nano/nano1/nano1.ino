@@ -34,7 +34,7 @@ int flag =90;
 int changeflag =0;
 int color;            //色彩改变变量
 int ranbowcolor = 0;
-int ranbowchange = 1;  //在0~LED_COUNT-1之间
+int ranbowchange = 0;  //在0~LED_COUNT-1之间
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
 int leftStartLight = 0;          // 左侧灯珠的起始位置
