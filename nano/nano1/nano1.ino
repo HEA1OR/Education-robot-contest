@@ -269,6 +269,7 @@ void randomcolor(void){
   }
 
   strip.show();
+  delay(2);
 }
 
 void fadeinout(int colorTemp, int patial = 5){
