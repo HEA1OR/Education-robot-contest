@@ -112,14 +112,14 @@ void loop (void)
       delay(4);
   }
 /////////////////////////////////////////////////////////////////////////////////////////
-  if(mode == 0){             //蓝色呼吸灯+小角度摇晃，用于冰壶冰球中的人物
+  if(mode == 0){             //蓝色跑马灯+小角度摇晃，用于冰壶冰球中的人物
       digitalWrite(nanopin0, LOW);
       digitalWrite(nanopin1, LOW);
-      fadeinout(124, 15);
+      forword(124);
+      tail(0);
   }
-  else if(mode == 1){           // 蓝色跑马灯，电机停止
-    forword(124);
-    tail(0);
+  else if(mode == 1){           // 蓝色呼吸灯，电机停止
+    fadeinout(124, 15);
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
   }

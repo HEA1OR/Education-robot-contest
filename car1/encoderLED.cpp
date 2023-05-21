@@ -48,7 +48,6 @@ void getEncoder(){
 
 void setLightMode(int x){
   // 译码法指定nano板上的LED灯模式
-  // 目前只接了两根线，能够输出四种模式
   // 还可以采用的方法：软件模拟串口通讯、SPI主从机通讯等
   // 因为时间原因选择了最简单的实现模式。
   if(x == 0){

@@ -55,12 +55,14 @@ void command_execute(byte c)
   // step1  入场
   if (c == 0x88)
   {
+    setLightMode(4);
     alongLine(0, 0, 4000, 0);
     delay(200);
   }
   // step2  花滑
   if (c == 0x89)
   {
+    setLightMode(7);
     getEncoder();
     tempangle = angle;
     delay(4300);
@@ -121,7 +123,8 @@ void command_execute(byte c)
   // step3 花滑to冰壶
   if (c == 0x90)
   {
- //   turn(180, 1);
+    setLightMode(4);
+    //   turn(180, 1);
     delay(200);
     alongLine(0, 0, 1800, 0);
     delay(200);
@@ -136,6 +139,7 @@ void command_execute(byte c)
   // step4 冰壶
   if (c == 0x91)
   {
+    setLightMode(4);
     delay(7500);
     alongLine(0, 0, 2000, 0);
   }
@@ -147,6 +151,7 @@ void command_execute(byte c)
     delay(200);  
     alongLine(0, 0, 1500, 0);
     delay(200);*/
+    setLightMode(4);
     turn(135, 0);
     delay(6500);
     alongLine(0, 0, 2000, 0);
