@@ -33,6 +33,8 @@ int val = 130;            //呼吸亮度变量
 int flag =90;
 int changeflag =0;
 int color;            //色彩改变变量
+int ranbowcolor = 0;
+int ranbowchange = 1;  //在0~LED_COUNT-1之间
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
 int leftStartLight = 0;          // 左侧灯珠的起始位置
@@ -212,21 +214,22 @@ void get_angle(void)
 
 void rainbow(void)  //添加彩虹效果/116
 {
-  for (int i = 0; i < 7; i++)
-  {
+  if(ranbowchange == LED_COUNT)
+  {ranbowcolor = ranbowcolor + 1;
+  ranbowchange = 0;}
+  if(ranbowcolor == 7) ranbowcolor = 0;
+  
     // 设置当前颜色
-    uint8_t red = rainbowColors[i][0];
-    uint8_t green = rainbowColors[i][1];
-    uint8_t blue = rainbowColors[i][2];
+  uint8_t red = rainbowColors[ranbowcolor][0];
+  uint8_t green = rainbowColors[ranbowcolor][1];
+  uint8_t blue = rainbowColors[ranbowcolor][2];
 
-    // 逐个点亮灯珠
-    for (int j = 0; j < LED_COUNT; j++)
-    {
-      strip.setPixelColor(j, red, green, blue);
-      strip.show();
-      delay(10); // 控制流动的速度
-    }
-  }
+  // 逐个点亮灯珠
+
+  strip.setPixelColor(ranbowchange, red, green, blue);
+  ranbowchange = ranbowchange + 1;
+  strip.show();
+ 
 }
 
 
@@ -246,13 +249,9 @@ void rainbow2(void){
       strip.setPixelColor(group * LEDS_PER_GROUP + i, red, green, blue);
     }
   }
-  
   // 灯串显示
   strip.show();
-  
-  // 延迟一段时间，控制流动速度
   delay(2);
-  
   // 彩虹色索引递增
   hueIndex++;
 }
@@ -270,7 +269,6 @@ void randomcolor(void){
   }
 
   strip.show();
-  delay(1000); // 控制颜色变化的速度
 }
 
 void fadeinout(int colorTemp, int patial = 5){
