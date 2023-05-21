@@ -1,32 +1,30 @@
+
 #include <SPI.h>
 #include "JY901.h"
 #include "Adafruit_NeoPixel.h"    //引入头文件
+#include <Servo.h>            // 调用Servo库
 #ifdef __AVR__
  #include <avr/power.h> 
 #endif
 
-#define nanopin0 2
-#define nanopin1 3
+float angle = 0;
+
+
+#define leftPin 2                       // 编码器所在中断引脚
+#define rightPin 3
 #define LED_PIN    4     //定义信号输出引脚
-#define LEDModePin0 5
-#define LEDModePin1 6     // 译码法选择灯带显示模式
-#define LEDModePin2 7     // 译码法选择灯带显示模式
-#define LEDS_PER_GROUP 2
-#define LED_COUNT 27      // 定义LED灯个数
+#define LED_COUNT 27     //定义LED灯个数
 #define ADD true
 #define SUB false
+#define LEDModePin0 5
+#define LEDModePin1 6     // 译码法选择灯带显示模式
+#define LEDModePin2 7     // 译码法选择灯·带显示模式
+#define RISEPIN 8     // 舵机引脚
 
-const uint8_t rainbowColors[][3] = {
-    {255, 0, 0},    // 红色
-    {255, 165, 0},  // 橙色
-    {255, 255, 0},  // 黄色
-    {0, 128, 0},    // 绿色
-    {0, 0, 255},    // 蓝色
-    {75, 0, 130},   // 靛蓝色
-    {238, 130, 238} // 紫色
-};
-static uint8_t hueIndex = 0;
-float angle = 0;
+#define IN1 2  //定义IN1为2
+#define IN2 3 //定义IN2为3
+#define  ENA 4  //定义ENA为A4
+
 uint8_t mode = 0;         // 灯带状态
 boolean stat1 = true;     //呼吸状态反转标志
 int val = 130;            //呼吸亮度变量
@@ -56,13 +54,16 @@ uint32_t hsvcolor = strip.ColorHSV(0*256,255, val); //控制颜色
 
 
 uint8_t data_to_send[10]={0};           // 数据流 
-long int cc = 0;                        // 记录整个路程，最后采用这个数据
 volatile int EvenCheckLeft = 0;         // 偶检验变量
 volatile int EvenCheckRight = 0;
+long int cc = 0;                        // 记录整个路程，最后采用这个数据
+
 // 当前灯珠指向
-int16_t idx = 0;
+  int16_t idx = 0;
+
 //初始化将灯珠的等级保存于数组中
-int16_t ArraySave[LED_COUNT][3] = {0};
+  int16_t ArraySave[LED_COUNT][3] = {0};
+  Servo myservo;             // 定义Servo对象来控制
 
 // 函数列表：
 void setLightMode();
@@ -72,11 +73,10 @@ void fadeinout(int colorTemp, int patial = 5);
 void forword(int sideColor);
 void backword(int sideColor);
 void tail(int sideColor);
-void rainbow(void);
-void rainbow2(void);
-void randomcolor(void);
+void engine_stop();
+void engine_act();
 
-void setup(void)
+void setup (void)
 {
   // 开始串口通讯
   //注意：此串口与SPI通信没有任何关系，只是为了程序演示输出SPI接收到的字节。
@@ -88,14 +88,21 @@ void setup(void)
   pinMode(LEDModePin1, INPUT);
   pinMode(LEDModePin2, INPUT);
 
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+
   digitalWrite(SS, HIGH);    // SS - pin 10
   digitalWrite(MISO, INPUT);
   digitalWrite(MOSI, OUTPUT);
-  SPI.begin();              // SPI通讯初始化配置
+  SPI.begin ();              // SPI通讯初始化配置
   SPI.setClockDivider(SPI_CLOCK_DIV8);
   attachInterrupt(0, counter, CHANGE);
   
+
+  myservo.attach(8);          // 控制线连接数字8
+
 }
+
 
 
 void loop (void)
@@ -108,52 +115,116 @@ void loop (void)
       Send_Data(cc, angle);
       delay(4);
   }
-/////////////////////////////////////////////////////////////////////////////////////////
-  if(mode == 0){             //蓝色跑马灯+小角度摇晃，用于冰壶冰球中的人物
-      digitalWrite(nanopin0, LOW);
-      digitalWrite(nanopin1, LOW);
-      forword(124);
-      tail(0);
+
+  if(mode == 0){             //蓝色呼吸灯
+   myservo.write(90); 
+    engine_stop();              //关马达
+      fadeinout(124,15);
+///////////////////////////////
+  
   }
-  else if(mode == 1){           // 蓝色呼吸灯，电机停止
-    fadeinout(124, 15);
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
+  else if(mode == 1){           // 蓝色跑马灯
+   myservo.write(90); 
+    engine_stop();              //关马达
+    forword(124);
+    tail(0);
+///////////////////////////////////
+    
   }
-  else if(mode == 2){          //红色呼吸灯+小角度摇晃，用于冰球人物
-    digitalWrite(nanopin0, LOW);
-    digitalWrite(nanopin1, LOW);
+  else if(mode == 2){          //红色呼吸灯
+   myservo.write(90); 
+    engine_stop();
     fadeinout(0, 20);           
+///////////////////////////////////
+   
   }
-  else if(mode == 3){           //彩虹渐变+大角度摇晃
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, HIGH);
+  else if(mode == 3){           //彩色跑马灯
+   myservo.write(90); 
+    engine_stop();              //关马达
+    forword(color);
+    tail(0);
+    color += 3;
+//////////////////////////////////
+ 
+  }
+  else if(mode == 4){            //彩虹效果，每个灯珠颜色不一
+   myservo.write(90); 
+    engine_stop();             //关马达
     rainbow();
+///////////////////////////////////////////////
+    
   }
-  else if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
-    fadeinout(0, 20);
+  else if(mode == 5){           //升旗+呼吸
+    engine_act();              //开马达
+    rise();
+    
+    for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
+      strip.setPixelColor(i, hsvcolor);
+      }
+      strip.show();
+      if(val<10)
+      {change=1;
+      changecolor=random(250);}
+      else if(val>140)
+      {change=0;}
+      
+      if(change == 1)
+      {val+=10;}
+      else if(change == 0)
+      {val-=10;}
+////////////////////////////////////
+    
+    
   }
-  else if(mode == 5){           //升旗+彩虹渐变
-    digitalWrite(nanopin0, LOW);
-    digitalWrite(nanopin1, HIGH);
-    rainbow2();
-    delay(100000);
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
+  else if(mode == 6){            //变色呼吸灯
+   myservo.write(90); 
+    engine_stop();               //关马达
+    
+      for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(changecolor*256, 255, val);
+      strip.setPixelColor(i, hsvcolor);
+      }
+      strip.show();
+      if(val<10)
+      {change=1;
+      changecolor=random(250);}
+      else if(val>140)
+      {change=0;}
+      
+      if(change == 1)
+      {val+=10;}
+      else if(change == 0)
+      {val-=10;}
+
+////////////////////////////////////////
+   
   }
-  else if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
-    fadeinout(50, 15);
+  else if(mode == 7){             //快速变色
+    engine_act();       //开马达  
+     rise();
+      for(int i=0;i<=27;i++){
+      hsvcolor = strip.ColorHSV(val*6250, 255, 150);
+      strip.setPixelColor(i, hsvcolor);
+      strip.show();
+      }
+      if(val<40)
+      {change=1;}
+      else if(val>250)
+      {change=0;}
+      
+      if(change == 1)
+      {val+=30;}
+      else if(change == 0)
+      {val-=30;}
+/////////////////////////////////////////
+
+    
+    }
   }
-  else if(mode == 7){             //随机变色+大角度摇晃
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, HIGH);
-    randomcolor();
-  }
-}
+  
+
+
 
 void setLightMode(){
   int a = digitalRead(LEDModePin0);
@@ -200,6 +271,17 @@ void Send_Data(long int a, float b)
 }
 
 
+void counter(){
+  if(EvenCheckLeft == 0){
+    cc ++;
+    EvenCheckLeft = 1 - EvenCheckLeft;
+  }
+  else
+    EvenCheckLeft = 1 - EvenCheckLeft;
+  
+}
+
+
 void get_angle(void)
 {
   while(Serial.available())
@@ -210,68 +292,88 @@ void get_angle(void)
 }
 
 
+
+void engine_act()
+{
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,LOW);
+  analogWrite(ENA,500);
+}
+
+
+void engine_stop()
+{
+    digitalWrite(IN1,LOW); //控制电机停下
+    digitalWrite(IN2,LOW);
+}
+
+void rise(){         // 升旗仪式
+
+  int pos=0;
+  //myservo.write(50);
+  //delay(50);
+  for (pos = 60; pos <= 120; pos += 1) {   
+    myservo.write(pos);               // 舵机角度写入
+    delay(12);                         // 控制移动速度
+  }
+  for (pos = 120; pos >= 60; pos -= 1) {   
+    myservo.write(pos);               // 舵机角度写入
+    delay(12);                         // 控制移动速度
+  }
+
+}
+
+
 void rainbow(void)  //添加彩虹效果/116
 {
-  for (int i = 0; i < 7; i++)
-  {
-    // 设置当前颜色
-    uint8_t red = rainbowColors[i][0];
-    uint8_t green = rainbowColors[i][1];
-    uint8_t blue = rainbowColors[i][2];
 
-    // 逐个点亮灯珠
-    for (int j = 0; j < LED_COUNT; j++)
-    {
-      strip.setPixelColor(j, red, green, blue);
-      strip.show();
-      delay(10); // 控制流动的速度
+
+  int j = 0;
+  for(j=0;j<LED_COUNT/3;j++){
+      strip.setPixelColor(j,strip.Color(248-255/(LED_COUNT/3)*j,255/(LED_COUNT/3)*j,0));
+      ArraySave[j][0]=248-255/(LED_COUNT/3)*j;
+      ArraySave[j][1]=255/(LED_COUNT/3)*j;
+      ArraySave[j][2]=0;
+  }
+  for(j=0;j<LED_COUNT/3;j++){
+      strip.setPixelColor(j+8,strip.Color(0,248-255/(LED_COUNT/3)*j,255/(LED_COUNT/3)*j));
+      ArraySave[j+LED_COUNT/3][0]=0;
+      ArraySave[j+LED_COUNT/3][1]=248-255/(LED_COUNT/3)*j;
+      ArraySave[j+LED_COUNT/3][2]=255/(LED_COUNT/3)*j;
+  }
+  for(j=0;j<LED_COUNT/3;j++){
+      strip.setPixelColor(j+16,strip.Color(255/(LED_COUNT/3)*j,0,248-255/(LED_COUNT/3)*j));
+      ArraySave[j+LED_COUNT/3*2][0]=255/(LED_COUNT/3)*j;
+      ArraySave[j+LED_COUNT/3*2][1]=0;
+      ArraySave[j+LED_COUNT/3*2][2]=248-255/(LED_COUNT/3)*j;
+  }
+
+
+
+    uint16_t i = 0,k = 0;
+    uint16_t t[3] = {0};
+    for(k=0;k<3;k++){
+        t[k]=ArraySave[0][k];
     }
-  }
-}
-
-
-void rainbow2(void){
- for (int group = 0; group < LED_COUNT / LEDS_PER_GROUP; group++) {
-    // 计算当前组的彩虹色索引
-    uint8_t colorIndex = (hueIndex + group) % 7;
-    
-    // 获取当前组的彩虹色
-    uint8_t red = rainbowColors[colorIndex][0];
-    uint8_t green = rainbowColors[colorIndex][1];
-    uint8_t blue = rainbowColors[colorIndex][2];
-    
-    // 循环设置当前组的灯珠颜色
-    for (int i = 0; i < LEDS_PER_GROUP; i++) {
-      // 设置当前灯珠的颜色
-      strip.setPixelColor(group * LEDS_PER_GROUP + i, red, green, blue);
+    for(i=0;i<LED_COUNT;i++){
+      for(k=0;k<3;k++){
+        ArraySave[i][k]=ArraySave[i+1][k];
+      }
+      strip.setPixelColor(i,ArraySave[i][0],ArraySave[i][1],ArraySave[i][2]);
     }
-  }
-  
-  // 灯串显示
-  strip.show();
-  
-  // 延迟一段时间，控制流动速度
-  delay(2);
-  
-  // 彩虹色索引递增
-  hueIndex++;
+    
+    for(k=0;k<3;k++){
+        ArraySave[LED_COUNT-1][k]=t[k];  
+    }
+    strip.setPixelColor(LED_COUNT-1,ArraySave[LED_COUNT-1][0],ArraySave[LED_COUNT-1][1],ArraySave[LED_COUNT-1][2]);
+    
+    delay(50);
+    // 显示
+    strip.show();
 }
 
-void randomcolor(void){
+
   
-  uint8_t red = random(256);   // 生成0到255的随机红色值
-  uint8_t green = random(256); // 生成0到255的随机绿色值
-  uint8_t blue = random(256);  // 生成0到255的随机蓝色值
-
-  // 设置灯串颜色
-  for (int i = 0; i < LED_COUNT; i++)
-  {
-    strip.setPixelColor(i, red, green, blue);
-  }
-
-  strip.show();
-  delay(1000); // 控制颜色变化的速度
-}
 
 void fadeinout(int colorTemp, int patial = 5){
   Serial.println(val);
@@ -290,6 +392,7 @@ void fadeinout(int colorTemp, int patial = 5){
   if(stat1==SUB) val -= patial;
   else if(stat1==ADD) val += patial;
 }
+
 
 
 void forword(int sideColor){
@@ -336,6 +439,7 @@ void forword(int sideColor){
       color -= 255;
   strip.show();
 }
+
 
 
 void backword(int sideColor){
@@ -385,6 +489,7 @@ void backword(int sideColor){
 }
 
 
+
 void tail(int sideColor){
   hsvcolor = strip.ColorHSV(sideColor*256, 255, val);
   for(int i = 0; i < tailNumber; i ++){
@@ -407,16 +512,4 @@ void tail(int sideColor){
   //delay(20);
   if(stat1==SUB) val -= 5;
   else if(stat1==ADD) val += 5;  
-}
-
-
-void counter()
-{
-  if (EvenCheckLeft == 0)
-  {
-    cc++;
-    EvenCheckLeft = 1 - EvenCheckLeft;
-  }
-  else
-    EvenCheckLeft = 1 - EvenCheckLeft;
 }
