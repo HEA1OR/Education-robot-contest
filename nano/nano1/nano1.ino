@@ -142,6 +142,9 @@ void loop (void)
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     rainbow2();
+    delay(100000);
+    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin1, LOW);
   }
   else if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
     digitalWrite(nanopin0, HIGH);

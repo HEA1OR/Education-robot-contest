@@ -37,7 +37,6 @@ void setup(void)
 void loop (void)
 {
   setnanoMode();
-  mode = 0;
   if(mode == 0)
     servo2();       //小角度摇晃
   else if(mode == 1){
@@ -176,7 +175,7 @@ void down(){
 }
 
 void servo(){
-    myservo.writeMicroseconds(1465); // 舵机顺时针旋转
+    myservo.writeMicroseconds(1450); // 舵机顺时针旋转
     delay(2000);
     myservo.writeMicroseconds(1550); // 舵机逆时针旋转
     delay(2000);
@@ -187,7 +186,7 @@ void servo(){
 }
 
 void servo2(){
-    myservo.writeMicroseconds(1465); // 舵机顺时针旋转
+    myservo.writeMicroseconds(1450); // 舵机顺时针旋转
     delay(200);
     myservo.writeMicroseconds(1550); // 舵机逆时针旋转
     delay(200);

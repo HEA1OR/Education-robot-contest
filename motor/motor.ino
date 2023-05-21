@@ -1,7 +1,7 @@
-int in1 = 2; //  L298N的IN1引脚连接到Arduino的2号引脚
-int in2 = 3; //  L298N的IN2引脚连接到Arduino的3号引脚
-int in3 = 4; //  L298N的IN3引脚连接到Arduino的4号引脚
-int in4 = 5; //  L298N的IN4引脚连接到Arduino的5号引脚
+int in1 = 6; //  L298N的IN1引脚连接到Arduino的2号引脚
+int in2 = 7; //  L298N的IN2引脚连接到Arduino的3号引脚
+int in3 = 8; //  L298N的IN3引脚连接到Arduino的4号引脚
+int in4 = 9; //  L298N的IN4引脚连接到Arduino的5号引脚
 
 void setup() {
   pinMode(in1, OUTPUT);
@@ -126,8 +126,9 @@ void back(int num) {
 
 
 void loop(){
-   forward(500);
-  back(500);
-  
-  
+   back(800);
+ delay(20000);
   }
+
+
+  
