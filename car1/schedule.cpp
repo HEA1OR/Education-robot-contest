@@ -55,6 +55,9 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     setLightMode(1);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
     alongLine(0, 0, 4000, 0);
     delay(200);
     turn(180, 1);
@@ -66,33 +69,67 @@ void command_execute(byte c)
   if (c == 0x89)
   {
     setLightMode(3);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 3500, 0);
     delay(200);
+    open_flash('A');
     turn(89, 0);
     delay(200);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 9000, 0);
     delay(200);
+    open_flash('A');
     turn(91, 0);
     delay(200);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 7000, 0);
     delay(200);
+    open_flash('A');
     turn(88, 0);
     delay(200);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 9000, 0);
      delay(200);
-    turn(88, 0);
-    delay(200);
-    alongLine(0, 0, 2000, 0);
-    delay(500);
-    getEncoder();
-    subangle = angle - initAngle_;
-    if (subangle < -90)
-        subangle += 360;
-    else if (subangle > 90)
-        subangle -= 360;
-    if(subangle>0.4)
-    {
-      turn(subangle ,1);
+     open_flash('A');
+     turn(88, 0);
+     delay(200);
+     open_flash('L');
+     open_flash('L');
+     alongLine(0, 0, 2000, 0);
+     delay(500);
+     getEncoder();
+     subangle = angle - initAngle_;
+     if (subangle < -90)
+       subangle += 360;
+     else if (subangle > 90)
+       subangle -= 360;
+     if (subangle > 0.4)
+     {
+       turn(subangle, 1);
       }
     else if(subangle<-0.4)
     {
@@ -113,6 +150,7 @@ void command_execute(byte c)
   if (c == 0x90)
   {
     setLightMode(1);
+    open_flash('A');
     turn(90, 1);
     delay(200);
     alongLine(0, 0, 800, 0);
@@ -147,6 +185,7 @@ void command_execute(byte c)
   // step6 冰球-car1接球
   if (c == 0x93)
   {
+    setLightMode(0);
     delay(5000);    // 等球跑一会
     alongLine(0, 0, 2000, 0);
     delay(1600);
@@ -165,6 +204,7 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    setLightMode(6);
     turn(120, 0);
     delay(200);
     alongLine(0, 0, 1700, 0);
@@ -178,6 +218,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    setLightMode(6);
     turn(180, 1);
     delay(200);
     turn(180, 1);

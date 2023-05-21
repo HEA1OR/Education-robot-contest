@@ -52,6 +52,9 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     setLightMode(4);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
     alongLine(0, 0, 4200, 0);
     delay(200);
   }
@@ -179,6 +182,7 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    setLightMode(6);
     turn(40, 1);
     delay(200);
     alongLine(0, 0, 4000, 0);
@@ -193,6 +197,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    setLightMode(6);
     turn(180, 1);
     delay(500);
     turn(180, 1);

@@ -54,6 +54,9 @@ void command_execute(byte c)
   if (c == 0x88)
   {
     setLightMode(1);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
     alongLine(0, 0, 3600, 0);
   }
   // step2  花滑
@@ -133,6 +136,7 @@ void command_execute(byte c)
   // step6 冰球-car3不动
   if (c == 0x93)
   {
+    setLightMode(0);
     delay(1000);
   }
   // step7 冰球-car3直行接球
@@ -152,6 +156,7 @@ void command_execute(byte c)
   // step9 冰球to颁奖
   if (c == 0x96)
   {
+    setLightMode(6);
     turn(90, 1);
     delay(3000);
     alongLine(0, 0, 5500, 0);
@@ -206,6 +211,7 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    setLightMode(5);
     //alongLine(0, 0, 3000, 0);
     delay(200);
     /* 
