@@ -69,6 +69,23 @@ void command_execute(byte c)
     getEncoder();
     tempangle = angle;
     delay(4300);
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('A');
     //alongLine(0, 0, 400, 0);
     alongCurve(3000, 1.5, 90);
     delay(1000);
@@ -98,12 +115,16 @@ void command_execute(byte c)
     getEncoder();
     tempangle = angle;
     delay(3300);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(84, 1);
     delay(200);
     /*
@@ -129,12 +150,17 @@ void command_execute(byte c)
     setLightMode(4);
     //   turn(180, 1);
     delay(200);
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 1800, 0);
     delay(200);
+    open_flash('L');
     turn(88, 1);
     delay(200);
+    open_flash('G');
     alongLine(0, 0, 1400, 0);
     delay(200);
+    open_flash('K');
     turn(45, 0);
     delay(200);
     //alongLine(0, 0, 1000, 0);
@@ -144,6 +170,8 @@ void command_execute(byte c)
   {
     setLightMode(4);
     delay(7500);
+    open_flash('K');
+    open_flash('K');
     alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
@@ -155,10 +183,14 @@ void command_execute(byte c)
     alongLine(0, 0, 1500, 0);
     delay(200);*/
     setLightMode(4);
+    open_flash('A');
     turn(135, 0);
     delay(6500);
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 2000, 0);
     delay(200);
+    open_flash('C');
     turn(60, 0);
   }
   // step6 冰球-car4向car1移动
@@ -166,12 +198,17 @@ void command_execute(byte c)
   {
     setLightMode(2);
     delay(5000);
+    open_flash('C');
+    open_flash('C');
+    open_flash('C');
+    open_flash('C');
     alongLine(0, 0, 4500, 0);
   }
   // step7 冰球-car4向car3移动
   if (c == 0x94)
   {
     delay(6000);
+    open_flash('C');
     turn(146, 1);
     delay(200);
     /*
@@ -190,16 +227,20 @@ void command_execute(byte c)
       turn(fabs(subangle),0);
     }*/
     delay(2000);
+    open_flash('C');
     alongLine(0, 0, 1400, 0);
   }
   // step8 冰球-car4向car2移动（追球）
   if (c == 0x95)
   {
     delay(2000);
+    open_flash('C');
     alongLine(0, 0, 1000, 0);
     delay(1500);
+    open_flash('C');
     turn(85, 1);
     delay(1500);
+    open_flash('C');
     alongLine(0, 0, 1000, 0);
     delay(200);
   }
@@ -207,10 +248,14 @@ void command_execute(byte c)
   if (c == 0x96)
   {
     setLightMode(6);
+    open_flash('A');
     turn(176, 1);
     delay(200);
+    open_flash('H');
+    open_flash('H');
     alongLine(0, 0, 2000, 0);
     delay(200);
+    open_flash('H');
     turn(87, 1);
     delay(200);
     /*
@@ -256,6 +301,12 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    open_flash('X');
+    open_flash('X');
+    delay(1000);
+    open_flash('O');
+    open_flash('O');
+    delay(2000);
     setLightMode(5);
     //alongLine(0, 0, 4500, 0);
     delay(200);

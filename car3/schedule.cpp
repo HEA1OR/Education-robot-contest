@@ -67,6 +67,7 @@ void command_execute(byte c)
     float tempangle = angle;
     for (int i=1;i<=20;i++)
     {
+      open_flash('A');
       turn(89, 0);
       delay(200);
     }
@@ -102,18 +103,29 @@ void command_execute(byte c)
   {
     setLightMode(1);
     delay(1000);
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 2200, 0);
     delay(200);
+    open_flash('A');
     turn(89, 0);
     delay(200);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 2800, 0);
     delay(200);
+    open_flash('A');
     turn(180, 1);
     delay(200);
   }
   // step4 冰壶
   if (c == 0x91)
   {
+    open_flash('D');
+    open_flash('D');
+    open_flash('D');
+    open_flash('D');
     setLightMode(0);
     alongLine(0, 0, 4000, 0);
     setLightMode(1);
@@ -123,14 +135,23 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     setLightMode(1);
+    open_flash('H');
     turn(92, 0);
     delay(200);
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 2400, 0);
     delay(200);
+    open_flash('H');
     turn(89, 0);
     delay(200);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 4300, 0);
     delay(200);
+    open_flash('M');
     turn(180, 1);
   }
   // step6 冰球-car3不动
@@ -143,6 +164,9 @@ void command_execute(byte c)
   if (c == 0x94)
   {
     delay(3000);
+    open_flash('M');
+    open_flash('M');
+
     alongLine(0, 0, 2700, 0);
     delay(200);
   }
@@ -150,6 +174,9 @@ void command_execute(byte c)
   if (c == 0x95)
   {
     //delay(1000);
+    open_flash('M');
+    open_flash('M');
+    open_flash('I');
     alongLine(0, 0, 2000, 0);
     delay(200);
   }
@@ -157,10 +184,17 @@ void command_execute(byte c)
   if (c == 0x96)
   {
     setLightMode(6);
+    open_flash('A');
     turn(90, 1);
     delay(3000);
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
     alongLine(0, 0, 5500, 0);
     delay(200);
+    open_flash('A');
     turn(180, 1);
     delay(200);
     /*
@@ -211,6 +245,12 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    open_flash('Y');
+    open_flash('Y');
+    delay(1000);
+    open_flash('P');
+    open_flash('P');
+    delay(2000);
     setLightMode(5);
     //alongLine(0, 0, 3000, 0);
     delay(200);

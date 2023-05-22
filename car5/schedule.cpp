@@ -65,22 +65,58 @@ void command_execute(byte c)
   if (c == 0x89)
   {
     setLightMode(3);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 3500, 0);
     delay(500);
+    open_flash('A');
     turn(89.5, 0);
     delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
     alongLine(0, 0, 9000, 0);
     delay(500);
+    open_flash('A');
     turn(89.5, 0);
     delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('A');
     alongLine(0, 0, 7000, 0);
     delay(500);
+    open_flash('A');
     turn(89.5, 0);
     delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    
     alongLine(0, 0, 9000, 0);
     delay(500);
+    open_flash('A');
     turn(89.5, 0);
     delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('A');
     alongLine(0, 0, 2500, 0);
     delay(500);
     
@@ -106,6 +142,8 @@ void command_execute(byte c)
     delay(200);
     */
     setLightMode(4);
+    open_flash('A');
+    open_flash('K');
     turn(135, 1);
     delay(500);
     //alongLine(0, 0, 1000, 0);
@@ -116,18 +154,24 @@ void command_execute(byte c)
   {
     setLightMode(4);
     delay(7500);
+    open_flash('K');
+    open_flash('K');
     alongLine(0, 0, 2000, 0);
   }
   // step5 冰壶to冰球
   if (c == 0x92)
   {
     setLightMode(4);
+    open_flash('A');
     turn(45, 1);
     delay(500);
     alongLine(0, 0, 500, 0);
     delay(500);
+    open_flash('A');
     turn(88, 1);
     delay(500);
+    open_flash('G');
+    open_flash('C');
     alongLine(0, 0, 2000, 0);
     delay(500);
   }
@@ -136,12 +180,15 @@ void command_execute(byte c)
   {
     setLightMode(2);
     delay(5000);
+    open_flash('C');
+    open_flash('C');
     alongLine(0, 0, 2000, 0);
   }
   // step7 冰球-car5向car3移动
   if (c == 0x94)
   {
     delay(6000);
+    open_flash('C');
     turn(90, 1);
     delay(500);
     /*
@@ -160,16 +207,21 @@ void command_execute(byte c)
       turn(fabs(subangle),0);
     }*/
     delay(2400);
+    open_flash('C');
+    open_flash('C');
     alongLine(0, 0, 1300, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
   {
     delay(2000);
+    open_flash('C');
     alongLine(0, 0, 1000, 0);
     delay(1500);
+    open_flash('C');
     turn(90, 1);
     delay(1500);
+    open_flash('C');
     alongLine(0, 0, 1000, 0);
   }
   // step9 冰球to颁奖
@@ -179,8 +231,15 @@ void command_execute(byte c)
     //turn(180, 1);
     //delay(200);
     //alongLine(0, 0, 500, 0);
+    open_flash('A');
     turn(180, 1);
     delay(500);
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
+    open_flash('H');
     alongLine(0, 0, 5000, 0);
     delay(500);
     turn(90, 1);
@@ -232,6 +291,12 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    open_flash('W');
+    open_flash('W');
+    delay(1000);
+    open_flash('Q');
+    open_flash('Q');
+    delay(2000);
     setLightMode(5);
     //alongLine(0, 0, 3000, 0);
     delay(500);

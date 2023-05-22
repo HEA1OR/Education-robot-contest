@@ -64,9 +64,28 @@ void command_execute(byte c)
     setLightMode(7);
     getEncoder();
     tempangle = angle;
+    open_flash('A');
+    open_flash('A');
     turn(180,0);
     delay(200);
-    //delay(1400); 
+    //delay(1400);
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('A');
     alongCurve(3600, 1, 90);
     delay(1000);
     alongCurve(3200, 1.2, 90);
@@ -92,12 +111,16 @@ void command_execute(byte c)
     getEncoder();
     tempangle = angle;
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200);
+    open_flash('H');
     turn(90, 1);
     delay(200); 
     getEncoder();
@@ -120,21 +143,33 @@ void command_execute(byte c)
   if (c == 0x90)
   {
     setLightMode(1);
+    open_flash('L');
     turn(90, 0);
     delay(200);
+    open_flash('G');
     alongLine(0, 0, 800, 0);
     delay(200);
+    open_flash('L');
     turn(90, 1);
     delay(200);
+    open_flash('G');
     alongLine(0, 0, 800, 0);
     delay(200);
+    open_flash('F');
     turn(90, 1);
     delay(200);
+
   }
   // step4 冰壶
   if (c == 0x91)
   {
     setLightMode(6);
+    open_flash('J');
+    open_flash('J');
+    open_flash('J');
+    open_flash('J');
+    open_flash('J');
+    open_flash('J');
     alongLine(0, 0, 6300, 0);
     delay(200);
   }
@@ -142,40 +177,72 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     setLightMode(6);
+    open_flash('L');
     turn(90, 0);
     delay(2500);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 4000, 0);
     delay(200);
+    open_flash('A');
     turn(90, 0);
     delay(200);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 4100, 0);
     delay(200);
+    open_flash('F');
     turn(90, 0);
     delay(200);
   }
   // step6 冰球-car2从3到1
   if (c == 0x93)
   {
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
     alongLine(0, 0, 7500, 0);
     delay(200);
+    open_flash('F');
     turn(165, 0);
     delay(200);
   }
   // step7 冰球-car2从1到3
   if (c == 0x94)
   {
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
+    open_flash('F');
     alongLine(0, 0, 6400, 0);
     delay(200);
+    open_flash('F');
     turn(70, 1);
     delay(200);
   }
   // step8 冰球-car2直行+射门
   if (c == 0x95)
   {
+    open_flash('F');
+    open_flash('F');
     alongLine(0, 0, 2000, 0);
     delay(200);
     turn(45, 1);
     delay(200);
+    open_flash('F');
+    open_flash('F');
+    open_flash('E');
+    open_flash('E');
     alongLine(0, 0, 3800, 0);
     delay(200);
   }
@@ -183,10 +250,16 @@ void command_execute(byte c)
   if (c == 0x96)
   {
     setLightMode(6);
+    open_flash('A');
     turn(40, 1);
     delay(200);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
     alongLine(0, 0, 4000, 0);
     delay(200);
+    open_flash('H');
     turn(180, 1);
     delay(200);
   }
@@ -197,6 +270,27 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('A');
     setLightMode(6);
     turn(180, 1);
     delay(500);

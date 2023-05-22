@@ -60,6 +60,7 @@ void command_execute(byte c)
     open_flash('A');
     alongLine(0, 0, 4000, 0);
     delay(200);
+    open_flash('A');
     turn(180, 1);
     delay(200);
     getEncoder();
@@ -98,6 +99,7 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('L');
+    open_flash('A');
     alongLine(0, 0, 7000, 0);
     delay(200);
     open_flash('A');
@@ -153,9 +155,11 @@ void command_execute(byte c)
     open_flash('A');
     turn(90, 1);
     delay(200);
+    open_flash('L');
     alongLine(0, 0, 800, 0);
     delay(200);
     turn(180, 1);
+    open_flash('C');
     /*
     alongLine(0, 0, 2200, 0);
     
@@ -165,6 +169,9 @@ void command_execute(byte c)
   if (c == 0x91)
   {
     setLightMode(0);
+    open_flash('C');
+    open_flash('C');
+    open_flash('C');
     alongLine(0, 0, 3300, 0);
     setLightMode(1);
   }
@@ -172,23 +179,39 @@ void command_execute(byte c)
   if (c == 0x92)
   {
     setLightMode(1);
+    open_flash('A');
     turn(90, 1);
     delay(200);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 4000, 0);
     delay(200);
+    open_flash('A');
     turn(90, 1);
     delay(200);
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 2200, 0);
     delay(200);
+    open_flash('A');
+    open_flash('A');
     turn(180, 1);
   }
   // step6 冰球-car1接球
   if (c == 0x93)
   {
+    open_flash('M');
     setLightMode(0);
     delay(5000);    // 等球跑一会
+    open_flash('M');
+    open_flash('M');
     alongLine(0, 0, 2000, 0);
     delay(1600);
+    open_flash('I');
+    open_flash('I');
+    open_flash('M');
     turn(60, 0);
   }
   // step7 冰球-car1不动
@@ -205,10 +228,15 @@ void command_execute(byte c)
   if (c == 0x96)
   {
     setLightMode(6);
+    open_flash('A');
+    open_flash('A');
     turn(120, 0);
     delay(200);
+    open_flash('H');
+    open_flash('H');
     alongLine(0, 0, 1700, 0);
     delay(200);
+    open_flash('A');
     turn(90, 1);
   }
   /*if (c == 0x95)
@@ -218,6 +246,27 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('A');
     setLightMode(6);
     turn(180, 1);
     delay(200);

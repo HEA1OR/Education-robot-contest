@@ -895,9 +895,6 @@ void loop()
           }
         break;  
 
-
-
-        
       case 'S': DispShowChar2('J',   0,0,255, 0);  //蓝圆1秒
         for (j = 0, l = 0; j <= 10; j++, l++)
         {
