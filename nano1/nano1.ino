@@ -34,6 +34,7 @@ int flag =90;
 int changeflag =0;
 int color;            //色彩改变变量
 int ranbowcolor = 0;
+int randomcolor1 = 0;
 int ranbowchange = 0;  //在0~LED_COUNT-1之间
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
@@ -103,13 +104,8 @@ void setup(void)
 void loop (void)
 {
   setLightMode();
-  digitalWrite(SS, LOW);    // SS - pin 10
-  // 循环发送字节，实现字符串的发送
-  for(int i = 0; i < 20; i ++){
-      get_angle();
-      Send_Data(cc, angle);
-      delay(4);
-  }
+  mode = 5;
+
 /////////////////////////////////////////////////////////////////////////////////////////
   if(mode == 0){             //蓝色跑马灯+小角度摇晃，用于冰壶冰球中的人物
       digitalWrite(nanopin0, HIGH);
@@ -130,7 +126,8 @@ void loop (void)
   if(mode == 3){           //彩虹渐变+大角度摇晃
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
-    //rainbow();
+    rainbow();
+    delay(80);
   }
   if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
     digitalWrite(nanopin0, LOW);
@@ -140,7 +137,8 @@ void loop (void)
   if(mode == 5){             //随机变色+大角度摇晃
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
-    //randomcolor();
+    randomcolor();
+    delay(80);
   }
 
   if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
@@ -151,10 +149,11 @@ void loop (void)
   if(mode == 7){           //升旗+彩虹渐变
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, HIGH);
-    //while(1)
-    //{
-    //  rainbow2();
-    //}
+    while(1)
+    {
+      rainbow2();
+      delay(80);
+    }
   }
 }
 
@@ -258,14 +257,22 @@ void rainbow2(void){
 
 void randomcolor(void){
   
-  uint8_t red = random(256);   // 生成0到255的随机红色值
-  uint8_t green = random(256); // 生成0到255的随机绿色值
-  uint8_t blue = random(256);  // 生成0到255的随机蓝色值
-
+    uint8_t red = rainbowColors[randomcolor1][0];
+    uint8_t green = rainbowColors[randomcolor1][1];
+    uint8_t blue = rainbowColors[randomcolor1][2];
+  if(val >= 140)
+    stat1 = SUB;
+  if(val <= 1)
+    {stat1 = ADD;randomcolor1 = randomcolor1 + 1;}
+  if(randomcolor1 == 7)randomcolor1 =0;
+  //delay(20);
+  if(stat1==SUB) val -= 20;
+  else if(stat1==ADD) val += 20;
   // 设置灯串颜色
   for (int i = 0; i < LED_COUNT; i++)
   {
     strip.setPixelColor(i, red, green, blue);
+    strip.setBrightness(abs(val));
   }
 
   strip.show();

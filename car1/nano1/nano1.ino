@@ -34,6 +34,7 @@ int flag =90;
 int changeflag =0;
 int color;            //色彩改变变量
 int ranbowcolor = 0;
+int randomcolor1 = 0;
 int ranbowchange = 0;  //在0~LED_COUNT-1之间
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
 int lightNumber = 27;            // 灯珠数量
@@ -258,17 +259,24 @@ void rainbow2(void){
   // 彩虹色索引递增
   hueIndex++;
 }
-
 void randomcolor(void){
   
-  uint8_t red = random(256);   // 生成0到255的随机红色值
-  uint8_t green = random(256); // 生成0到255的随机绿色值
-  uint8_t blue = random(256);  // 生成0到255的随机蓝色值
-
+    uint8_t red = rainbowColors[randomcolor1][0];
+    uint8_t green = rainbowColors[randomcolor1][1];
+    uint8_t blue = rainbowColors[randomcolor1][2];
+  if(val >= 140)
+    stat1 = SUB;
+  if(val <= 1)
+    {stat1 = ADD;randomcolor1 = randomcolor1 + 1;}
+  if(randomcolor1 == 7)randomcolor1 =0;
+  //delay(20);
+  if(stat1==SUB) val -= 20;
+  else if(stat1==ADD) val += 20;
   // 设置灯串颜色
   for (int i = 0; i < LED_COUNT; i++)
   {
     strip.setPixelColor(i, red, green, blue);
+    strip.setBrightness(abs(val));
   }
 
   strip.show();
