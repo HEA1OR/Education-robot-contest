@@ -44,19 +44,20 @@ void loop (void)
      servo2();       //小角度摇晃
     }        
   else if (mode == 2)
+     servo();    // 大角度摇晃
+  else if(mode == 3)
   {
     myservo.writeMicroseconds(1550);
     if (flag == 0)
     {
-      rise();  
+      rise();
       flag = 1;
+      delay(1000);
+      down();
     }
-    delay(10000);
-    down();
   }
-  else if(mode == 3)
-    servo();      //大角度摇晃
-  }
+
+}
 
 void setnanoMode(){
   int a = digitalRead(nanoModePin0);

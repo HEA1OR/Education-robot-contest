@@ -245,12 +245,13 @@ void command_execute(byte c)
   // step10 颁奖
   if (c == 0x97)
   {
-    open_flash('Y');
-    open_flash('Y');
+    open_flash('W');
+    open_flash('W');
     delay(1000);
-    open_flash('P');
-    open_flash('P');
+    open_flash('Q');
+    open_flash('Q');
     delay(2000);
+    
     setLightMode(7);
     //alongLine(0, 0, 3000, 0);
     delay(200);

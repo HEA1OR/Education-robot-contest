@@ -128,7 +128,7 @@ void loop (void)
     fadeinout(0, 20);           
   }
   if(mode == 3){           //彩虹渐变+大角度摇晃
-    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     rainbow();
   }
@@ -138,7 +138,7 @@ void loop (void)
     fadeinout(0, 20);
   }
   if(mode == 5){             //随机变色+大角度摇晃
-    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     randomcolor();
   }
@@ -149,8 +149,11 @@ void loop (void)
     fadeinout(50, 15);
   }
   if(mode == 7){           //升旗+彩虹渐变
-    digitalWrite(nanopin0, LOW);
+    digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, HIGH);
+    delay(200);
+    digitalWrite(nanopin0, LOW);
+    digitalWrite(nanopin1, LOW);
     while(1)
     {
       rainbow2();
