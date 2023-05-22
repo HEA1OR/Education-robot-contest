@@ -94,6 +94,7 @@ void command_execute(byte c)
     delay(1000);
     alongCurve(3600, 1, 90);
     delay(200);
+    setLightMode(7);
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)
@@ -122,7 +123,8 @@ void command_execute(byte c)
     delay(200);
     open_flash('H');
     turn(90, 1);
-    delay(200); 
+    delay(200);
+    setLightMode(7);
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)
