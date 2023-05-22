@@ -68,110 +68,111 @@ void setnanoMode(){
 
 
 void rise(){         // 升旗仪式
-    for (int i = 0; i < 500; i++)
-    {
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, HIGH);
-    digitalWrite(flag4, LOW);
-    delay(3);
-
-    digitalWrite(flag1, HIGH);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, HIGH);
-    digitalWrite(flag4, LOW);
-    delay(3);
-
-    digitalWrite(flag1, HIGH);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, LOW);
-    delay(3);
-
-    digitalWrite(flag1, HIGH);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(3);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(3);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, HIGH);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(3);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, HIGH);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, LOW);
-    delay(3);
+  for (int i = 0; i < 700; i++)
+  {
 
     digitalWrite(flag1, LOW);
     digitalWrite(flag2, HIGH);
     digitalWrite(flag3, HIGH);
     digitalWrite(flag4, LOW);
-    delay(3);
-    }
+    delay(2);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, HIGH);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, LOW);
+    delay(2);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, HIGH);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(2);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(2);
+
+    digitalWrite(flag1, HIGH);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(2);
+
+    digitalWrite(flag1, HIGH);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, LOW);
+    delay(2);
+
+    digitalWrite(flag1, HIGH);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, HIGH);
+    digitalWrite(flag4, LOW);
+    delay(2);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, HIGH);
+    digitalWrite(flag4, LOW);
+    delay(2);
+  }
+   
 }
 
 void down(){
-    for (int i = 0; i < 500; i++)
-    {
-
+  for (int i = 0; i < 700; i++)
+  {
     digitalWrite(flag1, LOW);
-    digitalWrite(flag2, HIGH);
+    digitalWrite(flag2, LOW);
     digitalWrite(flag3, HIGH);
     digitalWrite(flag4, LOW);
-    delay(2);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, HIGH);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, LOW);
-    delay(2);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, HIGH);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(2);
-
-    digitalWrite(flag1, LOW);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(2);
-
-    digitalWrite(flag1, HIGH);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, HIGH);
-    delay(2);
-
-    digitalWrite(flag1, HIGH);
-    digitalWrite(flag2, LOW);
-    digitalWrite(flag3, LOW);
-    digitalWrite(flag4, LOW);
-    delay(2);
+    delay(3);
 
     digitalWrite(flag1, HIGH);
     digitalWrite(flag2, LOW);
     digitalWrite(flag3, HIGH);
     digitalWrite(flag4, LOW);
-    delay(2);
+    delay(3);
+
+    digitalWrite(flag1, HIGH);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, LOW);
+    delay(3);
+
+    digitalWrite(flag1, HIGH);
+    digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(3);
 
     digitalWrite(flag1, LOW);
     digitalWrite(flag2, LOW);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(3);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, HIGH);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, HIGH);
+    delay(3);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, HIGH);
+    digitalWrite(flag3, LOW);
+    digitalWrite(flag4, LOW);
+    delay(3);
+
+    digitalWrite(flag1, LOW);
+    digitalWrite(flag2, HIGH);
     digitalWrite(flag3, HIGH);
     digitalWrite(flag4, LOW);
-    delay(2);
-    }
+    delay(3);
+  }
 }
 
 void servo(){
