@@ -10,17 +10,17 @@
 Servo myservo;
 void setup() 
 { 
-  myservo.attach(2);
+  myservo.attach(5);
 } 
 
 
 
 void loop() 
 {
-    myservo.writeMicroseconds(1465);  // 舵机顺时针旋转  
-    delay(2000);
+    myservo.writeMicroseconds(1450);  // 舵机顺时针旋转  
+    delay(500);
     myservo.writeMicroseconds(1550);// 舵机逆时针旋转  
-    delay(2000);
+    delay(500);
     /*可以修改myservo.writeMicroseconds(1500); 中的值控制舵机，1500时控制舵机停止旋转。
 500~1500控制顺时针旋转，值越小，旋转速度越大
 1500~2500控制逆时针旋转，值越大，旋转速度越大

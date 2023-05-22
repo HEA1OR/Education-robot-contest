@@ -112,18 +112,18 @@ void loop (void)
   }
 /////////////////////////////////////////////////////////////////////////////////////////
   if(mode == 0){             //蓝色跑马灯+小角度摇晃，用于冰壶冰球中的人物
-      digitalWrite(nanopin0, LOW);
+      digitalWrite(nanopin0, HIGH);
       digitalWrite(nanopin1, LOW);
       forword(124);
       tail(0);
   }
   if(mode == 1){           // 蓝色呼吸灯，电机停止
     fadeinout(124, 15);
-    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
   }
   if(mode == 2){          //红色呼吸灯+小角度摇晃，用于冰球人物
-    digitalWrite(nanopin0, LOW);
+    digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);           
   }
@@ -133,7 +133,7 @@ void loop (void)
     rainbow();
   }
   if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
-    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);
   }
@@ -144,17 +144,17 @@ void loop (void)
   }
 
   if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
-    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
     fadeinout(50, 15);
   }
   if(mode == 7){           //升旗+彩虹渐变
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
-    rainbow2();
-    delay(100000);
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
+    while(1)
+    {
+      rainbow2();
+    }
   }
 }
 
