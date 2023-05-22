@@ -65,7 +65,7 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    setLightMode(7);
+    setLightMode(5);
     getEncoder();
     tempangle = angle;
     delay(4300);
@@ -307,7 +307,7 @@ void command_execute(byte c)
     open_flash('O');
     open_flash('O');
     delay(2000);
-    setLightMode(5);
+    setLightMode(7);
     //alongLine(0, 0, 4500, 0);
     delay(200);
     /* 

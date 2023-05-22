@@ -251,7 +251,7 @@ void command_execute(byte c)
     open_flash('P');
     open_flash('P');
     delay(2000);
-    setLightMode(5);
+    setLightMode(7);
     //alongLine(0, 0, 3000, 0);
     delay(200);
     /* 

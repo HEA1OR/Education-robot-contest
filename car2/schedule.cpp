@@ -61,7 +61,7 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    setLightMode(7);
+    setLightMode(5);
     getEncoder();
     tempangle = angle;
     open_flash('A');
@@ -94,7 +94,6 @@ void command_execute(byte c)
     delay(1000);
     alongCurve(3600, 1, 90);
     delay(200);
-    setLightMode(7);
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)
@@ -124,7 +123,6 @@ void command_execute(byte c)
     open_flash('H');
     turn(90, 1);
     delay(200);
-    setLightMode(7);
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -90)

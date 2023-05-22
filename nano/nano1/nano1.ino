@@ -137,23 +137,24 @@ void loop (void)
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);
   }
-  if(mode == 5){           //升旗+彩虹渐变
+  if(mode == 5){             //随机变色+大角度摇晃
+    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin1, HIGH);
+    randomcolor();
+  }
+
+  if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
+    digitalWrite(nanopin0, HIGH);
+    digitalWrite(nanopin1, LOW);
+    fadeinout(50, 15);
+  }
+  if(mode == 7){           //升旗+彩虹渐变
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     rainbow2();
     delay(100000);
     digitalWrite(nanopin0, HIGH);
     digitalWrite(nanopin1, LOW);
-  }
-  if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, LOW);
-    fadeinout(50, 15);
-  }
-  if(mode == 7){             //随机变色+大角度摇晃
-    digitalWrite(nanopin0, HIGH);
-    digitalWrite(nanopin1, HIGH);
-    randomcolor();
   }
 }
 
