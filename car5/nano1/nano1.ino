@@ -104,22 +104,18 @@ void setup(void)
 void loop (void)
 {
   setLightMode();
-  digitalWrite(SS, LOW);    // SS - pin 10
-  // 循环发送字节，实现字符串的发送
-  for(int i = 0; i < 20; i ++){
-      get_angle();
-      Send_Data(cc, angle);
-      delay(4);
-  }
+  mode = 7;
 /////////////////////////////////////////////////////////////////////////////////////////
   if(mode == 0){             //蓝色跑马灯+小角度摇晃，用于冰壶冰球中的人物
       digitalWrite(nanopin0, HIGH);
       digitalWrite(nanopin1, LOW);
       forword(124);
       tail(0);
+      delay(45);
   }
   if(mode == 1){           // 蓝色呼吸灯，电机停止
     fadeinout(124, 15);
+    delay(55);
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
   }
@@ -132,22 +128,26 @@ void loop (void)
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     rainbow();
+    delay(55);
   }
   if(mode == 4){            //红色呼吸灯+电机停止，用于被撞的冰壶
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
     fadeinout(0, 20);
+    delay(55);
   }
   if(mode == 5){             //随机变色+大角度摇晃
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, HIGH);
     randomcolor();
+    delay(35);
   }
 
   if(mode == 6){            //金色呼吸灯+电机停止，用于被推的冰壶、冰球
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
     fadeinout(50, 15);
+    delay(55);
   }
   if(mode == 7){           //升旗+彩虹渐变
     digitalWrite(nanopin0, HIGH);
@@ -262,14 +262,14 @@ void randomcolor(void){
     uint8_t red = rainbowColors[randomcolor1][0];
     uint8_t green = rainbowColors[randomcolor1][1];
     uint8_t blue = rainbowColors[randomcolor1][2];
-  if(val >= 140)
+  if(val >= 200)
     stat1 = SUB;
   if(val <= 1)
     {stat1 = ADD;randomcolor1 = randomcolor1 + 1;}
   if(randomcolor1 == 7)randomcolor1 =0;
   //delay(20);
-  if(stat1==SUB) val -= 20;
-  else if(stat1==ADD) val += 20;
+  if(stat1==SUB) val -= 10;
+  else if(stat1==ADD) val += 10;
   // 设置灯串颜色
   for (int i = 0; i < LED_COUNT; i++)
   {
