@@ -39,12 +39,13 @@ void loop (void)
   setnanoMode();
   if(mode == 0)
   myservo.writeMicroseconds(1500); 
-   
   else if(mode == 1){
      servo2();       //小角度摇晃
+     flag = 0;
     }        
   else if (mode == 2)
-     servo();    // 大角度摇晃
+     {servo();    // 大角度摇晃
+     flag = 0;}
   else if(mode == 3)
   {
     myservo.writeMicroseconds(1550);

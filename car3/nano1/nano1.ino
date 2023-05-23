@@ -155,10 +155,8 @@ void loop (void)
     delay(200);
     digitalWrite(nanopin0, LOW);
     digitalWrite(nanopin1, LOW);
-    while(1)
-    {
-      rainbow2();
-    }
+    rainbow2();
+    
   }
 }
 
