@@ -12,7 +12,7 @@
 #define LEDModePin1 6     // 译码法选择灯带显示模式
 #define LEDModePin2 7     // 译码法选择灯带显示模式
 #define LEDS_PER_GROUP 2
-#define LED_COUNT 27      // 定义LED灯个数
+#define LED_COUNT 26      // 定义LED灯个数
 #define ADD true
 #define SUB false
 
@@ -37,16 +37,16 @@ int ranbowcolor = 0;
 int randomcolor1 = 0;
 int ranbowchange = 0;  //在0~LED_COUNT-1之间
 int count = 0;            // 控制尾灯熄灭时长的计数变量，不用改
-int lightNumber = 27;            // 灯珠数量
+int lightNumber = 26;            // 灯珠数量
 int leftStartLight = 0;          // 左侧灯珠的起始位置
-int rightStartLight = 27;        // 右侧灯珠的起始位置
-int leftEndLight = 13;           // 左侧灯珠的结束位置
-int rightEndLight = 14;          // 右侧灯珠的结束位置
+int rightStartLight = 26;        // 右侧灯珠的起始位置
+int leftEndLight = 12;           // 左侧灯珠的结束位置
+int rightEndLight = 13;          // 右侧灯珠的结束位置
 int leftMainLight = 0;           // 流水灯的主灯位置（左）
-int rightMainLight = 27;         // 流水灯的主灯位置（右）
+int rightMainLight = 26;         // 流水灯的主灯位置（右）
 int sideBrightness = 100;        // 侧灯的最大亮度
-int tailGroup[] = {13, 14};// 尾灯的灯珠位置
-int tailNumber = 0;              // 尾灯数量
+int tailGroup[] = {13, 13};// 尾灯的灯珠位置
+int tailNumber = 0;              /  / 尾灯数量
 int change=0;                   //
 int changecolor=0;
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);//创建灯条对象
@@ -300,7 +300,7 @@ void fadeinout(int colorTemp, int patial = 5){
 
 
 void forword(int sideColor){
-  for(int i=-1;i<27;i++){
+  for(int i=-1;i<LED_COUNT;i++){
       hsvcolor = strip.ColorHSV(sideColor*256, 255, 0);
       strip.setPixelColor(i, hsvcolor);
   }
@@ -346,7 +346,7 @@ void forword(int sideColor){
 
 
 void backword(int sideColor){
-  for(int i=-1;i<27;i++){
+  for(int i=-1;i<LED_COUNT;i++){
       hsvcolor = strip.ColorHSV(sideColor*256, 255, 0);
       strip.setPixelColor(i, hsvcolor);
   }
