@@ -16,7 +16,7 @@
 
 Servo myservo;             // 定义Servo对象来控制
 int flag = 0;
-int mode = 1;
+int mode = 0;
 void setnanoMode();
 void rise();
 void down();
@@ -186,7 +186,7 @@ void down(){
 }
 
 void servo(){
-    myservo.writeMicroseconds(1450); // 舵机顺时针旋转
+    myservo.writeMicroseconds(1456); // 舵机顺时针旋转
     delay(2000);
     myservo.writeMicroseconds(1550); // 舵机逆时针旋转
     delay(2000);
@@ -197,7 +197,7 @@ void servo(){
 }
 
 void servo2(){
-    myservo.writeMicroseconds(1450); // 舵机顺时针旋转
+    myservo.writeMicroseconds(1455); // 舵机顺时针旋转
     delay(200);
     myservo.writeMicroseconds(1550); // 舵机逆时针旋转
     delay(200);

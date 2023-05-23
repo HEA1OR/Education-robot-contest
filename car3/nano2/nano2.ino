@@ -16,7 +16,7 @@
 
 Servo myservo;             // 定义Servo对象来控制
 int flag = 0;
-int mode = 1;
+int mode = 0;
 void setnanoMode();
 void rise();
 void down();
@@ -186,9 +186,9 @@ void down(){
 }
 
 void servo(){
-    myservo.writeMicroseconds(1450); // 舵机顺时针旋转
+    myservo.writeMicroseconds(1449); // 舵机顺时针旋转
     delay(2000);
-    myservo.writeMicroseconds(1550); // 舵机逆时针旋转
+    myservo.writeMicroseconds(1553); // 舵机逆时针旋转
     delay(2000);
     /*可以修改myservo.writeMicroseconds(1500); 中的值控制舵机，1500时控制舵机停止旋转。
 500~1500控制顺时针旋转，值越小，旋转速度越大
@@ -199,6 +199,6 @@ void servo(){
 void servo2(){
     myservo.writeMicroseconds(1450); // 舵机顺时针旋转
     delay(200);
-    myservo.writeMicroseconds(1550); // 舵机逆时针旋转
+    myservo.writeMicroseconds(1548); // 舵机逆时针旋转
     delay(200);
 }
