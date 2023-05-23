@@ -38,7 +38,10 @@ void loop (void)
 {
   setnanoMode();
   if(mode == 0)
-  myservo.writeMicroseconds(1500); 
+  {
+    myservo.writeMicroseconds(1500);
+    delay(30);
+  }
   else if(mode == 1){
      servo2();       //小角度摇晃
      flag = 0;
