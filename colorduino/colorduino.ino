@@ -773,6 +773,7 @@ void loop()
             DispShowChar2('B',   0, 255-20*j, 0, 0); 
             delay(50);
           }
+          
       for (j = 0, l=10; j <= 10; j++,l--)
           {
             DispShowChar2('B',   0, 255-20*l, 0, 0); 
