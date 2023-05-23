@@ -3,7 +3,7 @@
 #include "Adafruit_NeoPixel.h"    //引入头文件
 #include <Servo.h>            // 调用Servo库
 
-#define LED_COUNT 27     //定义LED灯个数
+#define LED_COUNT 32     //定义LED灯个数
 #define ADD true
 #define SUB false
 #define nanoModePin0 3
