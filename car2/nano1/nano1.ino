@@ -46,7 +46,7 @@ int leftMainLight = 0;           // 流水灯的主灯位置（左）
 int rightMainLight = 26;         // 流水灯的主灯位置（右）
 int sideBrightness = 100;        // 侧灯的最大亮度
 int tailGroup[] = {13, 13};// 尾灯的灯珠位置
-int tailNumber = 0;              /  / 尾灯数量
+int tailNumber = 0;              // 尾灯数量
 int change=0;                   //
 int changecolor=0;
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);//创建灯条对象
