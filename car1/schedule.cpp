@@ -60,9 +60,9 @@ void command_execute(byte c)
     open_flash('A');
     alongLine(0, 0, 4000, 0);
     delay(200);
-    open_flash('A');
-    turn(180, 1);
-    delay(200);
+    //open_flash('A');
+    //turn(180, 1);
+    //delay(200);
     getEncoder();
     initAngle_ = angle;
   }
@@ -73,11 +73,18 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('L');
-    alongLine(0, 0, 3500, 0);
+    alongLine(0, 0, 4000, 0);
     delay(200);
     open_flash('A');
-    turn(89, 0);
-    delay(200);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
+    for (int i=1;i<=12;i++)
+    {
+      turn(89.5, 0);
+      delay(600);
+    }
+    /*
     open_flash('L');
     open_flash('L');
     open_flash('L');
@@ -87,7 +94,7 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('L');
-    alongLine(0, 0, 9000, 0);
+    alongLine(0, 0, 11000, 0);
     delay(200);
     open_flash('A');
     turn(91, 0);
@@ -100,7 +107,7 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('A');
-    alongLine(0, 0, 7000, 0);
+    alongLine(0, 0, 9000, 0);
     delay(200);
     open_flash('A');
     turn(88, 0);
@@ -114,26 +121,26 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('L');
-    alongLine(0, 0, 9000, 0);
+    alongLine(0, 0, 11000, 0);
      delay(200);
      open_flash('A');
      turn(88, 0);
      delay(200);
      open_flash('L');
      open_flash('L');
-     alongLine(0, 0, 2000, 0);
-     delay(500);
+     alongLine(0, 0, 3000, 0);
+     delay(500);*/
      getEncoder();
      subangle = angle - initAngle_;
      if (subangle < -90)
        subangle += 360;
      else if (subangle > 90)
        subangle -= 360;
-     if (subangle > 0.4)
+     if (subangle > 1)
      {
        turn(subangle, 1);
       }
-    else if(subangle<-0.4)
+    else if(subangle<-1)
     {
       turn(fabs(subangle),0);
     }
@@ -153,16 +160,20 @@ void command_execute(byte c)
   {
     setLightMode(1);
     open_flash('A');
-    turn(90, 1);
-    delay(200);
+    turn(90, 0);
     open_flash('L');
+    delay(200);
     alongLine(0, 0, 800, 0);
     delay(200);
-    turn(180, 1);
+    turn(90, 0);
+    delay(200);
+    alongLine(0, 0, 3000, 0);
+    delay(200);
+    turn(88, 0);
+    delay(200);
     open_flash('C');
     /*
     alongLine(0, 0, 2200, 0);
-    
     */
   }
   // step4 冰壶
@@ -186,11 +197,14 @@ void command_execute(byte c)
     open_flash('G');
     open_flash('G');
     open_flash('G');
+    open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 4000, 0);
     delay(200);
     open_flash('A');
     turn(90, 1);
     delay(200);
+    open_flash('G');
     open_flash('G');
     open_flash('G');
     alongLine(0, 0, 2200, 0);
@@ -234,7 +248,7 @@ void command_execute(byte c)
     delay(200);
     open_flash('H');
     open_flash('H');
-    alongLine(0, 0, 1700, 0);
+    alongLine(0, 0, 2300, 0);
     delay(200);
     open_flash('A');
     turn(90, 1);

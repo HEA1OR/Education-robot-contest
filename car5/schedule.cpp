@@ -68,58 +68,89 @@ void command_execute(byte c)
     open_flash('L');
     open_flash('L');
     open_flash('L');
+    alongLine(0, 0, 4000, 0);
+    delay(200);
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
+    open_flash('A');
+    for (int i=1;i<=12;i++)
+    {
+      turn(89.6, 0);
+      delay(200);
+    }
+    /*
+    getEncoder();
+     subangle = angle - initAngle_;
+     if (subangle < -90)
+       subangle += 360;
+     else if (subangle > 90)
+       subangle -= 360;
+     if (subangle > 1)
+     {
+       turn(subangle, 1);
+      }
+    else if(subangle<-1)
+    {
+      turn(fabs(subangle),0);
+    }*/
+    /*
+    setLightMode(3);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    alongLine(0, 0, 4500, 0);
+    delay(500);
+    open_flash('A');
+    turn(89.5, 0);
+    delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    alongLine(0, 0, 11000, 0);
+    delay(500);
+    open_flash('A');
+    turn(89.5, 0);
+    delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('A');
+    alongLine(0, 0, 9000, 0);
+    delay(500);
+    open_flash('A');
+    turn(89.5, 0);
+    delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    open_flash('L');
+    
+    alongLine(0, 0, 11000, 0);
+    delay(500);
+    open_flash('A');
+    turn(92, 0);
+    delay(500);
+    open_flash('L');
+    open_flash('L');
+    open_flash('A');
     alongLine(0, 0, 3500, 0);
     delay(500);
-    open_flash('A');
-    turn(89.5, 0);
-    delay(500);
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    alongLine(0, 0, 9000, 0);
-    delay(500);
-    open_flash('A');
-    turn(89.5, 0);
-    delay(500);
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('A');
-    alongLine(0, 0, 7000, 0);
-    delay(500);
-    open_flash('A');
-    turn(89.5, 0);
-    delay(500);
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    open_flash('L');
-    
-    alongLine(0, 0, 9000, 0);
-    delay(500);
-    open_flash('A');
-    turn(89.5, 0);
-    delay(500);
-    open_flash('L');
-    open_flash('L');
-    open_flash('A');
-    alongLine(0, 0, 2500, 0);
-    delay(500);
-    
+    */
     /*
     turn(180, 1);
     delay(500);
@@ -144,7 +175,18 @@ void command_execute(byte c)
     setLightMode(4);
     open_flash('A');
     open_flash('K');
-    turn(135, 1);
+    turn(180, 1);
+    delay(200);
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    open_flash('G');
+    alongLine(0, 0, 5000, 0);
+    delay(200);
+    open_flash('A');
+    open_flash('K');
+    turn(45, 0);
     delay(500);
     //alongLine(0, 0, 1000, 0);
     //delay(200);
@@ -189,7 +231,7 @@ void command_execute(byte c)
   {
     delay(6000);
     open_flash('C');
-    turn(90, 1);
+    turn(87, 1);
     delay(500);
     /*
     getEncoder();
@@ -209,7 +251,7 @@ void command_execute(byte c)
     delay(2400);
     open_flash('C');
     open_flash('C');
-    alongLine(0, 0, 1300, 0);
+    alongLine(0, 0, 1000, 0);
   }
   // step8 冰球-car5向car2移动（追球）
   if (c == 0x95)
@@ -219,10 +261,10 @@ void command_execute(byte c)
     alongLine(0, 0, 1000, 0);
     delay(1500);
     open_flash('C');
-    turn(90, 1);
-    delay(1500);
+    turn(88, 1);
+    delay(200);
     open_flash('C');
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 800, 0);
   }
   // step9 冰球to颁奖
   if (c == 0x96)

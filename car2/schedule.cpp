@@ -62,11 +62,12 @@ void command_execute(byte c)
   if (c == 0x89)
   {
     setLightMode(5);
-    getEncoder();
-    tempangle = angle;
     open_flash('A');
     open_flash('A');
     turn(180,0);
+    delay(2000);
+    getEncoder();
+    tempangle = angle;
     delay(200);
     //delay(1400);
     open_flash('R');
@@ -85,6 +86,12 @@ void command_execute(byte c)
     open_flash('R');
     open_flash('R');
     open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
     open_flash('A');
     alongCurve(3600, 1, 90);
     delay(1000);
@@ -96,9 +103,9 @@ void command_execute(byte c)
     delay(200);
     getEncoder();
     subangle = angle - tempangle;
-    if (subangle < -90)
+    if (subangle < -300)
         subangle += 360;
-    else if (subangle > 90)
+    else if (subangle > 300)
         subangle -= 360;
     if(subangle>0.4)
     {
@@ -108,6 +115,7 @@ void command_execute(byte c)
     {
       turn(fabs(subangle),0);
     }
+    /*
     getEncoder();
     tempangle = angle;
     delay(200);
@@ -136,7 +144,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-    }
+    }*/
   }    
 
   // step3 花滑to冰壶
@@ -144,13 +152,13 @@ void command_execute(byte c)
   {
     setLightMode(1);
     open_flash('L');
-    turn(90, 0);
+    turn(89, 1);
     delay(200);
     open_flash('G');
     alongLine(0, 0, 800, 0);
     delay(200);
     open_flash('L');
-    turn(90, 1);
+    turn(89, 1);
     delay(200);
     open_flash('G');
     alongLine(0, 0, 800, 0);
@@ -178,8 +186,10 @@ void command_execute(byte c)
   {
     setLightMode(6);
     open_flash('L');
-    turn(90, 0);
+    turn(93, 0);
     delay(2500);
+    open_flash('G');
+    open_flash('G');
     open_flash('G');
     open_flash('G');
     open_flash('G');
@@ -189,6 +199,8 @@ void command_execute(byte c)
     open_flash('A');
     turn(90, 0);
     delay(200);
+    open_flash('G');
+    open_flash('G');
     open_flash('G');
     open_flash('G');
     open_flash('G');
@@ -209,10 +221,10 @@ void command_execute(byte c)
     open_flash('F');
     open_flash('F');
     open_flash('F');
-    alongLine(0, 0, 7500, 0);
+    alongLine(0, 0, 6500, 0);
     delay(200);
     open_flash('F');
-    turn(165, 0);
+    turn(172, 0);
     delay(200);
   }
   // step7 冰球-car2从1到3
@@ -224,10 +236,10 @@ void command_execute(byte c)
     open_flash('F');
     open_flash('F');
     open_flash('F');
-    alongLine(0, 0, 6400, 0);
+    alongLine(0, 0, 5800, 0);
     delay(200);
     open_flash('F');
-    turn(70, 1);
+    turn(82, 1);
     delay(200);
   }
   // step8 冰球-car2直行+射门
@@ -235,7 +247,8 @@ void command_execute(byte c)
   {
     open_flash('F');
     open_flash('F');
-    alongLine(0, 0, 2000, 0);
+    open_flash('F');
+    alongLine(0, 0, 3000, 0);
     delay(200);
     turn(45, 1);
     delay(200);
@@ -243,7 +256,7 @@ void command_execute(byte c)
     open_flash('F');
     open_flash('E');
     open_flash('E');
-    alongLine(0, 0, 3800, 0);
+    alongLine(0, 0, 4000, 0);
     delay(200);
   }
   // step9 冰球to颁奖
@@ -257,7 +270,7 @@ void command_execute(byte c)
     open_flash('A');
     open_flash('A');
     open_flash('A');
-    alongLine(0, 0, 4000, 0);
+    alongLine(0, 0, 6000, 0);
     delay(200);
     open_flash('H');
     turn(180, 1);

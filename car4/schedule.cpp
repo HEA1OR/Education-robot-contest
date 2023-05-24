@@ -65,10 +65,16 @@ void command_execute(byte c)
   // step2  花滑
   if (c == 0x89)
   {
-    //setLightMode(5);
+    setLightMode(5);
     getEncoder();
     tempangle = angle;
-    delay(4300);
+    delay(6500);
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
+    open_flash('R');
     open_flash('R');
     open_flash('R');
     open_flash('R');
@@ -111,10 +117,11 @@ void command_execute(byte c)
       }
     //Sdelay(200);
     //alongLine(0, 0, 500, 0);
+    /*
     delay(200);
     getEncoder();
     tempangle = angle;
-    delay(3300);
+    delay(4300);
     open_flash('H');
     turn(90, 1);
     delay(200);
@@ -126,7 +133,7 @@ void command_execute(byte c)
     delay(200);
     open_flash('H');
     turn(84, 1);
-    delay(200);
+    delay(200);*/
     /*
     getEncoder();
     subangle = angle - tempangle;
@@ -152,11 +159,13 @@ void command_execute(byte c)
     delay(200);
     open_flash('G');
     open_flash('G');
+    open_flash('G');
     alongLine(0, 0, 1800, 0);
     delay(200);
     open_flash('L');
     turn(88, 1);
-    delay(200);
+    delay(5500);
+    open_flash('G');
     open_flash('G');
     alongLine(0, 0, 1400, 0);
     delay(200);
@@ -228,7 +237,7 @@ void command_execute(byte c)
     }*/
     delay(2000);
     open_flash('C');
-    alongLine(0, 0, 1400, 0);
+    alongLine(0, 0, 1100, 0);
   }
   // step8 冰球-car4向car2移动（追球）
   if (c == 0x95)
@@ -239,9 +248,9 @@ void command_execute(byte c)
     delay(1500);
     open_flash('C');
     turn(85, 1);
-    delay(1500);
+    delay(200);
     open_flash('C');
-    alongLine(0, 0, 1000, 0);
+    alongLine(0, 0, 800, 0);
     delay(200);
   }
   // step9 冰球to颁奖
@@ -253,7 +262,7 @@ void command_execute(byte c)
     delay(200);
     open_flash('H');
     open_flash('H');
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 2100, 0);
     delay(200);
     open_flash('H');
     turn(87, 1);

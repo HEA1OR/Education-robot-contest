@@ -65,12 +65,17 @@ void command_execute(byte c)
     setLightMode(6);
     getEncoder();
     float tempangle = angle;
-    for (int i=1;i<=20;i++)
+    delay(6500);
+    for (int i=1;i<=10;i++)
     {
       open_flash('A');
       turn(89, 0);
       delay(200);
     }
+
+    turn(90, 0);
+    delay(200);
+    turn(90, 0);
     delay(200);
     /*
     getEncoder();
@@ -105,11 +110,14 @@ void command_execute(byte c)
     delay(1000);
     open_flash('G');
     open_flash('G');
-    alongLine(0, 0, 2200, 0);
+    open_flash('G');
+    open_flash('G');
+    alongLine(0, 0, 2700, 0);
     delay(200);
     open_flash('A');
     turn(89, 0);
     delay(200);
+    open_flash('G');
     open_flash('G');
     open_flash('G');
     open_flash('G');
@@ -136,11 +144,11 @@ void command_execute(byte c)
   {
     setLightMode(1);
     open_flash('H');
-    turn(92, 0);
+    turn(90, 0);
     delay(200);
     open_flash('G');
     open_flash('G');
-    alongLine(0, 0, 2400, 0);
+    alongLine(0, 0, 2200, 0);
     delay(200);
     open_flash('H');
     turn(89, 0);
@@ -176,8 +184,9 @@ void command_execute(byte c)
     //delay(1000);
     open_flash('M');
     open_flash('M');
+    open_flash('M');
     open_flash('I');
-    alongLine(0, 0, 2000, 0);
+    alongLine(0, 0, 3000, 0);
     delay(200);
   }
   // step9 冰球to颁奖
@@ -192,10 +201,10 @@ void command_execute(byte c)
     open_flash('H');
     open_flash('H');
     open_flash('H');
-    alongLine(0, 0, 5500, 0);
+    alongLine(0, 0, 5400, 0);
     delay(200);
     open_flash('A');
-    turn(180, 1);
+    turn(178, 1);
     delay(200);
     /*
     getEncoder();
