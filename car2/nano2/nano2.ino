@@ -23,6 +23,16 @@ void down();
 void servo();
 void servo2();
 
+void setup(void)
+{
+  pinMode(nanoModePin0, INPUT);
+  pinMode(nanoModePin1, INPUT);
+  pinMode(flag1, OUTPUT);
+  pinMode(flag2, OUTPUT);
+  pinMode(flag3, OUTPUT);
+  pinMode(flag4, OUTPUT);
+  myservo.attach(motorPIN);
+}
 void loop(void)
 {
   setnanoMode();
