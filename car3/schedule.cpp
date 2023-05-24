@@ -157,7 +157,7 @@ void command_execute(byte c)
     open_flash('G');
     open_flash('G');
     open_flash('G');
-    alongLine(0, 0, 4300, 0);
+    alongLine(0, 0, 5000, 0);
     delay(200);
     open_flash('M');
     turn(180, 1);
@@ -175,7 +175,7 @@ void command_execute(byte c)
     open_flash('M');
     open_flash('M');
 
-    alongLine(0, 0, 2700, 0);
+    alongLine(0, 0, 3400, 0);
     delay(200);
   }
   // step8 冰球-car3直行
@@ -263,7 +263,9 @@ void command_execute(byte c)
     
     setLightMode(7);
     //alongLine(0, 0, 3000, 0);
-    delay(200);
+    
+    delay(20000);
+    setLightMode(0);
     /* 
      *  =============
      *  摇旗

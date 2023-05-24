@@ -239,7 +239,7 @@ void command_execute(byte c)
     alongLine(0, 0, 5800, 0);
     delay(200);
     open_flash('F');
-    turn(82, 1);
+    turn(77, 1);
     delay(200);
   }
   // step8 冰球-car2直行+射门
@@ -270,7 +270,7 @@ void command_execute(byte c)
     open_flash('A');
     open_flash('A');
     open_flash('A');
-    alongLine(0, 0, 6000, 0);
+    alongLine(0, 0, 5000, 0);
     delay(200);
     open_flash('H');
     turn(180, 1);
@@ -321,5 +321,6 @@ void command_execute(byte c)
     delay(500);
     turn(180, 1);
     delay(500);
+    setLightMode(0);
   }
 }

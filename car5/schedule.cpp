@@ -341,7 +341,8 @@ void command_execute(byte c)
     delay(2000);
     setLightMode(7);
     //alongLine(0, 0, 3000, 0);
-    delay(500);
+    delay(20000);
+    setLightMode(0);
     /* 
      *  =============
      *  摇旗

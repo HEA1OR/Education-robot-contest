@@ -317,8 +317,9 @@ void command_execute(byte c)
     open_flash('O');
     delay(2000);
     setLightMode(7);
-    //alongLine(0, 0, 4500, 0);
-    delay(200);
+    //alongLine(0, 0, 4500, 0);    
+    delay(20000);
+    setLightMode(0);
     /* 
      *  =============
      *  摇旗
