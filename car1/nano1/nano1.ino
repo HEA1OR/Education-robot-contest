@@ -121,7 +121,8 @@ void loop (void)
   if(mode == 2){          //红色呼吸灯+小角度摇晃，用于冰球人物
     digitalWrite(nanopin1, LOW);
     digitalWrite(nanopin0, HIGH);
-    fadeinout(0, 20);           
+    fadeinout(0, 20);
+    delay(55);
   }
   if(mode == 3){           //彩虹渐变+大角度摇晃
     digitalWrite(nanopin0, LOW);
