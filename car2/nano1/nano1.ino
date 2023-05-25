@@ -125,6 +125,7 @@ void loop (void)
     digitalWrite(nanopin1, LOW);
     digitalWrite(nanopin0, HIGH);
     fadeinout(0, 20);
+    delay(55);
   }
   if (mode == 3)
   { // 彩虹渐变+大角度摇晃

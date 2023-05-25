@@ -34,33 +34,46 @@ void setup(void)
   myservo.attach(motorPIN); 
 }
 
-void loop (void)
+void loop(void)
 {
   setnanoMode();
-  if(mode == 0)
+  if (mode == 0)
   {
-    myservo.writeMicroseconds(1500);
-    delay(30);
+    myservo.writeMicroseconds(1480);
+    if (flag == 1)
+    {
+      flag = 0;
+      down();
+    }
   }
-  else if(mode == 1){
-     servo2();       //小角度摇晃
-     flag = 0;
-    }        
+  else if (mode == 1)
+  {
+    // servo2();       //小角度摇晃
+    if (flag == 1)
+    {
+      flag = 0;
+      down();
+    }
+    myservo.writeMicroseconds(1540);
+  }
   else if (mode == 2)
-     {servo();    // 大角度摇晃
-     flag = 0;}
-  else if(mode == 3)
+  { // servo();    // 大角度摇晃
+    if (flag == 1)
+    {
+      flag = 0;
+      down();
+    }
+    myservo.writeMicroseconds(1580);
+  }
+  else if (mode == 3)
   {
     myservo.writeMicroseconds(1550);
     if (flag == 0)
     {
       rise();
       flag = 1;
-      delay(1000);
-      down();
     }
   }
-
 }
 
 void setnanoMode(){
