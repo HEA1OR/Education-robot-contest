@@ -101,6 +101,9 @@ void command_execute(byte c)
     delay(1000);
     alongCurve(3600, 1, 90);
     delay(200);
+    turn(5, 0);
+    /*
+    delay(500);
     getEncoder();
     subangle = angle - tempangle;
     if (subangle < -300)
@@ -114,7 +117,7 @@ void command_execute(byte c)
     else if(subangle<-0.4)
     {
       turn(fabs(subangle),0);
-    }
+    }*/
     /*
     getEncoder();
     tempangle = angle;
